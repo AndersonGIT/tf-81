@@ -287,3 +287,100 @@
   --z-tooltip:  500;
   --z-max:      9999;
 }
+
+/* ================================================================
+   BREAKPOINTS
+   ================================================================ */
+
+:root {
+  --bp-xs:  320px;
+  --bp-sm:  480px;
+  --bp-md:  768px;
+  --bp-lg:  1024px;
+  --bp-xl:  1280px;
+  --bp-2xl: 1536px;
+  --bp-tv:  1920px;
+  --bp-4k:  2560px;
+}
+
+/* ── TV SCALE ─────────────────────────────────────────────────── */
+@media (min-width: 1920px) {
+  :root {
+    --sidebar-width:           320px;
+    --sidebar-width-collapsed: 84px;
+    --topbar-height:           72px;
+    --footer-height:           60px;
+    --grid-gap:                var(--space-8);
+  }
+}
+
+/* ================================================================
+   LIGHT THEME TOKENS
+   Estética "mapa tático" — pergaminho quente + ouro escuro
+   ================================================================ */
+
+[data-theme="light"] {
+
+  /* Brand — mais escuro para contraste em fundo claro */
+  --color-brand-primary:   #9A7000;
+  --color-brand-secondary: #7A3A10;
+  --color-brand-military:  #2A5C18;
+
+  /* Backgrounds — pergaminho quente */
+  --color-bg-canvas:   #F4F0E6;
+  --color-bg-base:     #EAE5D8;
+  --color-bg-raised:   #FAF7F0;
+  --color-bg-overlay:  #F0EBE0;
+  --color-bg-elevated: #FFFFFF;
+
+  /* Surfaces */
+  --color-surface-default: #FFFFFF;
+  --color-surface-raised:  #F8F5EE;
+  --color-surface-overlay: #EDE8DC;
+
+  /* Borders — tom marrom-oliva quente */
+  --color-border-subtle:  rgba(120,90,20,0.07);
+  --color-border-default: rgba(120,90,20,0.16);
+  --color-border-strong:  rgba(120,90,20,0.36);
+  --color-border-gold:    #9A7000;
+  --color-border-muted:   rgba(60,60,40,0.20);
+
+  /* Text — preto quente, não frio */
+  --color-text-primary:   #1C1C14;
+  --color-text-secondary: #3C3C2C;
+  --color-text-tertiary:  #5C5C48;
+  --color-text-muted:     #7C7C62;
+  --color-text-disabled:  #9C9C7C;
+  --color-text-inverse:   #F0F0F8;
+  --color-text-gold:      #8A6000;
+  --color-text-copper:    #7A3A10;
+  --color-text-military:  #2A5C18;
+
+  /* Status */
+  --color-status-active:   #2A6018;
+  --color-status-inactive: #8A8A70;
+  --color-status-warning:  #9A7000;
+  --color-status-danger:   #9C1414;
+  --color-status-info:     #1A4A8A;
+
+  /* Shadows — suaves e quentes */
+  --shadow-xs:  0 1px 2px rgba(60,50,20,0.08);
+  --shadow-sm:  0 2px 6px rgba(60,50,20,0.10);
+  --shadow-md:  0 4px 16px rgba(60,50,20,0.12);
+  --shadow-lg:  0 8px 32px rgba(60,50,20,0.15);
+  --shadow-xl:  0 16px 56px rgba(60,50,20,0.18);
+  --shadow-2xl: 0 24px 80px rgba(60,50,20,0.22);
+
+  /* Glows — mais suaves no fundo claro */
+  --glow-gold-xs: 0 0 4px rgba(140,90,0,0.15);
+  --glow-gold-sm: 0 0 12px rgba(140,90,0,0.22);
+  --glow-gold-md: 0 0 24px rgba(140,90,0,0.28);
+  --glow-gold-lg: 0 0 48px rgba(140,90,0,0.22);
+  --glow-gold-xl: 0 0 80px rgba(140,90,0,0.16);
+
+  --glow-green-sm: 0 0 12px rgba(42,92,24,0.22);
+  --glow-green-md: 0 0 24px rgba(42,92,24,0.28);
+  --glow-red-sm:   0 0 12px rgba(156,20,20,0.22);
+  --glow-red-md:   0 0 24px rgba(156,20,20,0.28);
+  --glow-copper-sm: 0 0 12px rgba(122,58,16,0.22);
+}

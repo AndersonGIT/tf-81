@@ -146,6 +146,43 @@ hr {
   background-size: 24px 24px;
 }
 
+/* ── THEME TRANSITION ────────────────────────────────────────── */
+.theme-transitioning,
+.theme-transitioning *,
+.theme-transitioning *::before,
+.theme-transitioning *::after {
+  transition:
+    background-color 300ms ease,
+    color 200ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease !important;
+}
+
+/* ── RESPONSIVE BASE FONT SCALE ──────────────────────────────── */
+@media (min-width: 1920px) { html { font-size: 18px; } }
+@media (min-width: 2560px) { html { font-size: 20px; } }
+
+/* ── LIGHT THEME — SCROLLBAR ─────────────────────────────────── */
+[data-theme="light"] ::-webkit-scrollbar-track { background: var(--color-bg-base); }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: #9A7000; }
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: #7A5500; }
+
+/* ── LIGHT THEME — TEXTURE OVERRIDES ────────────────────────── */
+[data-theme="light"] .hex-grid-bg {
+  background-color: var(--color-bg-base);
+  background-image: radial-gradient(circle at 1px 1px, rgba(120,90,20,0.07) 1px, transparent 0);
+}
+[data-theme="light"] .grid-bg {
+  background-image:
+    linear-gradient(rgba(120,90,20,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(120,90,20,0.06) 1px, transparent 1px);
+}
+[data-theme="light"] .bracket::before,
+[data-theme="light"] .bracket::after { border-color: #9A7000; }
+
+/* ── RESPONSIVE SCANLINES ────────────────────────────────────── */
+@media (max-width: 767px) { .scanlines::after { display: none; } }
+
 /* ── TACTICAL CORNER BRACKETS ────────────────────────────────── */
 
 .bracket {
