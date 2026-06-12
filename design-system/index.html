@@ -2471,7 +2471,7 @@
             <span>tf81.com/blog/</span>
             <input type="text" value="relato-tatico-operacao-bravo-campo-alfa">
           </div>
-          <div>
+          <div style="flex:1;display:flex;flex-direction:column;min-height:0">
             <div class="editor-toolbar">
               <button class="editor-toolbar__btn active" title="Negrito"><strong>B</strong></button>
               <button class="editor-toolbar__btn" title="Itálico"><em>I</em></button>
@@ -2499,7 +2499,7 @@
 
 O objetivo principal era treinar comunicação silenciosa e supressão de alvos múltiplos em ambiente de baixa visibilidade, simulando condições reais de infiltração noturna...</textarea>
           </div>
-        </div>
+        </div><!-- /blog-editor__main -->
 
         <!-- Sidebar -->
         <div class="blog-editor__sidebar">
@@ -2512,31 +2512,6 @@ O objetivo principal era treinar comunicação silenciosa e supressão de alvos 
                 <span class="cover-dropzone__label">Clique ou arraste a foto de capa</span>
                 <span class="cover-dropzone__sub">JPG · PNG · WEBP · 2MB</span>
                 <input type="file" accept="image/*" tabindex="-1">
-              </div>
-            </div>
-          </div>
-
-          <!-- Publish -->
-          <div class="editor-panel">
-            <div class="editor-panel__header">Publicação</div>
-            <div class="editor-panel__body">
-              <div class="editor-publish">
-                <div class="editor-publish__row">
-                  <span>Status</span>
-                  <span class="post-status post-status--draft">Rascunho</span>
-                </div>
-                <div class="editor-publish__row">
-                  <span>Visibilidade</span>
-                  <strong>Pública</strong>
-                </div>
-                <div class="editor-publish__row">
-                  <span>Publicar</span>
-                  <strong>Imediatamente</strong>
-                </div>
-              </div>
-              <div style="display:flex;gap:var(--space-2);margin-top:var(--space-3)">
-                <button class="btn btn-ghost btn-sm" style="flex:1">Salvar</button>
-                <button class="btn btn-primary btn-sm" style="flex:1">Publicar</button>
               </div>
             </div>
           </div>
@@ -2631,9 +2606,121 @@ O objetivo principal era treinar comunicação silenciosa e supressão de alvos 
               </details>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </div><!-- /blog-editor__sidebar -->
+
+        <!-- ─── PAINEL DE PUBLICAÇÃO — abaixo do editor, full-width ─── -->
+        <div class="publish-panel" style="grid-column:1/-1">
+
+          <div class="publish-panel__header">
+            <span class="publish-panel__title">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Publicação
+            </span>
+            <span class="post-status post-status--draft">Rascunho</span>
+          </div>
+
+          <div class="publish-panel__body">
+
+            <!-- SEÇÃO 1: PRIVACIDADE -->
+            <div class="publish-section">
+              <div class="publish-section__label">Visibilidade do post</div>
+              <div class="publish-options">
+
+                <!-- Opção: Público -->
+                <label class="publish-option active">
+                  <input type="radio" name="demo-privacy" value="public" checked>
+                  <span class="publish-option__radio"></span>
+                  <svg class="publish-option__icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                  <div class="publish-option__body">
+                    <div class="publish-option__name">Público</div>
+                    <div class="publish-option__desc">Visível para qualquer visitante do site</div>
+                  </div>
+                </label>
+
+                <!-- Opção: Privado -->
+                <label class="publish-option">
+                  <input type="radio" name="demo-privacy" value="private">
+                  <span class="publish-option__radio"></span>
+                  <svg class="publish-option__icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                  <div class="publish-option__body">
+                    <div class="publish-option__name">Privado</div>
+                    <div class="publish-option__desc">Somente membros autenticados</div>
+                  </div>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- SEÇÃO 2: QUANDO PUBLICAR -->
+            <div class="publish-section">
+              <div class="publish-section__label">Quando publicar</div>
+              <div class="publish-options">
+
+                <!-- Opção: Imediatamente -->
+                <label class="publish-option">
+                  <input type="radio" name="demo-when" value="now">
+                  <span class="publish-option__radio"></span>
+                  <svg class="publish-option__icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <div class="publish-option__body">
+                    <div class="publish-option__name">Imediatamente</div>
+                    <div class="publish-option__desc">Publica ao confirmar</div>
+                  </div>
+                </label>
+
+                <!-- Opção: Agendado (ativo para mostrar o datepicker) -->
+                <label class="publish-option active">
+                  <input type="radio" name="demo-when" value="scheduled" checked>
+                  <span class="publish-option__radio"></span>
+                  <svg class="publish-option__icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <div class="publish-option__body">
+                    <div class="publish-option__name">Agendado</div>
+                    <div class="publish-option__desc">Define data e hora de publicação</div>
+                  </div>
+                </label>
+
+              </div>
+
+              <!-- Configuração de agendamento (visível quando "Agendado" está ativo) -->
+              <div class="publish-schedule">
+                <div class="publish-schedule__label">// Agendamento da publicação</div>
+                <div class="publish-schedule__row">
+                  <div class="publish-schedule__field publish-schedule__field--date">
+                    <span class="publish-schedule__field-label">Data</span>
+                    <input class="publish-schedule__input" type="date" value="2026-06-20">
+                  </div>
+                  <div class="publish-schedule__field publish-schedule__field--time">
+                    <span class="publish-schedule__field-label">Hora</span>
+                    <input class="publish-schedule__input" type="time" value="09:00">
+                  </div>
+                </div>
+                <div class="publish-schedule__preview">
+                  <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  Publicação agendada para Sáb, 20 Jun 2026 às 09:00
+                </div>
+              </div>
+
+            </div>
+          </div><!-- /publish-panel__body -->
+
+          <div class="publish-panel__footer">
+            <div class="publish-panel__status-row">
+              <span class="post-status post-status--draft">Rascunho</span>
+              <span class="publish-panel__status-info">Última modificação: hoje às 14:32</span>
+            </div>
+            <div class="publish-panel__actions">
+              <button class="btn btn-ghost btn-sm">Salvar rascunho</button>
+              <button class="btn btn-ghost btn-sm">Pré-visualizar</button>
+              <button class="btn btn-primary btn-sm" style="gap:var(--space-2)">
+                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Agendar publicação
+              </button>
+            </div>
+          </div>
+
+        </div><!-- /publish-panel -->
+
+      </div><!-- /blog-editor -->
+    </div><!-- /ds-preview -->
 
   </div>
 </section>

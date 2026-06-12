@@ -571,7 +571,6 @@
   display: grid;
   grid-template-columns: 1fr 300px;
   gap: var(--space-5);
-  align-items: start;
 }
 
 @media (max-width: 1023px) { .blog-editor { grid-template-columns: 1fr; } }
@@ -589,6 +588,7 @@
   gap: var(--space-4);
   position: sticky;
   top: var(--space-4);
+  align-self: start;
 }
 
 /* Editor title */
@@ -679,7 +679,8 @@
 /* Content area */
 .editor-content {
   width: 100%;
-  min-height: 280px;
+  flex: 1;
+  min-height: 180px;
   background: var(--color-surface-default);
   border: 1px solid var(--color-border-default);
   border-radius: 0 0 var(--radius-md) var(--radius-md);
@@ -689,7 +690,7 @@
   color: var(--color-text-secondary);
   line-height: var(--leading-relaxed);
   outline: none;
-  resize: vertical;
+  resize: none;
   transition: border-color var(--transition-fast), background-color 300ms ease;
 }
 .editor-content:focus { border-color: var(--color-border-focus); }
@@ -813,21 +814,261 @@
 }
 .tag-input-wrap input::placeholder { color: var(--color-text-disabled); }
 
-/* Publish actions */
-.editor-publish {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
+/* ══════════════════════════════════════════════════════════════
+   EDITOR — PAINEL DE PUBLICAÇÃO (abaixo do editor)
+   ══════════════════════════════════════════════════════════════ */
+
+.publish-panel {
+  background: var(--color-surface-default);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: background-color 300ms ease, border-color 300ms ease;
 }
 
-.editor-publish__row {
+.publish-panel__header {
+  padding: var(--space-3-5) var(--space-5);
+  border-bottom: 1px solid var(--color-border-default);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: var(--text-xs);
-  color: var(--color-text-tertiary);
+  gap: var(--space-3);
+  flex-wrap: wrap;
 }
-.editor-publish__row strong { color: var(--color-text-secondary); }
+
+.publish-panel__title {
+  font-family: var(--font-tactical);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-military);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.publish-panel__body {
+  padding: var(--space-5);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+@media (max-width: 768px) { .publish-panel__body { grid-template-columns: 1fr; } }
+
+/* Agrupamento de seção dentro do painel */
+.publish-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+.publish-section__label {
+  font-family: var(--font-tactical);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Opções em card radio */
+.publish-options {
+  display: flex;
+  gap: var(--space-2-5);
+}
+
+.publish-option {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2-5);
+  padding: var(--space-3);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  background: var(--color-bg-raised);
+  min-width: 0;
+  user-select: none;
+}
+.publish-option:hover { border-color: var(--color-border-strong); }
+.publish-option.active {
+  border-color: rgba(196,150,26,.45);
+  background: rgba(196,150,26,.06);
+}
+
+.publish-option input[type="radio"] {
+  position: absolute; opacity: 0; width: 0; height: 0;
+}
+
+.publish-option__radio {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--color-border-default);
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.publish-option.active .publish-option__radio {
+  border-color: var(--color-text-gold);
+  background: rgba(196,150,26,.10);
+}
+.publish-option.active .publish-option__radio::after {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--color-text-gold);
+}
+[data-theme="light"] .publish-option.active .publish-option__radio { border-color: #8A6000; }
+[data-theme="light"] .publish-option.active .publish-option__radio::after { background: #8A6000; }
+
+.publish-option__icon {
+  color: var(--color-text-disabled);
+  flex-shrink: 0;
+  transition: color var(--transition-fast);
+  margin-top: 1px;
+}
+.publish-option.active .publish-option__icon { color: var(--color-text-gold); }
+[data-theme="light"] .publish-option.active .publish-option__icon { color: #8A6000; }
+
+.publish-option__body { min-width: 0; flex: 1; }
+.publish-option__name {
+  font-family: var(--font-tactical);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-fast);
+  line-height: 1.4;
+}
+.publish-option.active .publish-option__name { color: var(--color-text-primary); }
+.publish-option__desc {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  margin-top: 3px;
+  line-height: 1.4;
+}
+
+/* Agendamento — caixa de data/hora */
+.publish-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-3-5) var(--space-4);
+  background: rgba(196,150,26,.04);
+  border: 1px solid rgba(196,150,26,.20);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+.publish-schedule--hidden { display: none; }
+
+.publish-schedule__label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--color-text-gold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+[data-theme="light"] .publish-schedule__label { color: #8A6000; }
+
+.publish-schedule__row {
+  display: flex;
+  gap: var(--space-2-5);
+}
+
+.publish-schedule__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1-5);
+}
+.publish-schedule__field--date { flex: 1; }
+.publish-schedule__field--time { flex: 0 0 120px; }
+
+.publish-schedule__field-label {
+  font-family: var(--font-tactical);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.publish-schedule__input {
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface-default);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-wide);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+}
+.publish-schedule__input:focus {
+  border-color: rgba(196,150,26,.48);
+  box-shadow: 0 0 0 2px rgba(196,150,26,.12);
+}
+.publish-schedule__input::-webkit-calendar-picker-indicator {
+  filter: invert(0.65) sepia(1) saturate(1.5) hue-rotate(5deg);
+  cursor: pointer;
+  opacity: 0.7;
+}
+.publish-schedule__input:hover::-webkit-calendar-picker-indicator { opacity: 1; }
+[data-theme="light"] .publish-schedule__input { background: #FFFFFF; border-color: rgba(120,90,20,.22); }
+[data-theme="light"] .publish-schedule__input::-webkit-calendar-picker-indicator { filter: none; opacity: 0.6; }
+
+.publish-schedule__preview {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-gold);
+  letter-spacing: var(--tracking-wide);
+  padding: var(--space-2) var(--space-3);
+  background: rgba(196,150,26,.08);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+[data-theme="light"] .publish-schedule__preview { color: #8A6000; }
+
+/* Footer de ações */
+.publish-panel__footer {
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--color-border-default);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.publish-panel__status-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2-5);
+  flex: 1;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.publish-panel__status-info {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wide);
+}
+
+.publish-panel__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2-5);
+  flex-shrink: 0;
+}
 
 /* ══════════════════════════════════════════════════════════════
    BLOG ADMIN — STATS MINI CARDS
