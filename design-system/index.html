@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TF-81 — Design System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/utilities.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <style>
+    /* ── DESIGN SYSTEM PAGE LAYOUT ──────────────────────────── */
+    body { display: flex; }
+
+    #ds-sidebar {
+      width: 260px;
+      min-width: 260px;
+      height: 100vh;
+      position: sticky;
+      top: 0;
+      background: var(--color-bg-base);
+      border-right: 1px solid var(--color-border-default);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: width var(--transition-slow), min-width var(--transition-slow);
+    }
+    #ds-sidebar.collapsed { width: 0; min-width: 0; }
+
+    .ds-sidebar-brand {
+      padding: var(--space-5) var(--space-5) var(--space-4);
+      border-bottom: 1px solid var(--color-border-default);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+    .ds-brand-patch {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--color-border-gold);
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .ds-brand-info { min-width: 0; }
+    .ds-brand-name {
+      font-family: var(--font-display);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      color: var(--color-text-gold);
+      white-space: nowrap;
+    }
+    .ds-brand-sub {
+      font-family: var(--font-mono);
+      font-size: var(--text-2xs);
+      color: var(--color-text-muted);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .ds-nav {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding: var(--space-4) 0;
+    }
+    .ds-nav-section {
+      font-family: var(--font-tactical);
+      font-size: var(--text-2xs);
+      letter-spacing: var(--tracking-military);
+      text-transform: uppercase;
+      color: var(--color-text-disabled);
+      padding: var(--space-4) var(--space-5) var(--space-1);
+      white-space: nowrap;
+    }
+    .ds-nav-link {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) var(--space-5);
+      font-family: var(--font-tactical);
+      font-size: var(--text-sm);
+      letter-spacing: var(--tracking-wide);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: all var(--transition-fast);
+      white-space: nowrap;
+    }
+    .ds-nav-link:hover  { color: var(--color-text-primary); background: rgba(196,150,26,0.06); border-left-color: rgba(196,150,26,0.3); }
+    .ds-nav-link.active { color: var(--primitive-gold-400); background: rgba(196,150,26,0.1);  border-left-color: var(--primitive-gold-450); }
+    .ds-nav-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: currentColor; flex-shrink: 0; opacity: 0.5;
+    }
+
+    #ds-main {
+      flex: 1;
+      min-width: 0;
+      overflow-y: auto;
+    }
+
+    /* ── DS SECTION ──────────────────────────────────────────── */
+    .ds-section {
+      padding: var(--space-16) var(--space-10);
+      border-bottom: 1px solid var(--color-border-subtle);
+      max-width: 1100px;
+    }
+    .ds-section-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-gold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      margin-bottom: var(--space-2);
+    }
+    .ds-section-title {
+      font-family: var(--font-display);
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-bold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-tight);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-3);
+    }
+    .ds-section-desc {
+      font-size: var(--text-base);
+      color: var(--color-text-tertiary);
+      line-height: var(--leading-relaxed);
+      max-width: 640px;
+      margin-bottom: var(--space-10);
+    }
+
+    .ds-preview {
+      background: var(--color-bg-raised);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      margin-bottom: var(--space-4);
+      position: relative;
+    }
+    .ds-preview-label {
+      position: absolute;
+      top: -10px;
+      left: var(--space-6);
+      background: var(--color-bg-raised);
+      padding: 0 var(--space-3);
+      font-family: var(--font-mono);
+      font-size: var(--text-2xs);
+      color: var(--color-text-muted);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+    }
+
+    .ds-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+    }
+    .ds-row:last-child { margin-bottom: 0; }
+
+    .ds-grid-auto {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--space-4);
+    }
+
+    /* ── HERO ──────────────────────────────────────────────────── */
+    #ds-hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--color-bg-canvas);
+      position: relative;
+      overflow: hidden;
+      padding: var(--space-20) var(--space-10);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+    #ds-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(196,150,26,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196,150,26,0.035) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+    #ds-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 70% 50%, rgba(196,150,26,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-1-5) var(--space-4);
+      border: 1px solid var(--color-border-gold);
+      border-radius: var(--radius-full);
+      background: rgba(196,150,26,0.06);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-gold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      margin-bottom: var(--space-8);
+    }
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--primitive-green-400);
+      animation: radar-pulse 1.8s ease-out infinite;
+    }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: var(--weight-bold);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-tight);
+      line-height: var(--leading-tight);
+      margin-bottom: var(--space-6);
+    }
+    .hero-title span { display: block; }
+    .hero-desc {
+      font-size: var(--text-md);
+      color: var(--color-text-tertiary);
+      line-height: var(--leading-relaxed);
+      max-width: 560px;
+      margin-bottom: var(--space-10);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-6);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+    }
+    .hero-meta span { color: var(--color-text-gold); }
+    .hero-patch {
+      position: absolute;
+      right: 8%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(240px, 28vw, 420px);
+      opacity: 0.15;
+      filter: grayscale(30%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── COLOR SWATCHES ────────────────────────────────────────── */
+    .color-palette { display: flex; flex-direction: column; gap: var(--space-8); }
+    .color-group-title {
+      font-family: var(--font-tactical);
+      font-size: var(--text-xs);
+      letter-spacing: var(--tracking-military);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-3);
+    }
+    .color-row { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      width: 80px;
+      gap: var(--space-1-5);
+    }
+    .color-swatch__box {
+      height: 56px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform var(--transition-fast);
+    }
+    .color-swatch:hover .color-swatch__box { transform: scale(1.05); }
+    .color-swatch__name {
+      font-family: var(--font-mono);
+      font-size: var(--text-2xs);
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: var(--tracking-wide);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .color-swatch__hex {
+      font-family: var(--font-mono);
+      font-size: var(--text-2xs);
+      color: var(--color-text-disabled);
+      cursor: pointer;
+    }
+
+    /* ── TYPE SCALE ──────────────────────────────────────────── */
+    .type-row {
+      display: flex;
+      align-items: baseline;
+      gap: var(--space-6);
+      padding: var(--space-5) 0;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .type-row:last-child { border-bottom: none; }
+    .type-label {
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+      min-width: 100px;
+      flex-shrink: 0;
+    }
+    .type-sample { line-height: 1.2; }
+
+    /* ── TOKEN TABLE ─────────────────────────────────────────── */
+    .token-table { width: 100%; border-collapse: collapse; }
+    .token-table td, .token-table th {
+      padding: var(--space-2-5) var(--space-4);
+      font-size: var(--text-xs);
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .token-table th {
+      font-family: var(--font-tactical);
+      font-size: var(--text-2xs);
+      letter-spacing: var(--tracking-military);
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      text-align: left;
+      background: var(--color-bg-base);
+    }
+    .token-table td:first-child { font-family: var(--font-mono); color: var(--primitive-gold-300); }
+    .token-table td:last-child  { font-family: var(--font-mono); color: var(--color-text-tertiary); }
+
+    /* ── SIDEBAR TOGGLE ──────────────────────────────────────── */
+    #ds-sidebar-toggle {
+      position: fixed;
+      top: var(--space-5);
+      left: var(--space-5);
+      z-index: var(--z-max);
+      width: 36px; height: 36px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-sm);
+      color: var(--color-text-secondary);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+    #ds-sidebar-toggle:hover { border-color: var(--color-border-gold); color: var(--color-text-gold); }
+    @media (max-width: 900px) {
+      #ds-sidebar-toggle { display: flex; }
+      #ds-sidebar { position: fixed; left: 0; top: 0; bottom: 0; z-index: var(--z-drawer); height: 100vh; }
+      #ds-sidebar.collapsed { transform: translateX(-100%); width: 260px; min-width: 260px; }
+      #ds-main { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar Toggle (mobile) -->
+<button id="ds-sidebar-toggle" aria-label="Toggle sidebar">
+  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+    <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+  </svg>
+</button>
+
+<!-- ── SIDEBAR ──────────────────────────────────────────────── -->
+<aside id="ds-sidebar">
+  <div class="ds-sidebar-brand">
+    <img src="../assets/img/Patch de Apresentação TF81 - vFinal.png" alt="TF-81" class="ds-brand-patch">
+    <div class="ds-brand-info">
+      <div class="ds-brand-name">TF-81</div>
+      <div class="ds-brand-sub">Design System v1.0</div>
+    </div>
+  </div>
+  <nav class="ds-nav">
+    <div class="ds-nav-section">Fundação</div>
+    <a href="#ds-hero"       class="ds-nav-link active"><span class="ds-nav-dot"></span>Identidade</a>
+    <a href="#ds-colors"     class="ds-nav-link"><span class="ds-nav-dot"></span>Paleta de Cores</a>
+    <a href="#ds-typography" class="ds-nav-link"><span class="ds-nav-dot"></span>Tipografia</a>
+    <a href="#ds-tokens"     class="ds-nav-link"><span class="ds-nav-dot"></span>Tokens</a>
+
+    <div class="ds-nav-section">Componentes</div>
+    <a href="#ds-buttons"    class="ds-nav-link"><span class="ds-nav-dot"></span>Botões</a>
+    <a href="#ds-cards"      class="ds-nav-link"><span class="ds-nav-dot"></span>Cards</a>
+    <a href="#ds-badges"     class="ds-nav-link"><span class="ds-nav-dot"></span>Badges & Status</a>
+    <a href="#ds-forms"      class="ds-nav-link"><span class="ds-nav-dot"></span>Formulários</a>
+    <a href="#ds-tables"     class="ds-nav-link"><span class="ds-nav-dot"></span>Tabelas</a>
+    <a href="#ds-alerts"     class="ds-nav-link"><span class="ds-nav-dot"></span>Alertas</a>
+    <a href="#ds-modals"     class="ds-nav-link"><span class="ds-nav-dot"></span>Modais</a>
+    <a href="#ds-progress"   class="ds-nav-link"><span class="ds-nav-dot"></span>Progresso</a>
+    <a href="#ds-timeline"   class="ds-nav-link"><span class="ds-nav-dot"></span>Timeline</a>
+    <a href="#ds-misc"       class="ds-nav-link"><span class="ds-nav-dot"></span>Misc</a>
+
+    <div class="ds-nav-section">Padrões</div>
+    <a href="#ds-layout"     class="ds-nav-link"><span class="ds-nav-dot"></span>Layout App</a>
+    <a href="#ds-animations" class="ds-nav-link"><span class="ds-nav-dot"></span>Animações</a>
+  </nav>
+</aside>
+
+<!-- ── MAIN CONTENT ─────────────────────────────────────────── -->
+<main id="ds-main">
+
+  <!-- ══════ HERO ════════════════════════════════════════════════ -->
+  <section id="ds-hero" data-section>
+    <img src="../assets/img/Patch de Apresentação TF81 - vFinal.png" alt="" class="hero-patch" aria-hidden="true">
+    <div class="hero-content">
+      <div class="hero-tag">Design System — Operacional</div>
+      <h1 class="hero-title">
+        <span class="text-gradient-gold">Task Force</span>
+        <span>81</span>
+      </h1>
+      <p class="hero-desc">
+        Sistema de design oficial da TF-81 — identidade visual, componentes e padrões para o Web App da equipe. Militar. Tecnológico. Imponente.
+      </p>
+      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-bottom:var(--space-10);">
+        <button class="btn btn-primary btn-lg">Iniciar Operação</button>
+        <button class="btn btn-secondary btn-lg">Ver Componentes</button>
+      </div>
+      <div class="hero-meta">
+        <div>Versão <span>1.0.0</span></div>
+        <div>Status <span>ATIVO</span></div>
+        <div>Tokens <span>120+</span></div>
+        <div>Componentes <span>24</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ CORES ════════════════════════════════════════════════ -->
+  <section id="ds-colors" class="ds-section" data-section>
+    <div class="ds-section-label">// 01 — IDENTIDADE VISUAL</div>
+    <h2 class="ds-section-title">Paleta de Cores</h2>
+    <p class="ds-section-desc">Extraída diretamente da bandeira e patch da TF-81. Preto obsidiana como base, ouro como autoridade, cobre como batalha, verde militar como campo.</p>
+
+    <div class="color-palette">
+      <!-- Base -->
+      <div>
+        <div class="color-group-title">Base / Obsidiana</div>
+        <div class="color-row">
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#07070A"></div><div class="color-swatch__name">Black</div><div class="color-swatch__hex" data-copy="#07070A">#07070A</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#0D0D12"></div><div class="color-swatch__name">950</div><div class="color-swatch__hex" data-copy="#0D0D12">#0D0D12</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#13131A"></div><div class="color-swatch__name">900</div><div class="color-swatch__hex" data-copy="#13131A">#13131A</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#1F1F2A"></div><div class="color-swatch__name">800</div><div class="color-swatch__hex" data-copy="#1F1F2A">#1F1F2A</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#2C2C3C"></div><div class="color-swatch__name">700</div><div class="color-swatch__hex" data-copy="#2C2C3C">#2C2C3C</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#4A4A5E"></div><div class="color-swatch__name">500</div><div class="color-swatch__hex" data-copy="#4A4A5E">#4A4A5E</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#9292AA"></div><div class="color-swatch__name">200</div><div class="color-swatch__hex" data-copy="#9292AA">#9292AA</div></div>
+        </div>
+      </div>
+      <!-- Gold -->
+      <div>
+        <div class="color-group-title">Ouro — Acento Primário</div>
+        <div class="color-row">
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#4A3000"></div><div class="color-swatch__name">800</div><div class="color-swatch__hex" data-copy="#4A3000">#4A3000</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#8C5E00"></div><div class="color-swatch__name">600</div><div class="color-swatch__hex" data-copy="#8C5E00">#8C5E00</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#C4961A;border:1px solid rgba(255,255,255,0.2)"></div><div class="color-swatch__name">450 ★</div><div class="color-swatch__hex" data-copy="#C4961A">#C4961A</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#D4A820"></div><div class="color-swatch__name">400</div><div class="color-swatch__hex" data-copy="#D4A820">#D4A820</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#E6CC50"></div><div class="color-swatch__name">300</div><div class="color-swatch__hex" data-copy="#E6CC50">#E6CC50</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#F0DE78"></div><div class="color-swatch__name">200</div><div class="color-swatch__hex" data-copy="#F0DE78">#F0DE78</div></div>
+        </div>
+      </div>
+      <!-- Copper -->
+      <div>
+        <div class="color-group-title">Cobre/Bronze — Acento Secundário</div>
+        <div class="color-row">
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#5C2008"></div><div class="color-swatch__name">700</div><div class="color-swatch__hex" data-copy="#5C2008">#5C2008</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#963E1C;border:1px solid rgba(255,255,255,0.15)"></div><div class="color-swatch__name">500 ★</div><div class="color-swatch__hex" data-copy="#963E1C">#963E1C</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#B05028"></div><div class="color-swatch__name">400</div><div class="color-swatch__hex" data-copy="#B05028">#B05028</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#C66438"></div><div class="color-swatch__name">300</div><div class="color-swatch__hex" data-copy="#C66438">#C66438</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#E89E6C"></div><div class="color-swatch__name">100</div><div class="color-swatch__hex" data-copy="#E89E6C">#E89E6C</div></div>
+        </div>
+      </div>
+      <!-- Green -->
+      <div>
+        <div class="color-group-title">Verde Militar — Campo de Operação</div>
+        <div class="color-row">
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#142C08"></div><div class="color-swatch__name">800</div><div class="color-swatch__hex" data-copy="#142C08">#142C08</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#2A5018"></div><div class="color-swatch__name">600</div><div class="color-swatch__hex" data-copy="#2A5018">#2A5018</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#386A22;border:1px solid rgba(255,255,255,0.15)"></div><div class="color-swatch__name">500 ★</div><div class="color-swatch__hex" data-copy="#386A22">#386A22</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#4A8430"></div><div class="color-swatch__name">400</div><div class="color-swatch__hex" data-copy="#4A8430">#4A8430</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#60A040"></div><div class="color-swatch__name">300</div><div class="color-swatch__hex" data-copy="#60A040">#60A040</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#96D870"></div><div class="color-swatch__name">100</div><div class="color-swatch__hex" data-copy="#96D870">#96D870</div></div>
+        </div>
+      </div>
+      <!-- Status -->
+      <div>
+        <div class="color-group-title">Status</div>
+        <div class="color-row">
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#4A8430"></div><div class="color-swatch__name">Ativo</div><div class="color-swatch__hex" data-copy="#4A8430">#4A8430</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#CC1A1A"></div><div class="color-swatch__name">Perigo</div><div class="color-swatch__hex" data-copy="#CC1A1A">#CC1A1A</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#F0C820"></div><div class="color-swatch__name">Alerta</div><div class="color-swatch__hex" data-copy="#F0C820">#F0C820</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#2A6AB8"></div><div class="color-swatch__name">Info</div><div class="color-swatch__hex" data-copy="#2A6AB8">#2A6AB8</div></div>
+          <div class="color-swatch"><div class="color-swatch__box" style="background:#4A4A5E"></div><div class="color-swatch__name">Inativo</div><div class="color-swatch__hex" data-copy="#4A4A5E">#4A4A5E</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ TIPOGRAFIA ═══════════════════════════════════════════ -->
+  <section id="ds-typography" class="ds-section" data-section>
+    <div class="ds-section-label">// 02 — TIPOGRAFIA</div>
+    <h2 class="ds-section-title">Sistema Tipográfico</h2>
+    <p class="ds-section-desc">Escala Major Third (×1.25). Oswald para títulos de comando, Barlow Condensed para headings táticos, Barlow para corpo de texto, Rajdhani para labels militares, JetBrains Mono para dados e código.</p>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">ESCALA DE TIPOS</span>
+      <div class="type-row"><div class="type-label">6xl — 5.96rem</div><div class="type-sample display-1" style="font-size:clamp(2rem,4vw,var(--text-6xl))">Força e Honra</div></div>
+      <div class="type-row"><div class="type-label">4xl — 3.815rem</div><div class="type-sample h1" style="font-size:clamp(1.8rem,3.5vw,var(--text-4xl))">Task Force 81</div></div>
+      <div class="type-row"><div class="type-label">3xl — 3.052rem</div><div class="type-sample h2" style="font-size:clamp(1.5rem,2.8vw,var(--text-3xl))">Estado-Maior</div></div>
+      <div class="type-row"><div class="type-label">2xl — 2.441rem</div><div class="type-sample h3">Relatório Operacional</div></div>
+      <div class="type-row"><div class="type-label">xl — 1.953rem</div><div class="type-sample h4">Planejamento de Missão</div></div>
+      <div class="type-row"><div class="type-label">lg — 1.563rem</div><div class="type-sample h5">CONTROLE DE ACESSO</div></div>
+      <div class="type-row"><div class="type-label">md — 1.25rem</div><div class="type-sample h6">INVENTÁRIO DE EQUIPAMENTOS</div></div>
+      <div class="type-row"><div class="type-label">base — 1rem</div><div class="type-sample text-body" style="color:var(--color-text-secondary)">A TF-81 é uma equipe de alto desempenho focada em táticas avançadas de airsoft e preparo militar.</div></div>
+      <div class="type-row"><div class="type-label">sm — 0.8rem</div><div class="type-sample text-small" style="color:var(--color-text-tertiary)">Última operação registrada em 2026-06-10. Todos os operadores confirmados.</div></div>
+    </div>
+
+    <div class="ds-preview" style="margin-top:var(--space-6)">
+      <span class="ds-preview-label">ESTILOS ESPECIAIS</span>
+      <div class="ds-row" style="gap:var(--space-8);flex-wrap:wrap;padding:var(--space-4)">
+        <div>
+          <div class="label" style="margin-bottom:var(--space-2)">Text Callsign</div>
+          <span class="text-callsign">WHISKEY-81</span>
+        </div>
+        <div>
+          <div class="label" style="margin-bottom:var(--space-2)">Text Intel</div>
+          <span class="text-intel">MISSÃO ATIVA</span>
+        </div>
+        <div>
+          <div class="label" style="margin-bottom:var(--space-2)">Text Classified</div>
+          <span class="text-classified">CONFIDENCIAL</span>
+        </div>
+        <div>
+          <div class="label" style="margin-bottom:var(--space-2)">Gradient Gold</div>
+          <span class="text-gradient-gold" style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700">LEÃO</span>
+        </div>
+        <div>
+          <div class="label" style="margin-bottom:var(--space-2)">Gradient Military</div>
+          <span class="text-gradient-military" style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700">CAMPO</span>
+        </div>
+        <div>
+          <div class="label" style="margin-bottom:var(--space-2)">Glitch</div>
+          <span class="text-glitch" data-text="TF-81" style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700;color:var(--primitive-gold-450)">TF-81</span>
+        </div>
+        <div>
+          <div class="label" style="margin-bottom:var(--space-2)">Mono / Dados</div>
+          <span class="text-mono">0x4F-81-A9</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ TOKENS ════════════════════════════════════════════════ -->
+  <section id="ds-tokens" class="ds-section" data-section>
+    <div class="ds-section-label">// 03 — DESIGN TOKENS</div>
+    <h2 class="ds-section-title">Tokens de Design</h2>
+    <p class="ds-section-desc">Variáveis CSS que formam a camada semântica do sistema. Use os tokens semânticos (não os primitivos) no código de componentes.</p>
+    <div class="ds-preview">
+      <span class="ds-preview-label">TOKENS SEMÂNTICOS PRINCIPAIS</span>
+      <table class="token-table">
+        <thead><tr><th>Token</th><th>Valor</th><th>Uso</th></tr></thead>
+        <tbody>
+          <tr><td>--color-brand-primary</td><td>#C4961A</td><td>Ações principais, links, foco</td></tr>
+          <tr><td>--color-brand-secondary</td><td>#963E1C</td><td>Ações secundárias, destaques</td></tr>
+          <tr><td>--color-bg-canvas</td><td>#07070A</td><td>Fundo da página</td></tr>
+          <tr><td>--color-bg-base</td><td>#0D0D12</td><td>Sidebar, topbar</td></tr>
+          <tr><td>--color-surface-default</td><td>#1F1F2A</td><td>Cards, inputs</td></tr>
+          <tr><td>--color-text-primary</td><td>#F0F0F8</td><td>Texto principal</td></tr>
+          <tr><td>--color-text-gold</td><td>#C4961A</td><td>Texto de destaque</td></tr>
+          <tr><td>--color-border-default</td><td>rgba(gold,0.18)</td><td>Bordas padrão</td></tr>
+          <tr><td>--sidebar-width</td><td>280px</td><td>Largura do sidebar app</td></tr>
+          <tr><td>--topbar-height</td><td>64px</td><td>Altura da topbar</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════ BOTÕES ════════════════════════════════════════════════ -->
+  <section id="ds-buttons" class="ds-section" data-section>
+    <div class="ds-section-label">// 04 — COMPONENTES</div>
+    <h2 class="ds-section-title">Botões</h2>
+    <p class="ds-section-desc">Hierarquia visual clara: primário para ações de missão, secundário para confirmações, ghost para ações neutras, danger para ações destrutivas.</p>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">VARIANTES</span>
+      <div class="ds-row">
+        <button class="btn btn-primary btn-md">Primário</button>
+        <button class="btn btn-secondary btn-md">Secundário</button>
+        <button class="btn btn-ghost btn-md">Ghost</button>
+        <button class="btn btn-danger btn-md">Perigo</button>
+        <button class="btn btn-military btn-md">Militar</button>
+        <button class="btn btn-copper btn-md">Cobre</button>
+      </div>
+      <div class="ds-row">
+        <button class="btn btn-primary btn-md" disabled>Desativado</button>
+        <button class="btn btn-primary btn-md btn-loading">
+          <span class="btn-spinner"></span> Carregando
+        </button>
+        <button class="btn btn-primary btn-md">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+          Com Ícone
+        </button>
+      </div>
+    </div>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">TAMANHOS</span>
+      <div class="ds-row" style="align-items:flex-end">
+        <button class="btn btn-primary btn-xs">XS</button>
+        <button class="btn btn-primary btn-sm">SM</button>
+        <button class="btn btn-primary btn-md">MD</button>
+        <button class="btn btn-primary btn-lg">LG</button>
+        <button class="btn btn-primary btn-xl">XL</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ CARDS ═════════════════════════════════════════════════ -->
+  <section id="ds-cards" class="ds-section" data-section>
+    <h2 class="ds-section-title">Cards</h2>
+    <p class="ds-section-desc">Quatro variantes: base para conteúdo geral, command para painéis com autoridade, intel para dados táticos em glass, stat para métricas e operator para perfis de membros.</p>
+
+    <div class="ds-grid-auto">
+      <!-- Base Card -->
+      <div class="card">
+        <div class="card-header">
+          <svg width="18" height="18" fill="none" stroke="var(--color-text-gold)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          <span style="font-family:var(--font-tactical);letter-spacing:var(--tracking-wider);font-size:var(--text-sm);text-transform:uppercase">Relatório Padrão</span>
+        </div>
+        <div class="card-body">
+          <p style="font-size:var(--text-sm);color:var(--color-text-tertiary);line-height:var(--leading-relaxed)">Card base para conteúdo geral do sistema. Use para listar informações e dados não críticos.</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn btn-ghost btn-sm">Cancelar</button>
+          <button class="btn btn-primary btn-sm">Confirmar</button>
+        </div>
+      </div>
+
+      <!-- Command Card -->
+      <div class="card-command" style="padding:var(--space-6)">
+        <div class="label-gold label" style="margin-bottom:var(--space-3)">PAINEL DE COMANDO</div>
+        <div style="font-family:var(--font-heading);font-size:var(--text-xl);text-transform:uppercase;letter-spacing:var(--tracking-wide);margin-bottom:var(--space-3)">Estado-Maior</div>
+        <p style="font-size:var(--text-sm);color:var(--color-text-tertiary)">Card com autoridade máxima. Bordas táticas nos cantos inferiores. Usado para painéis administrativos.</p>
+      </div>
+
+      <!-- Intel Card -->
+      <div class="card-intel" style="padding:var(--space-6)">
+        <div class="label" style="color:var(--color-text-military);margin-bottom:var(--space-3)">INTEL TÁTICO</div>
+        <div style="font-family:var(--font-mono);font-size:var(--text-sm);color:var(--primitive-green-300);margin-bottom:var(--space-2)">SYS://OPERAÇÃO_ATIVA</div>
+        <p style="font-size:var(--text-sm);color:var(--color-text-tertiary)">Glass morphism escuro para dados de inteligência, status em tempo real e informações sensíveis.</p>
+      </div>
+
+      <!-- Stat Card -->
+      <div class="card-stat">
+        <div class="card-stat__label">Operadores Ativos</div>
+        <div class="card-stat__value" data-count="12" data-suffix="">0</div>
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <div class="card-stat__delta card-stat__delta--up">↑ +2 este mês</div>
+          <div class="status-dot status-dot--active" style="color:var(--color-text-muted)">Online</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Operator Card -->
+    <div style="margin-top:var(--space-6);display:flex;gap:var(--space-4);flex-wrap:wrap;">
+      <div class="card-operator" style="width:220px">
+        <div class="card-operator__banner"></div>
+        <div class="card-operator__avatar">A</div>
+        <div class="card-operator__body">
+          <div class="card-operator__name">Anderson</div>
+          <div class="card-operator__callsign">CALLSIGN: BRAVO-01</div>
+          <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+            <span class="badge badge-gold">Estado-Maior</span>
+            <span class="status-dot status-dot--active" style="color:var(--color-text-muted)">Ativo</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-operator" style="width:220px">
+        <div class="card-operator__banner" style="background:linear-gradient(135deg,var(--primitive-copper-900),var(--primitive-base-700))"></div>
+        <div class="card-operator__avatar" style="border-color:var(--primitive-copper-400)">R</div>
+        <div class="card-operator__body">
+          <div class="card-operator__name">Raphael</div>
+          <div class="card-operator__callsign">CALLSIGN: CHARLIE-01</div>
+          <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+            <span class="badge badge-copper">Estado-Maior</span>
+            <span class="status-dot status-dot--active" style="color:var(--color-text-muted)">Ativo</span>
+          </div>
+        </div>
+      </div>
+      <div class="card-operator" style="width:220px">
+        <div class="card-operator__banner" style="background:linear-gradient(135deg,var(--primitive-green-900),var(--primitive-base-700))"></div>
+        <div class="card-operator__avatar" style="border-color:var(--primitive-green-500)">A</div>
+        <div class="card-operator__body">
+          <div class="card-operator__name">Antônio</div>
+          <div class="card-operator__callsign">CALLSIGN: ALPHA-01</div>
+          <div style="margin-top:var(--space-3);display:flex;gap:var(--space-2);">
+            <span class="badge badge-green">Estado-Maior</span>
+            <span class="status-dot status-dot--active" style="color:var(--color-text-muted)">Ativo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ BADGES ════════════════════════════════════════════════ -->
+  <section id="ds-badges" class="ds-section" data-section>
+    <h2 class="ds-section-title">Badges & Status</h2>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">BADGES</span>
+      <div class="ds-row">
+        <span class="badge badge-gold">Estado-Maior</span>
+        <span class="badge badge-copper">Liderança</span>
+        <span class="badge badge-green">Operador</span>
+        <span class="badge badge-blue">Recruta</span>
+        <span class="badge badge-red">Expulso</span>
+        <span class="badge badge-muted">Inativo</span>
+        <span class="badge badge-solid-gold">COMANDANTE</span>
+      </div>
+    </div>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">STATUS DOTS</span>
+      <div class="ds-row" style="gap:var(--space-6)">
+        <span class="status-dot status-dot--active" style="color:var(--color-text-secondary)">Ativo</span>
+        <span class="status-dot status-dot--inactive" style="color:var(--color-text-muted)">Inativo</span>
+        <span class="status-dot status-dot--warning" style="color:var(--color-text-secondary)">Licença</span>
+        <span class="status-dot status-dot--danger" style="color:var(--color-text-secondary)">Perigo</span>
+      </div>
+    </div>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">RANK BADGES</span>
+      <div class="ds-row">
+        <div class="rank-badge rank-badge--em"><div class="rank-badge__tier">EM-01</div>Comandante</div>
+        <div class="rank-badge rank-badge--em"><div class="rank-badge__tier">EM</div>Estado-Maior</div>
+        <div class="rank-badge rank-badge--lider"><div class="rank-badge__tier">LDR</div>Liderança</div>
+        <div class="rank-badge rank-badge--op"><div class="rank-badge__tier">OP</div>Operador</div>
+        <div class="rank-badge rank-badge--recr"><div class="rank-badge__tier">RCT</div>Recruta</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ FORMULÁRIOS ══════════════════════════════════════════ -->
+  <section id="ds-forms" class="ds-section" data-section>
+    <h2 class="ds-section-title">Formulários</h2>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">CONTROLES</span>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-6)">
+        <div class="form-group">
+          <label class="form-label form-label--required">Callsign do Operador</label>
+          <input type="text" class="form-input" placeholder="Ex: BRAVO-01">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Função na Equipe</label>
+          <select class="form-select">
+            <option>Estado-Maior</option>
+            <option>Liderança</option>
+            <option>Operador</option>
+            <option>Recruta</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label form-label--required">Email de Acesso</label>
+          <input type="email" class="form-input form-input--error" placeholder="operador@tf81.com.br" value="email_invalido">
+          <span class="form-hint form-hint--error">Formato de email inválido</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Observações</label>
+          <textarea class="form-textarea" placeholder="Anotações sobre o operador..." rows="3"></textarea>
+          <span class="form-hint">Máximo 500 caracteres</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:var(--space-6);margin-top:var(--space-6)">
+        <label class="form-check">
+          <input type="checkbox" class="form-check__input" checked>
+          <span class="form-check__label">Operador ativo na equipe</span>
+        </label>
+        <label class="form-check">
+          <input type="checkbox" class="form-check__input">
+          <span class="form-check__label">Acesso ao painel admin</span>
+        </label>
+        <label class="form-check">
+          <input type="radio" class="form-check__input" name="role" checked>
+          <span class="form-check__label">Operador</span>
+        </label>
+        <label class="form-check">
+          <input type="radio" class="form-check__input" name="role">
+          <span class="form-check__label">Recruta</span>
+        </label>
+        <label class="toggle">
+          <input type="checkbox" class="toggle__input" checked>
+          <span class="toggle__track"></span>
+          <span class="toggle__label">Notificações de missão</span>
+        </label>
+        <label class="toggle">
+          <input type="checkbox" class="toggle__input">
+          <span class="toggle__track"></span>
+          <span class="toggle__label">Modo silencioso</span>
+        </label>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ TABELAS ═══════════════════════════════════════════════ -->
+  <section id="ds-tables" class="ds-section" data-section>
+    <h2 class="ds-section-title">Tabelas</h2>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">ROSTER DE OPERADORES</span>
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Operador</th>
+              <th>Callsign</th>
+              <th>Função</th>
+              <th>Status</th>
+              <th>Ingresso</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:var(--space-3)">
+                  <div class="avatar avatar--sm avatar--gold">A</div>
+                  <span style="font-weight:600;color:var(--color-text-primary)">Anderson</span>
+                </div>
+              </td>
+              <td><span class="text-callsign">BRAVO-01</span></td>
+              <td><span class="badge badge-gold">Estado-Maior</span></td>
+              <td><span class="status-dot status-dot--active" style="color:var(--color-text-secondary)">Ativo</span></td>
+              <td><span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted)">2022-01-15</span></td>
+              <td><button class="btn btn-ghost btn-sm">Detalhes</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:var(--space-3)">
+                  <div class="avatar avatar--sm" style="border-color:var(--primitive-copper-400)">R</div>
+                  <span style="font-weight:600;color:var(--color-text-primary)">Raphael</span>
+                </div>
+              </td>
+              <td><span class="text-callsign">CHARLIE-01</span></td>
+              <td><span class="badge badge-copper">Estado-Maior</span></td>
+              <td><span class="status-dot status-dot--active" style="color:var(--color-text-secondary)">Ativo</span></td>
+              <td><span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted)">2022-01-15</span></td>
+              <td><button class="btn btn-ghost btn-sm">Detalhes</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:var(--space-3)">
+                  <div class="avatar avatar--sm" style="border-color:var(--primitive-green-500)">A</div>
+                  <span style="font-weight:600;color:var(--color-text-primary)">Antônio</span>
+                </div>
+              </td>
+              <td><span class="text-callsign">ALPHA-01</span></td>
+              <td><span class="badge badge-green">Estado-Maior</span></td>
+              <td><span class="status-dot status-dot--active" style="color:var(--color-text-secondary)">Ativo</span></td>
+              <td><span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted)">2022-01-15</span></td>
+              <td><button class="btn btn-ghost btn-sm">Detalhes</button></td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:var(--space-3)">
+                  <div class="avatar avatar--sm">X</div>
+                  <span style="color:var(--color-text-secondary)">Novo Recruta</span>
+                </div>
+              </td>
+              <td><span class="text-callsign" style="opacity:0.5">—</span></td>
+              <td><span class="badge badge-blue">Recruta</span></td>
+              <td><span class="status-dot status-dot--warning" style="color:var(--color-text-secondary)">Triagem</span></td>
+              <td><span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted)">2026-06-10</span></td>
+              <td><button class="btn btn-ghost btn-sm">Avaliar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ ALERTAS ═══════════════════════════════════════════════ -->
+  <section id="ds-alerts" class="ds-section" data-section>
+    <h2 class="ds-section-title">Alertas</h2>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">VARIANTES</span>
+      <div style="display:flex;flex-direction:column;gap:var(--space-3)">
+        <div class="alert alert-info">
+          <svg class="alert-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>
+          <div class="alert-body">
+            <div class="alert-title">Briefing de Missão</div>
+            <div class="alert-text">Novo treino agendado para 15/06. Todos os operadores devem confirmar presença até 12/06.</div>
+          </div>
+          <button class="alert-close" aria-label="Fechar">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+        </div>
+        <div class="alert alert-success">
+          <svg class="alert-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+          <div class="alert-body">
+            <div class="alert-title">Operação Concluída</div>
+            <div class="alert-text">Treino interno realizado com sucesso. 12/12 operadores compareceram.</div>
+          </div>
+        </div>
+        <div class="alert alert-warning">
+          <svg class="alert-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4m0 4h.01"/></svg>
+          <div class="alert-body">
+            <div class="alert-title">Atenção: Mensalidade Pendente</div>
+            <div class="alert-text">3 operadores com mensalidade em atraso. Regularizar até 30/06.</div>
+          </div>
+        </div>
+        <div class="alert alert-danger">
+          <svg class="alert-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          <div class="alert-body">
+            <div class="alert-title">Acesso Negado</div>
+            <div class="alert-text">Tentativa de login não autorizada detectada. Credenciais inválidas.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ MODAL ════════════════════════════════════════════════ -->
+  <section id="ds-modals" class="ds-section" data-section>
+    <h2 class="ds-section-title">Modais</h2>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">DEMO</span>
+      <div class="ds-row">
+        <button class="btn btn-primary btn-md" data-modal-open="modal-demo">Abrir Modal</button>
+        <button class="btn btn-danger btn-md" data-modal-open="modal-confirm">Confirmar Ação</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ PROGRESSO ════════════════════════════════════════════ -->
+  <section id="ds-progress" class="ds-section" data-section>
+    <h2 class="ds-section-title">Progresso & Contador de Munição</h2>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">BARRAS DE PROGRESSO</span>
+      <div style="display:flex;flex-direction:column;gap:var(--space-5)">
+        <div class="progress">
+          <div class="progress-header">
+            <span class="progress-label">Capacitação do Operador</span>
+            <span class="progress-value">78%</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill" style="width:78%"></div></div>
+        </div>
+        <div class="progress">
+          <div class="progress-header">
+            <span class="progress-label">Presença em Treinos</span>
+            <span class="progress-value">92%</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill progress-fill--green" style="width:92%"></div></div>
+        </div>
+        <div class="progress">
+          <div class="progress-header">
+            <span class="progress-label">Mensalidades Pagas</span>
+            <span class="progress-value">45%</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill progress-fill--red" style="width:45%"></div></div>
+        </div>
+        <div class="progress">
+          <div class="progress-header">
+            <span class="progress-label">Equipamentos Completos</span>
+            <span class="progress-value">67%</span>
+          </div>
+          <div class="progress-track"><div class="progress-fill progress-fill--copper" style="width:67%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">CONTADOR DE MUNIÇÃO (AMMO COUNTER)</span>
+      <div class="ammo-demo" style="display:flex;flex-direction:column;gap:var(--space-4)">
+        <div style="display:flex;align-items:center;gap:var(--space-4)">
+          <span class="label">Carregador:</span>
+          <div class="ammo-counter">
+            <div class="ammo-round"></div><div class="ammo-round"></div>
+            <div class="ammo-round"></div><div class="ammo-round"></div>
+            <div class="ammo-round"></div><div class="ammo-round"></div>
+            <div class="ammo-round"></div><div class="ammo-round"></div>
+            <div class="ammo-round"></div><div class="ammo-round"></div>
+            <div class="ammo-round"></div><div class="ammo-round"></div>
+            <div class="ammo-round"></div><div class="ammo-round"></div>
+            <div class="ammo-round"></div><div class="ammo-round"></div>
+            <div class="ammo-round"></div><div class="ammo-round"></div>
+            <div class="ammo-round"></div><div class="ammo-round"></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:var(--space-3)">
+          <button class="btn btn-secondary btn-sm ammo-demo-fire">🔫 Atirar</button>
+          <button class="btn btn-military btn-sm ammo-demo-reload">↺ Recarregar</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ TIMELINE ══════════════════════════════════════════════ -->
+  <section id="ds-timeline" class="ds-section" data-section>
+    <h2 class="ds-section-title">Timeline</h2>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">HISTÓRICO DE EVENTOS</span>
+      <div class="timeline" style="max-width:480px">
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-date">2026-06-10 · 09:30</div>
+            <div class="timeline-title">Treino Interno</div>
+            <div class="timeline-body">Treino de CQB realizado no campo ALFA. 10 operadores presentes.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot timeline-dot--green"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-date">2026-05-25 · 14:00</div>
+            <div class="timeline-title">Novo Recruta Aprovado</div>
+            <div class="timeline-body">Operador ECHO-07 aprovado na fase de triagem e incorporado à equipe.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot timeline-dot--red"></div>
+            <div class="timeline-line"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-date">2026-05-10 · 11:00</div>
+            <div class="timeline-title">Operação Externa</div>
+            <div class="timeline-body">Participação no evento BIGAME CERRADO. 8 operadores deslocados.</div>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-marker">
+            <div class="timeline-dot timeline-dot--muted"></div>
+          </div>
+          <div class="timeline-content">
+            <div class="timeline-date">2022-01-15</div>
+            <div class="timeline-title text-gradient-gold">Fundação da TF-81</div>
+            <div class="timeline-body">Criação da Task Force 81 pelos fundadores Anderson, Antônio e Raphael.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ MISC ══════════════════════════════════════════════════ -->
+  <section id="ds-misc" class="ds-section" data-section>
+    <h2 class="ds-section-title">Miscelânea</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:var(--space-6)">
+      <!-- Spinners -->
+      <div class="ds-preview">
+        <span class="ds-preview-label">SPINNERS</span>
+        <div class="ds-row" style="align-items:center">
+          <div class="spinner spinner--xs"></div>
+          <div class="spinner spinner--sm"></div>
+          <div class="spinner spinner--md"></div>
+          <div class="spinner spinner--lg spinner--green"></div>
+          <div class="spinner spinner--lg spinner--red"></div>
+        </div>
+      </div>
+
+      <!-- Avatars -->
+      <div class="ds-preview">
+        <span class="ds-preview-label">AVATARES</span>
+        <div class="ds-row" style="align-items:center">
+          <div class="avatar avatar--xs">A</div>
+          <div class="avatar avatar--sm avatar--gold">R</div>
+          <div class="avatar avatar--md avatar--copper">A</div>
+          <div class="avatar avatar--lg avatar--green">X</div>
+          <div class="avatar-group">
+            <div class="avatar avatar--sm avatar--gold">A</div>
+            <div class="avatar avatar--sm">R</div>
+            <div class="avatar avatar--sm avatar--green">A</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dividers -->
+      <div class="ds-preview">
+        <span class="ds-preview-label">DIVISORES</span>
+        <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+          <div class="divider">Seção</div>
+          <div class="divider divider--gold">Comando</div>
+          <div class="divider"></div>
+        </div>
+      </div>
+
+      <!-- Tooltips -->
+      <div class="ds-preview">
+        <span class="ds-preview-label">TOOLTIPS</span>
+        <div class="ds-row" style="padding:var(--space-8) 0">
+          <span data-tooltip="Estado-Maior — Comandante rotativo" class="badge badge-gold" style="cursor:default">EM-01</span>
+          <span data-tooltip="Operador ativo em campo" class="badge badge-green" style="cursor:default">Operador</span>
+          <button class="btn btn-ghost btn-sm" data-tooltip="Editar perfil do operador">Editar</button>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="ds-preview" style="grid-column:1/-1">
+        <span class="ds-preview-label">ABAS</span>
+        <div class="tabs">
+          <div class="tab-list">
+            <button class="tab-btn active">Operadores</button>
+            <button class="tab-btn">Eventos</button>
+            <button class="tab-btn">Equipamentos</button>
+            <button class="tab-btn">Financeiro</button>
+          </div>
+          <div class="tab-panel active">
+            <p style="font-size:var(--text-sm);color:var(--color-text-tertiary)">Listagem de operadores ativos, histórico e gerenciamento de acesso ao sistema.</p>
+          </div>
+          <div class="tab-panel">
+            <p style="font-size:var(--text-sm);color:var(--color-text-tertiary)">Calendário de treinos, operações externas e eventos com outras equipes.</p>
+          </div>
+          <div class="tab-panel">
+            <p style="font-size:var(--text-sm);color:var(--color-text-tertiary)">Controle de inventário individual e coletivo da equipe.</p>
+          </div>
+          <div class="tab-panel">
+            <p style="font-size:var(--text-sm);color:var(--color-text-tertiary)">Entradas, saídas, mensalidades e relatórios financeiros da equipe.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="ds-preview">
+        <span class="ds-preview-label">PAGINAÇÃO</span>
+        <div class="pagination">
+          <button class="page-btn" disabled>‹</button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">›</button>
+        </div>
+      </div>
+
+      <!-- Empty state -->
+      <div class="ds-preview">
+        <span class="ds-preview-label">ESTADO VAZIO</span>
+        <div class="empty-state" style="padding:var(--space-8)">
+          <svg class="empty-state__icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+          <div class="empty-state__title">Sem Operações</div>
+          <div class="empty-state__text">Nenhuma missão registrada neste período.</div>
+          <button class="btn btn-primary btn-sm" style="margin-top:var(--space-4)">Nova Operação</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast demo -->
+    <div class="ds-preview" style="margin-top:var(--space-6)">
+      <span class="ds-preview-label">TOASTS (NOTIFICAÇÕES)</span>
+      <div class="ds-row">
+        <button class="btn btn-ghost btn-sm" onclick="tf81ShowToast('Treino confirmado para 15/06.','success','Operação Confirmada')">Sucesso</button>
+        <button class="btn btn-ghost btn-sm" onclick="tf81ShowToast('Credenciais inválidas. Tente novamente.','danger','Acesso Negado')">Erro</button>
+        <button class="btn btn-ghost btn-sm" onclick="tf81ShowToast('3 operadores com mensalidade em atraso.','warning','Alerta Financeiro')">Alerta</button>
+        <button class="btn btn-ghost btn-sm" onclick="tf81ShowToast('Novo evento adicionado ao calendário.','info','Informação')">Info</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ LAYOUT APP ════════════════════════════════════════════ -->
+  <section id="ds-layout" class="ds-section" data-section>
+    <div class="ds-section-label">// 05 — PADRÕES</div>
+    <h2 class="ds-section-title">Layout do App</h2>
+    <p class="ds-section-desc">O Web App usa sidebar lateral fixa (colapsável) + topbar persistente + área de conteúdo. Áreas autenticadas usam o painel lateral; o site público não tem sidebar.</p>
+
+    <div class="ds-preview">
+      <span class="ds-preview-label">WIREFRAME DO APP INTERNO</span>
+      <div style="
+        display:grid;
+        grid-template-columns:200px 1fr;
+        grid-template-rows:48px 1fr;
+        height:340px;
+        border:1px solid var(--color-border-default);
+        border-radius:var(--radius-md);
+        overflow:hidden;
+        font-family:var(--font-mono);
+        font-size:var(--text-2xs);
+        letter-spacing:var(--tracking-wider);
+      ">
+        <!-- sidebar header -->
+        <div style="background:var(--color-bg-base);border-right:1px solid var(--color-border-default);border-bottom:1px solid var(--color-border-default);display:flex;align-items:center;padding:0 var(--space-4);color:var(--color-text-gold)">TF-81</div>
+        <!-- topbar -->
+        <div style="background:var(--color-bg-base);border-bottom:1px solid var(--color-border-default);display:flex;align-items:center;padding:0 var(--space-5);color:var(--color-text-muted)">
+          <span>PAINEL / OPERADORES</span>
+          <div style="margin-left:auto;display:flex;gap:var(--space-3)">
+            <div class="avatar avatar--xs avatar--gold">A</div>
+          </div>
+        </div>
+        <!-- sidebar nav -->
+        <div style="background:var(--color-bg-base);border-right:1px solid var(--color-border-default);padding:var(--space-3) 0;display:flex;flex-direction:column;gap:var(--space-1)">
+          <div style="padding:var(--space-2) var(--space-4);color:var(--primitive-gold-400);border-left:2px solid var(--primitive-gold-450);background:rgba(196,150,26,0.08)">DASHBOARD</div>
+          <div style="padding:var(--space-2) var(--space-4);color:var(--color-text-muted)">OPERADORES</div>
+          <div style="padding:var(--space-2) var(--space-4);color:var(--color-text-muted)">EVENTOS</div>
+          <div style="padding:var(--space-2) var(--space-4);color:var(--color-text-muted)">FINANCEIRO</div>
+          <div style="padding:var(--space-2) var(--space-4);color:var(--color-text-muted)">INVENTÁRIO</div>
+        </div>
+        <!-- main content -->
+        <div style="padding:var(--space-6);background:var(--color-bg-canvas);display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-3)">
+          <div style="background:var(--color-surface-default);border:1px solid var(--color-border-default);border-radius:var(--radius-sm);padding:var(--space-4)">
+            <div style="color:var(--color-text-muted);margin-bottom:var(--space-2)">OPERADORES</div>
+            <div style="font-family:var(--font-display);font-size:var(--text-2xl);color:var(--color-text-gold)">12</div>
+          </div>
+          <div style="background:var(--color-surface-default);border:1px solid var(--color-border-default);border-radius:var(--radius-sm);padding:var(--space-4)">
+            <div style="color:var(--color-text-muted);margin-bottom:var(--space-2)">EVENTOS</div>
+            <div style="font-family:var(--font-display);font-size:var(--text-2xl);color:var(--color-text-gold)">3</div>
+          </div>
+          <div style="background:var(--color-surface-default);border:1px solid var(--color-border-default);border-radius:var(--radius-sm);padding:var(--space-4)">
+            <div style="color:var(--color-text-muted);margin-bottom:var(--space-2)">SALDO</div>
+            <div style="font-family:var(--font-display);font-size:var(--text-2xl);color:var(--primitive-green-400)">R$+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ ANIMAÇÕES ═════════════════════════════════════════════ -->
+  <section id="ds-animations" class="ds-section" data-section>
+    <div class="ds-section-label">// 06 — MOTION</div>
+    <h2 class="ds-section-title">Animações</h2>
+    <p class="ds-section-desc">Animações táticas para feedback, transições e estados de loading. Todas respeitam prefers-reduced-motion.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--space-4)">
+      <div class="ds-preview" style="text-align:center;padding:var(--space-8)">
+        <div class="animate-pulse" style="width:48px;height:48px;border-radius:50%;background:var(--primitive-gold-450);margin:0 auto var(--space-3)"></div>
+        <div class="label">pulse</div>
+      </div>
+      <div class="ds-preview" style="text-align:center;padding:var(--space-8)">
+        <div style="position:relative;width:48px;height:48px;margin:0 auto var(--space-3)">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--primitive-green-500)"></div>
+          <div class="animate-ping" style="position:absolute;inset:0;border-radius:50%;background:var(--primitive-green-400);opacity:0.5"></div>
+        </div>
+        <div class="label">radar ping</div>
+      </div>
+      <div class="ds-preview" style="text-align:center;padding:var(--space-8)">
+        <div class="spinner spinner--lg animate-glow-gold" style="margin:0 auto var(--space-3)"></div>
+        <div class="label">spinner + glow</div>
+      </div>
+      <div class="ds-preview" style="text-align:center;padding:var(--space-8)">
+        <div class="skeleton" style="width:100%;height:16px;margin-bottom:var(--space-2)"></div>
+        <div class="skeleton" style="width:80%;height:16px;margin-bottom:var(--space-2)"></div>
+        <div class="skeleton" style="width:60%;height:16px;margin-bottom:var(--space-3)"></div>
+        <div class="label">skeleton loading</div>
+      </div>
+      <div class="ds-preview scan-line-container" style="text-align:center;padding:var(--space-8)">
+        <span class="text-gradient-gold" style="font-family:var(--font-display);font-size:var(--text-2xl);font-weight:700">TF-81</span>
+        <div class="label" style="margin-top:var(--space-3)">scan line</div>
+      </div>
+      <div class="ds-preview" style="text-align:center;padding:var(--space-8)">
+        <span class="text-glitch" data-text="OPERAÇÃO" style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:700;color:var(--primitive-gold-450)">OPERAÇÃO</span>
+        <div class="label" style="margin-top:var(--space-3)">glitch text</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Padding final -->
+  <div style="height:var(--space-32)"></div>
+</main><!-- fim #ds-main -->
+
+<!-- ══════ MODALS ════════════════════════════════════════════════ -->
+<div class="modal-backdrop" id="modal-demo" role="dialog" aria-modal="true" aria-labelledby="modal-demo-title">
+  <div class="modal">
+    <div class="modal-header">
+      <svg width="20" height="20" fill="none" stroke="var(--color-text-gold)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+      <span class="modal-title" id="modal-demo-title">Novo Evento de Treino</span>
+      <button class="modal-close" data-modal-close aria-label="Fechar">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div style="display:flex;flex-direction:column;gap:var(--space-5)">
+        <div class="form-group">
+          <label class="form-label form-label--required">Nome da Operação</label>
+          <input type="text" class="form-input" placeholder="Ex: TREINO CQB — JUNHO 2026">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4)">
+          <div class="form-group">
+            <label class="form-label">Data</label>
+            <input type="date" class="form-input">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tipo</label>
+            <select class="form-select">
+              <option>Treino Interno</option>
+              <option>Treino com Convidados</option>
+              <option>Operação Externa</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Briefing</label>
+          <textarea class="form-textarea" placeholder="Detalhes da operação..." rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost btn-sm" data-modal-close>Cancelar</button>
+      <button class="btn btn-primary btn-sm">Criar Operação</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-confirm" role="dialog" aria-modal="true" aria-labelledby="modal-confirm-title">
+  <div class="modal" style="max-width:400px">
+    <div class="modal-header">
+      <svg width="20" height="20" fill="none" stroke="var(--primitive-red-400)" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4m0 4h.01"/></svg>
+      <span class="modal-title" id="modal-confirm-title">Confirmar Ação</span>
+      <button class="modal-close" data-modal-close aria-label="Fechar">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p style="color:var(--color-text-secondary);line-height:var(--leading-relaxed)">Esta ação é <strong style="color:var(--primitive-red-400)">irreversível</strong>. Tem certeza que deseja remover este operador da equipe?</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost btn-sm" data-modal-close>Cancelar</button>
+      <button class="btn btn-danger btn-sm">Confirmar Remoção</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

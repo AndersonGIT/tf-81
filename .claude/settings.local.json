@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git clone *)",
+      "Bash(git init *)",
+      "Bash(git remote *)",
+      "Bash(git fetch *)",
+      "Bash(git checkout *)",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\ANDERSON\\\\OneDrive\\\\Anderson.Airsoft\\\\ArquivosTF81\\\\SiteTF81\\\\design-system\\\\css\")",
+      "Bash(Out-Null)",
+      "Bash(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\ANDERSON\\\\OneDrive\\\\Anderson.Airsoft\\\\ArquivosTF81\\\\SiteTF81\\\\design-system\\\\js\")",
+      "Bash(Write-Host \"Directories created\")"
+    ]
+  }
+}
