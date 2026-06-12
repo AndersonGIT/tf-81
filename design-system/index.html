@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/utilities.css">
   <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/app.css">
 
   <style>
     /* ── DS PAGE LAYOUT ──────────────────────────────────────── */
@@ -578,6 +579,9 @@
     <a href="#ds-themes"       class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Temas</span></a>
     <a href="#ds-layout"       class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Layout App</span></a>
     <a href="#ds-animations"   class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Animações</span></a>
+
+    <div class="ds-nav-section">App Interno</div>
+    <a href="#ds-app"          class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Área Interna</span></a>
   </nav>
 
   <div class="ds-sidebar-footer">TF-81 © 2026</div>
@@ -1219,6 +1223,535 @@
   </section>
 
   <div style="height:var(--space-24)"></div>
+
+  <!-- ══ ÁREA INTERNA ══════════════════════════════════════════ -->
+  <section id="ds-app" data-section style="border-top: 2px solid var(--color-border-default);">
+
+  <!-- Cabeçalho explicativo (fora do data-area="app") -->
+  <div class="ds-section" style="max-width:1140px; margin: 0; border-bottom: none;">
+    <div class="ds-label">// 09 — ÁREA INTERNA</div>
+    <h2 class="ds-title">App / Painel Administrativo</h2>
+    <p class="ds-desc">
+      Tokens e componentes para a área interna: painel do operador, dashboards, gestão da equipe.
+      Ative com <code>data-area="app"</code> no <code>&lt;body&gt;</code> ou wrapper.
+      Os tokens CSS são sobrescritos automaticamente — componentes existentes herdam sem modificação.
+    </p>
+    <div style="display:flex;flex-wrap:wrap;gap:var(--space-3);margin-bottom:var(--space-6)">
+      <button class="btn btn-primary btn-sm" id="app-demo-dark">Dark Mode</button>
+      <button class="btn btn-secondary btn-sm" id="app-demo-light">Light Mode</button>
+      <button class="btn btn-ghost btn-sm" id="app-demo-collapse">Toggle Sidebar</button>
+    </div>
+
+    <!-- Token comparison -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-4)">
+      <div class="ds-preview" style="padding:var(--space-5)">
+        <span class="ds-preview-label">CONTEXTO TÁTICO (padrão)</span>
+        <div style="display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-2)">
+          <div style="display:flex;align-items:center;gap:var(--space-3)"><div style="width:32px;height:32px;border-radius:4px;background:#07070A;border:1px solid rgba(255,255,255,.1)"></div><span style="font-family:var(--font-mono);font-size:var(--text-xs)">Canvas #07070A — preto quente</span></div>
+          <div style="display:flex;align-items:center;gap:var(--space-3)"><div style="width:32px;height:32px;border-radius:4px;background:#C4961A;border:1px solid rgba(255,255,255,.1)"></div><span style="font-family:var(--font-mono);font-size:var(--text-xs)">Gold #C4961A — decorativo</span></div>
+          <div style="display:flex;align-items:center;gap:var(--space-3)"><div style="width:32px;height:32px;border-radius:4px;background:rgba(196,150,26,.6);border:1px solid rgba(196,150,26,.4)"></div><span style="font-family:var(--font-mono);font-size:var(--text-xs)">Borders — gold highlight</span></div>
+        </div>
+      </div>
+      <div class="ds-preview" style="padding:var(--space-5)">
+        <span class="ds-preview-label">CONTEXTO APP (data-area="app")</span>
+        <div style="display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-2)">
+          <div style="display:flex;align-items:center;gap:var(--space-3)"><div style="width:32px;height:32px;border-radius:4px;background:#0B0D14;border:1px solid rgba(255,255,255,.1)"></div><span style="font-family:var(--font-mono);font-size:var(--text-xs)">Canvas #0B0D14 — azul-cinza</span></div>
+          <div style="display:flex;align-items:center;gap:var(--space-3)"><div style="width:32px;height:32px;border-radius:4px;background:#B08818;border:1px solid rgba(255,255,255,.1)"></div><span style="font-family:var(--font-mono);font-size:var(--text-xs)">Gold #B08818 — só interativo</span></div>
+          <div style="display:flex;align-items:center;gap:var(--space-3)"><div style="width:32px;height:32px;border-radius:4px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08)"></div><span style="font-family:var(--font-mono);font-size:var(--text-xs)">Borders — neutras e sutis</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DEMO DO APP REAL ──────────────────────────────────────── -->
+  <div id="app-demo-frame" data-area="app" style="height:82vh;min-height:540px;display:flex;overflow:hidden;border-top:1px solid var(--color-border-default);">
+
+    <!-- Sidebar -->
+    <aside id="app-demo-sidebar" class="app-sidebar" style="width:var(--sidebar-width);flex-shrink:0;">
+
+      <div class="app-sidebar__brand">
+        <img src="../assets/img/Patch de Apresentação TF81 - vFinal.png" alt="TF-81" class="app-sidebar__logo">
+        <div>
+          <div class="app-sidebar__name">TF-81</div>
+          <div class="app-sidebar__version">Painel v1.1</div>
+        </div>
+      </div>
+
+      <nav class="app-nav">
+        <div class="app-nav__section">Principal</div>
+        <a class="app-nav__item active" href="#">
+          <svg class="app-nav__icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span class="app-nav__label">Dashboard</span>
+        </a>
+        <a class="app-nav__item" href="#">
+          <svg class="app-nav__icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          <span class="app-nav__label">Operadores</span>
+        </a>
+        <a class="app-nav__item" href="#">
+          <svg class="app-nav__icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span class="app-nav__label">Eventos</span>
+          <span class="app-nav__badge">3</span>
+        </a>
+        <a class="app-nav__item" href="#">
+          <svg class="app-nav__icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+          <span class="app-nav__label">Inventário</span>
+        </a>
+
+        <div class="app-nav__section">Administração</div>
+        <a class="app-nav__item" href="#">
+          <svg class="app-nav__icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          <span class="app-nav__label">Financeiro</span>
+        </a>
+        <a class="app-nav__item" href="#">
+          <svg class="app-nav__icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          <span class="app-nav__label">Relatórios</span>
+        </a>
+        <a class="app-nav__item" href="#">
+          <svg class="app-nav__icon" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M19.07 19.07l-1.41-1.41M4.93 19.07l1.41-1.41M12 2v2m0 18v-2m10-8h-2M4 12H2"/></svg>
+          <span class="app-nav__label">Configurações</span>
+        </a>
+      </nav>
+
+      <div class="app-sidebar__footer">
+        <div class="app-user-card">
+          <div class="avatar avatar--sm avatar--gold">A</div>
+          <div class="app-user-card__info">
+            <div class="app-user-card__name">Anderson</div>
+            <div class="app-user-card__role">Estado-Maior</div>
+          </div>
+          <svg class="app-user-card__chevron" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color:var(--color-text-disabled)"><path d="M9 18l6-6-6-6"/></svg>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <div style="flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;">
+
+      <!-- App bar -->
+      <header class="app-bar">
+        <button class="app-bar__toggle" id="app-demo-toggle" aria-label="Menu">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="app-search">
+          <svg class="app-search__icon" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input class="app-search__input" type="text" placeholder="Buscar operadores, eventos...">
+          <span class="app-search__kbd">Ctrl K</span>
+        </div>
+        <div class="app-bar__actions">
+          <!-- Notificações -->
+          <div class="dropdown" id="notif-dropdown">
+            <button class="app-bar__icon-btn" id="notif-btn" aria-label="Notificações">
+              <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 01-3.46 0"/></svg>
+              <span class="app-bar__notif-dot"></span>
+            </button>
+            <div class="notif-panel" style="display:none" id="notif-panel">
+              <div class="notif-panel__header">
+                <span class="notif-panel__title">Notificações</span>
+                <button class="btn btn-ghost btn-xs">Marcar lidas</button>
+              </div>
+              <div class="notif-item unread" style="position:relative">
+                <div class="avatar avatar--xs avatar--gold">E</div>
+                <div class="notif-item__body">
+                  <div class="notif-item__title">Novo evento criado</div>
+                  <div class="notif-item__text">Treino CQB agendado para 20/06/2026</div>
+                  <div class="notif-item__time">2 min atrás</div>
+                </div>
+              </div>
+              <div class="notif-item unread" style="position:relative">
+                <div class="avatar avatar--xs" style="border-color:var(--color-status-warning)">!</div>
+                <div class="notif-item__body">
+                  <div class="notif-item__title">Mensalidade pendente</div>
+                  <div class="notif-item__text">3 operadores com pagamento em atraso</div>
+                  <div class="notif-item__time">1h atrás</div>
+                </div>
+              </div>
+              <div class="notif-item">
+                <div class="avatar avatar--xs avatar--green">R</div>
+                <div class="notif-item__body">
+                  <div class="notif-item__title">Raphael confirmou presença</div>
+                  <div class="notif-item__text">Evento: Operação Bravo — 15/06</div>
+                  <div class="notif-item__time">3h atrás</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Theme toggle -->
+          <button class="app-bar__icon-btn" data-theme-toggle aria-label="Tema">
+            <svg class="theme-icon-dark" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>
+            <svg class="theme-icon-light" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+          </button>
+
+          <!-- Avatar dropdown -->
+          <div class="dropdown" id="user-dropdown">
+            <button class="app-bar__icon-btn" id="user-btn" style="border:none;width:auto;gap:var(--space-2)">
+              <div class="avatar avatar--sm avatar--gold">A</div>
+            </button>
+            <div class="dropdown__menu" id="user-menu">
+              <div class="dropdown__label">Anderson</div>
+              <a class="dropdown__item" href="#">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Meu Perfil
+              </a>
+              <a class="dropdown__item" href="#">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M18.66 5.34l1.41-1.41"/></svg>
+                Configurações
+              </a>
+              <div class="dropdown__sep"></div>
+              <a class="dropdown__item dropdown__item--danger" href="#">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+                Sair
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Scrollable content -->
+      <div class="app-content" style="flex:1">
+
+        <!-- Page header -->
+        <div class="page-header">
+          <div class="page-header__left">
+            <nav class="breadcrumb">
+              <a class="breadcrumb__item" href="#">TF-81</a>
+              <span class="breadcrumb__sep">/</span>
+              <span class="breadcrumb__item breadcrumb__item--current">Dashboard</span>
+            </nav>
+            <h1 class="page-header__title">Dashboard Operacional</h1>
+            <p class="page-header__sub">Visão geral da equipe — atualizado em 12/06/2026</p>
+          </div>
+          <div class="page-header__right">
+            <button class="btn btn-ghost btn-sm">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+              Exportar
+            </button>
+            <button class="btn btn-primary btn-sm">Novo Evento</button>
+          </div>
+        </div>
+
+        <div class="app-section">
+
+          <!-- KPI Row -->
+          <div class="kpi-row">
+            <div class="kpi kpi--gold">
+              <div class="kpi__label">
+                Operadores Ativos
+                <svg class="kpi__icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+              <div class="kpi__value" data-count="12">0</div>
+              <div class="kpi__delta kpi__delta--up">↑ +2 este mês</div>
+              <div class="kpi__footer">Meta: 15 operadores</div>
+            </div>
+            <div class="kpi kpi--green">
+              <div class="kpi__label">
+                Presença Média
+                <svg class="kpi__icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <div class="kpi__value" data-count="87" data-suffix="%">0</div>
+              <div class="kpi__delta kpi__delta--up">↑ +5% vs mês anterior</div>
+              <div class="kpi__footer">Último evento: 10/12 presentes</div>
+            </div>
+            <div class="kpi kpi--blue">
+              <div class="kpi__label">
+                Próximos Eventos
+                <svg class="kpi__icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              </div>
+              <div class="kpi__value" data-count="3">0</div>
+              <div class="kpi__delta kpi__delta--flat">→ Próximo em 3 dias</div>
+              <div class="kpi__footer">Treino CQB — 15/06</div>
+            </div>
+            <div class="kpi kpi--red">
+              <div class="kpi__label">
+                Pendências
+                <svg class="kpi__icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              </div>
+              <div class="kpi__value" data-count="3">0</div>
+              <div class="kpi__delta kpi__delta--down">↓ Mensalidades em atraso</div>
+              <div class="kpi__footer">Total: R$ 450,00</div>
+            </div>
+            <div class="kpi kpi--copper">
+              <div class="kpi__label">
+                Inventário
+                <svg class="kpi__icon" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+              </div>
+              <div class="kpi__value" data-count="47">0</div>
+              <div class="kpi__delta kpi__delta--flat">→ 2 itens com manutenção</div>
+              <div class="kpi__footer">Patrimônio coletivo</div>
+            </div>
+          </div>
+
+          <!-- Stat row -->
+          <div class="stat-row">
+            <div class="stat-row__item">
+              <div class="stat-row__label">Estado-Maior</div>
+              <div class="stat-row__value" style="color:var(--color-text-gold)">3</div>
+              <div class="stat-row__delta">Anderson, Antônio, Raphael</div>
+            </div>
+            <div class="stat-row__item">
+              <div class="stat-row__label">Liderança</div>
+              <div class="stat-row__value">2</div>
+              <div class="stat-row__delta">Ativos</div>
+            </div>
+            <div class="stat-row__item">
+              <div class="stat-row__label">Operadores</div>
+              <div class="stat-row__value">5</div>
+              <div class="stat-row__delta">Pleno acesso</div>
+            </div>
+            <div class="stat-row__item">
+              <div class="stat-row__label">Recrutas</div>
+              <div class="stat-row__value">2</div>
+              <div class="stat-row__delta">Em avaliação</div>
+            </div>
+          </div>
+
+          <!-- Filter bar + Data table -->
+          <div class="data-table-wrap">
+            <div class="data-table-header">
+              <div>
+                <div class="data-table-title">Roster da Equipe</div>
+                <div class="data-table-count">12 operadores</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap">
+                <div style="position:relative">
+                  <svg style="position:absolute;left:8px;top:50%;transform:translateY(-50%);color:var(--color-text-disabled)" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <input type="text" placeholder="Buscar..." style="height:30px;background:var(--color-bg-canvas);border:1px solid var(--color-border-default);border-radius:var(--radius-md);padding:0 var(--space-3) 0 var(--space-7);font-size:var(--text-xs);color:var(--color-text-primary);outline:none;width:160px">
+                </div>
+                <span class="chip active">Todos</span>
+                <span class="chip">Ativos</span>
+                <span class="chip">EM</span>
+                <button class="btn btn-ghost btn-sm">Colunas</button>
+              </div>
+            </div>
+            <div class="data-table-scroll">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th class="col-check"><input type="checkbox"></th>
+                    <th class="sortable sort-asc">Operador</th>
+                    <th class="sortable">Callsign</th>
+                    <th>Posto</th>
+                    <th class="sortable">Status</th>
+                    <th>Presença</th>
+                    <th>Ingresso</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="selected">
+                    <td class="col-check"><input type="checkbox" checked></td>
+                    <td><div style="display:flex;align-items:center;gap:var(--space-2-5)"><div class="avatar avatar--xs avatar--gold">A</div><div><div style="font-weight:var(--weight-medium);color:var(--color-text-primary)">Anderson</div><div style="font-size:10px;color:var(--color-text-muted)">andersondiego@live.com</div></div></div></td>
+                    <td><span style="font-family:var(--font-mono);font-size:var(--text-xs)">BRAVO-01</span></td>
+                    <td><span class="badge badge-gold">Estado-Maior</span></td>
+                    <td><span class="status-dot status-dot--active" style="color:var(--color-text-secondary)">Ativo</span></td>
+                    <td>
+                      <div style="display:flex;align-items:center;gap:var(--space-2)">
+                        <div style="flex:1;height:4px;background:var(--color-border-default);border-radius:2px;overflow:hidden;min-width:48px">
+                          <div style="height:100%;width:95%;background:var(--color-status-active);border-radius:2px"></div>
+                        </div>
+                        <span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">95%</span>
+                      </div>
+                    </td>
+                    <td><span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">2022-01-15</span></td>
+                    <td>
+                      <div class="dropdown" style="position:relative">
+                        <button class="app-bar__icon-btn" style="width:28px;height:28px">
+                          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="col-check"><input type="checkbox"></td>
+                    <td><div style="display:flex;align-items:center;gap:var(--space-2-5)"><div class="avatar avatar--xs" style="border-color:var(--color-text-copper)">R</div><div><div style="font-weight:var(--weight-medium);color:var(--color-text-primary)">Raphael</div><div style="font-size:10px;color:var(--color-text-muted)">raphael@tf81.com</div></div></div></td>
+                    <td><span style="font-family:var(--font-mono);font-size:var(--text-xs)">CHARLIE-01</span></td>
+                    <td><span class="badge badge-copper">Estado-Maior</span></td>
+                    <td><span class="status-dot status-dot--active" style="color:var(--color-text-secondary)">Ativo</span></td>
+                    <td>
+                      <div style="display:flex;align-items:center;gap:var(--space-2)">
+                        <div style="flex:1;height:4px;background:var(--color-border-default);border-radius:2px;overflow:hidden;min-width:48px">
+                          <div style="height:100%;width:82%;background:var(--color-status-active);border-radius:2px"></div>
+                        </div>
+                        <span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">82%</span>
+                      </div>
+                    </td>
+                    <td><span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">2022-01-15</span></td>
+                    <td><button class="app-bar__icon-btn" style="width:28px;height:28px"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button></td>
+                  </tr>
+                  <tr>
+                    <td class="col-check"><input type="checkbox"></td>
+                    <td><div style="display:flex;align-items:center;gap:var(--space-2-5)"><div class="avatar avatar--xs" style="border-color:var(--color-text-military)">A</div><div><div style="font-weight:var(--weight-medium);color:var(--color-text-primary)">Antônio</div><div style="font-size:10px;color:var(--color-text-muted)">antonio@tf81.com</div></div></div></td>
+                    <td><span style="font-family:var(--font-mono);font-size:var(--text-xs)">ALPHA-01</span></td>
+                    <td><span class="badge badge-green">Estado-Maior</span></td>
+                    <td><span class="status-dot status-dot--active" style="color:var(--color-text-secondary)">Ativo</span></td>
+                    <td>
+                      <div style="display:flex;align-items:center;gap:var(--space-2)">
+                        <div style="flex:1;height:4px;background:var(--color-border-default);border-radius:2px;overflow:hidden;min-width:48px">
+                          <div style="height:100%;width:90%;background:var(--color-status-active);border-radius:2px"></div>
+                        </div>
+                        <span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">90%</span>
+                      </div>
+                    </td>
+                    <td><span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">2022-01-15</span></td>
+                    <td><button class="app-bar__icon-btn" style="width:28px;height:28px"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button></td>
+                  </tr>
+                  <tr>
+                    <td class="col-check"><input type="checkbox"></td>
+                    <td><div style="display:flex;align-items:center;gap:var(--space-2-5)"><div class="avatar avatar--xs">M</div><div><div style="font-weight:var(--weight-medium);color:var(--color-text-primary)">Marcos</div><div style="font-size:10px;color:var(--color-text-muted)">marcos@tf81.com</div></div></div></td>
+                    <td><span style="font-family:var(--font-mono);font-size:var(--text-xs)">DELTA-03</span></td>
+                    <td><span class="badge badge-blue">Operador</span></td>
+                    <td><span class="status-dot status-dot--warning" style="color:var(--color-text-secondary)">Licença</span></td>
+                    <td>
+                      <div style="display:flex;align-items:center;gap:var(--space-2)">
+                        <div style="flex:1;height:4px;background:var(--color-border-default);border-radius:2px;overflow:hidden;min-width:48px">
+                          <div style="height:100%;width:60%;background:var(--color-status-warning);border-radius:2px"></div>
+                        </div>
+                        <span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">60%</span>
+                      </div>
+                    </td>
+                    <td><span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">2023-05-20</span></td>
+                    <td><button class="app-bar__icon-btn" style="width:28px;height:28px"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="data-table-footer">
+              <span>Mostrando 4 de 12 operadores</span>
+              <div class="data-table-pager">
+                <button disabled>‹</button>
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button>›</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Component refinements in app context -->
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--space-4)">
+            <!-- Card within app -->
+            <div class="card" style="display:flex;flex-direction:column;gap:var(--space-3)">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <span style="font-size:var(--text-sm);font-weight:var(--weight-semibold)">Próximos Eventos</span>
+                <button class="btn btn-ghost btn-xs">Ver todos</button>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+                <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2-5) var(--space-3);background:var(--color-bg-raised);border-radius:var(--radius-md)">
+                  <div style="width:36px;height:36px;background:rgba(196,150,26,.1);border:1px solid var(--color-border-gold);border-radius:var(--radius-sm);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0">
+                    <span style="font-size:10px;color:var(--color-text-muted);text-transform:uppercase">Jun</span>
+                    <span style="font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-text-gold);line-height:1">15</span>
+                  </div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:var(--text-sm);font-weight:var(--weight-medium)">Treino CQB</div>
+                    <div style="font-size:var(--text-xs);color:var(--color-text-muted)">Campo ALFA · 09:00</div>
+                  </div>
+                  <span class="badge badge-green">Confirmado</span>
+                </div>
+                <div style="display:flex;align-items:center;gap:var(--space-3);padding:var(--space-2-5) var(--space-3);background:var(--color-bg-raised);border-radius:var(--radius-md)">
+                  <div style="width:36px;height:36px;background:rgba(42,98,176,.1);border:1px solid rgba(42,98,176,.25);border-radius:var(--radius-sm);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0">
+                    <span style="font-size:10px;color:var(--color-text-muted);text-transform:uppercase">Jun</span>
+                    <span style="font-family:var(--font-display);font-size:var(--text-base);font-weight:700;color:var(--color-status-info);line-height:1">22</span>
+                  </div>
+                  <div style="flex:1;min-width:0">
+                    <div style="font-size:var(--text-sm);font-weight:var(--weight-medium)">Operação Bravo</div>
+                    <div style="font-size:var(--text-xs);color:var(--color-text-muted)">Campo Beta · 08:00</div>
+                  </div>
+                  <span class="badge badge-muted">Pendente</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alerts no contexto app -->
+            <div style="display:flex;flex-direction:column;gap:var(--space-2)">
+              <div class="alert alert-warning" style="padding:var(--space-3) var(--space-4)">
+                <svg class="alert-icon" style="width:16px;height:16px" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0zM12 9v4m0 4h.01"/></svg>
+                <div class="alert-body"><div class="alert-title">Mensalidades</div><div class="alert-text">3 operadores em atraso. Vencimento: 10/06.</div></div>
+              </div>
+              <div class="alert alert-info" style="padding:var(--space-3) var(--space-4)">
+                <svg class="alert-icon" style="width:16px;height:16px" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4m0-4h.01"/></svg>
+                <div class="alert-body"><div class="alert-title">Novo recruta</div><div class="alert-text">ECHO-07 aguarda aprovação do EM.</div></div>
+              </div>
+            </div>
+
+            <!-- Empty state -->
+            <div class="card" style="padding:0">
+              <div class="empty-state" style="padding:var(--space-8)">
+                <svg class="empty-state__icon" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2"/></svg>
+                <div class="empty-state__title">Sem registros</div>
+                <p class="empty-state__desc">Nenhum relatório disponível para o período selecionado.</p>
+                <button class="btn btn-primary btn-sm" style="margin-top:var(--space-3)">Criar Relatório</button>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /app-section -->
+      </div><!-- /app-content -->
+    </div><!-- /main col -->
+  </div><!-- /app-demo-frame -->
+
+  <div style="padding:var(--space-4) var(--space-8);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);border-top:1px solid var(--color-border-subtle)">
+    data-area="app" ativo · tokens sobrescritos via CSS custom properties · componentes existentes herdam automaticamente
+  </div>
+</section>
+
+<script>
+  /* ── APP DEMO CONTROLS ──────────────────────────────────────── */
+  const appFrame = document.getElementById('app-demo-frame');
+  const appSidebar = document.getElementById('app-demo-sidebar');
+
+  document.getElementById('app-demo-dark')?.addEventListener('click', () => {
+    appFrame.setAttribute('data-theme', 'dark');
+  });
+  document.getElementById('app-demo-light')?.addEventListener('click', () => {
+    appFrame.setAttribute('data-theme', 'light');
+  });
+  document.getElementById('app-demo-collapse')?.addEventListener('click', () => {
+    const shell = appFrame.querySelector('.app-sidebar');
+    if (!shell) return;
+    const isCollapsed = shell.style.width === 'var(--sidebar-width-collapsed)';
+    shell.style.width = isCollapsed ? 'var(--sidebar-width)' : 'var(--sidebar-width-collapsed)';
+    shell.querySelectorAll('.app-sidebar__name,.app-sidebar__version,.app-nav__section,.app-nav__label,.app-nav__badge,.app-user-card__info,.app-user-card__chevron').forEach(el => {
+      el.style.display = isCollapsed ? '' : 'none';
+    });
+  });
+
+  document.getElementById('app-demo-toggle')?.addEventListener('click', () => {
+    document.getElementById('app-demo-collapse')?.click();
+  });
+
+  /* Notification panel toggle */
+  const notifBtn   = document.getElementById('notif-btn');
+  const notifPanel = document.getElementById('notif-panel');
+  notifBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const visible = notifPanel.style.display !== 'none';
+    notifPanel.style.display = visible ? 'none' : 'block';
+    document.getElementById('user-menu').style.display = 'none';
+  });
+
+  /* User dropdown toggle */
+  const userBtn  = document.getElementById('user-btn');
+  const userMenu = document.getElementById('user-menu');
+  userBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const visible = userMenu.style.display === 'block';
+    userMenu.style.display = visible ? 'none' : 'block';
+    notifPanel.style.display = 'none';
+    if (!visible) {
+      setTimeout(() => {
+        userMenu.style.opacity = '1';
+        userMenu.style.transform = 'translateY(0) scale(1)';
+        userMenu.style.pointerEvents = 'auto';
+      }, 10);
+    }
+  });
+
+  document.addEventListener('click', () => {
+    if (notifPanel) notifPanel.style.display = 'none';
+    if (userMenu)   userMenu.style.display   = 'none';
+  });
+</script>
+
 </main><!-- /ds-main -->
 
 <!-- ══ MODALS ════════════════════════════════════════════════ -->

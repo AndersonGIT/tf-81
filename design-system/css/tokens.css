@@ -384,3 +384,134 @@
   --glow-red-md:   0 0 24px rgba(156,20,20,0.28);
   --glow-copper-sm: 0 0 12px rgba(122,58,16,0.22);
 }
+
+/* ================================================================
+   ÁREA INTERNA — APP TOKENS
+   Foco em produtividade, leitura confortável, densidade de dados.
+   Aplique data-area="app" no <body> ou wrapper do painel interno.
+   ================================================================ */
+
+[data-area="app"] {
+
+  /* Backgrounds — azul-cinza escuro, menos dramático que o tático */
+  --color-bg-canvas:   #0B0D14;
+  --color-bg-base:     #10121C;
+  --color-bg-raised:   #161824;
+  --color-bg-overlay:  rgba(11,13,20,0.90);
+  --color-bg-elevated: #1C1F2E;
+
+  /* Surfaces — limpos, sem profundidade excessiva */
+  --color-surface-default:  #181B28;
+  --color-surface-raised:   #1E2132;
+  --color-surface-overlay:  rgba(16,18,28,0.92);
+
+  /* Borders — sutis, funcionais, sem ornamento */
+  --color-border-subtle:  rgba(255,255,255,0.04);
+  --color-border-default: rgba(255,255,255,0.08);
+  --color-border-strong:  rgba(255,255,255,0.14);
+  --color-border-focus:   rgba(196,150,26,0.55);
+  --color-border-gold:    rgba(196,150,26,0.18);
+  --color-border-muted:   rgba(255,255,255,0.06);
+
+  /* Text — hierarquia forte para leitura longa */
+  --color-text-primary:   #ECEEF6;
+  --color-text-secondary: #9CA0B4;
+  --color-text-tertiary:  #686C82;
+  --color-text-muted:     #464A5E;
+  --color-text-disabled:  #2E3048;
+  --color-text-inverse:   #0B0D14;
+  --color-text-gold:      #B08818;
+  --color-text-copper:    #8A4A1A;
+  --color-text-military:  #4A8430;
+
+  /* Status — idênticos, mantêm coerência */
+  --color-status-active:   #4A8430;
+  --color-status-inactive: #464A5E;
+  --color-status-warning:  #C49018;
+  --color-status-danger:   #B81A1A;
+  --color-status-info:     #2A62B0;
+
+  /* Shadows — modelo de elevação, não brilho */
+  --shadow-xs:  0 1px 2px  rgba(0,0,0,0.40);
+  --shadow-sm:  0 1px 4px  rgba(0,0,0,0.40), 0 1px 2px rgba(0,0,0,0.25);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.44), 0 2px 4px rgba(0,0,0,0.22);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,0.48), 0 4px 8px rgba(0,0,0,0.22);
+  --shadow-xl:  0 16px 40px rgba(0,0,0,0.52);
+  --shadow-2xl: 0 24px 64px rgba(0,0,0,0.56);
+
+  /* Glows — muito mais contidos */
+  --glow-gold-xs: 0 0 4px  rgba(176,136,24,0.12);
+  --glow-gold-sm: 0 0 10px rgba(176,136,24,0.18);
+  --glow-gold-md: 0 0 20px rgba(176,136,24,0.22);
+  --glow-gold-lg: 0 0 36px rgba(176,136,24,0.16);
+  --glow-gold-xl: 0 0 60px rgba(176,136,24,0.10);
+
+  --glow-green-sm: 0 0 10px rgba(74,132,48,0.18);
+  --glow-green-md: 0 0 20px rgba(74,132,48,0.22);
+  --glow-red-sm:   0 0 10px rgba(184,26,26,0.18);
+  --glow-red-md:   0 0 20px rgba(184,26,26,0.22);
+
+  /* Tamanhos estruturais do app */
+  --sidebar-width:           260px;
+  --sidebar-width-collapsed:  60px;
+  --topbar-height:            56px;
+  --footer-height:            48px;
+}
+
+/* ── APP + LIGHT MODE ─────────────────────────────────────────── */
+
+[data-theme="light"] [data-area="app"],
+[data-area="app"][data-theme="light"] {
+
+  /* Backgrounds — cinza-azulado frio, não pergaminho */
+  --color-bg-canvas:   #EFF1F7;
+  --color-bg-base:     #FFFFFF;
+  --color-bg-raised:   #F6F7FB;
+  --color-bg-overlay:  rgba(239,241,247,0.95);
+  --color-bg-elevated: #FFFFFF;
+
+  /* Surfaces */
+  --color-surface-default:  #FFFFFF;
+  --color-surface-raised:   #EDF0F6;
+  --color-surface-overlay:  rgba(239,241,247,0.92);
+
+  /* Borders */
+  --color-border-subtle:  rgba(0,0,0,0.05);
+  --color-border-default: rgba(0,0,0,0.09);
+  --color-border-strong:  rgba(0,0,0,0.17);
+  --color-border-focus:   rgba(154,112,0,0.55);
+  --color-border-gold:    rgba(154,112,0,0.18);
+  --color-border-muted:   rgba(0,0,0,0.07);
+
+  /* Text */
+  --color-text-primary:   #1A1C2C;
+  --color-text-secondary: #484C68;
+  --color-text-tertiary:  #686C88;
+  --color-text-muted:     #9298B0;
+  --color-text-disabled:  #C0C4D4;
+  --color-text-inverse:   #ECEEF6;
+  --color-text-gold:      #8A6800;
+  --color-text-copper:    #7A3810;
+  --color-text-military:  #2A5C18;
+
+  /* Status */
+  --color-status-active:   #2A6018;
+  --color-status-inactive: #9298B0;
+  --color-status-warning:  #9A7000;
+  --color-status-danger:   #9C1414;
+  --color-status-info:     #1A4A8A;
+
+  /* Shadows — suaves como elevation do material */
+  --shadow-xs:  0 1px 2px  rgba(0,0,0,0.07);
+  --shadow-sm:  0 1px 4px  rgba(0,0,0,0.09), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md:  0 4px 12px rgba(0,0,0,0.10), 0 2px 4px rgba(0,0,0,0.06);
+  --shadow-lg:  0 8px 24px rgba(0,0,0,0.12), 0 4px 8px rgba(0,0,0,0.06);
+  --shadow-xl:  0 16px 40px rgba(0,0,0,0.14);
+  --shadow-2xl: 0 24px 64px rgba(0,0,0,0.16);
+
+  --glow-gold-xs: 0 0 4px  rgba(140,100,0,0.12);
+  --glow-gold-sm: 0 0 10px rgba(140,100,0,0.16);
+  --glow-gold-md: 0 0 20px rgba(140,100,0,0.20);
+  --glow-gold-lg: 0 0 36px rgba(140,100,0,0.14);
+  --glow-gold-xl: 0 0 60px rgba(140,100,0,0.08);
+}
