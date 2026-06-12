@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="css/utilities.css">
   <link rel="stylesheet" href="css/animations.css">
   <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <link rel="stylesheet" href="css/gallery.css">
 
   <style>
     /* ── DS PAGE LAYOUT ──────────────────────────────────────── */
@@ -581,7 +583,15 @@
     <a href="#ds-animations"   class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Animações</span></a>
 
     <div class="ds-nav-section">App Interno</div>
-    <a href="#ds-app"          class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Área Interna</span></a>
+    <a href="#ds-app"              class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Área Interna</span></a>
+
+    <div class="ds-nav-section">Blog</div>
+    <a href="#ds-blog-public"      class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Blog — Público</span></a>
+    <a href="#ds-blog-admin"       class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Blog — Admin</span></a>
+
+    <div class="ds-nav-section">Galeria</div>
+    <a href="#ds-gallery-public"   class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Galeria — Pública</span></a>
+    <a href="#ds-gallery-admin"    class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Galeria — Admin</span></a>
   </nav>
 
   <div class="ds-sidebar-footer">TF-81 © 2026</div>
@@ -1751,6 +1761,1061 @@
     if (userMenu)   userMenu.style.display   = 'none';
   });
 </script>
+
+<!-- ══════════════════════════════════════════════════════════
+     BLOG — SEÇÃO PÚBLICA
+     ══════════════════════════════════════════════════════════ -->
+<section id="ds-blog-public" class="ds-section" data-section style="max-width:none;padding:0;border-bottom:none;">
+
+  <div style="padding:var(--space-10) var(--space-10) 0;max-width:1200px">
+    <div class="ds-label">// 10 — BLOG PÚBLICO</div>
+    <h2 class="ds-title">Blog — Site de Apresentação</h2>
+    <p class="ds-desc">Seção de blog no site público. Suporta post destaque (hero), grid de cards, lista horizontal e widgets laterais. Todas as variantes adaptam ao tema dark/light.</p>
+  </div>
+
+  <!-- Blog section preview -->
+  <div style="padding:var(--space-6) var(--space-10) var(--space-10);max-width:1200px">
+
+    <!-- Section header -->
+    <div class="blog-section-hd">
+      <div class="blog-section-hd__left">
+        <div class="blog-section-hd__label">// Últimas Publicações</div>
+        <div class="blog-section-hd__title">Blog Operacional</div>
+      </div>
+      <a href="#" class="blog-section-hd__link">Ver todos os posts →</a>
+    </div>
+
+    <!-- Hero post -->
+    <a href="#" class="blog-hero blog-hero--no-img" style="background:linear-gradient(135deg,#0D1A0D 0%,#1A150A 50%,#0A0D14 100%);margin-bottom:var(--space-6)">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(196,150,26,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(196,150,26,0.04) 1px,transparent 1px);background-size:40px 40px;pointer-events:none"></div>
+      <div class="blog-hero__body">
+        <div class="blog-hero__top">
+          <span class="blog-tag blog-tag--ops">Operações</span>
+          <span class="blog-tag blog-tag--news">Relatório</span>
+        </div>
+        <div class="blog-hero__title">Operação Bravo: Relato Tático do Exercício de CQB no Campo ALFA</div>
+        <div class="blog-hero__excerpt">Doze operadores participaram do exercício noturno de CQB com foco em comunicação silenciosa e supressão de alvos múltiplos. Detalhamos as lições aprendidas e pontos de melhoria identificados.</div>
+        <div class="blog-hero__meta">
+          <div class="blog-hero__author">
+            <div class="avatar avatar--xs avatar--gold">A</div>
+            Anderson · Estado-Maior
+          </div>
+          <div class="blog-hero__date">12 Jun 2026</div>
+          <div class="blog-hero__read-time">8 min leitura</div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Toolbar de listagem: filtros + toggle de visualização -->
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);margin-bottom:var(--space-5);flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap">
+        <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);letter-spacing:var(--tracking-wide)">24 posts</span>
+        <div style="display:flex;gap:var(--space-2);flex-wrap:wrap">
+          <button class="gallery-filter__btn active" style="border-radius:var(--radius-full)">Todos</button>
+          <button class="gallery-filter__btn" style="border-radius:var(--radius-full)">Operações</button>
+          <button class="gallery-filter__btn" style="border-radius:var(--radius-full)">Tutorial</button>
+          <button class="gallery-filter__btn" style="border-radius:var(--radius-full)">Eventos</button>
+        </div>
+      </div>
+      <div class="blog-view-toggle">
+        <button class="blog-view-toggle__btn active" title="Cards">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Cards
+        </button>
+        <button class="blog-view-toggle__btn" title="Lista">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          Lista
+        </button>
+      </div>
+    </div>
+
+    <!-- ESTADO: CARDS (toggle ativo em "Cards") -->
+    <div class="blog-grid" style="margin-bottom:var(--space-10)">
+
+      <a href="#" class="blog-card">
+        <div class="blog-card__img blog-card__img--placeholder" style="background:linear-gradient(135deg,#1A1A0A,#2A2010)">
+          <div class="blog-card__cat-overlay"><span class="blog-tag blog-tag--tut">Tutorial</span></div>
+          <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" style="color:rgba(196,150,26,0.2)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__title">Como Montar e Ajustar seu Kit de Combate para Jogar com Eficiência</div>
+          <div class="blog-card__excerpt">Guia completo sobre seleção de equipamentos, ajuste de coletes e distribuição de peso para máxima mobilidade em campo.</div>
+        </div>
+        <div class="blog-card__footer">
+          <div class="blog-card__author"><div class="avatar avatar--xs">R</div>Raphael</div>
+          <div class="blog-card__meta"><span>05 Jun</span><span>·</span><span>6 min</span></div>
+          <div class="blog-card__read-more">Ler →</div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card">
+        <div class="blog-card__img blog-card__img--placeholder" style="background:linear-gradient(135deg,#0A1A0D,#102010)">
+          <div class="blog-card__cat-overlay"><span class="blog-tag blog-tag--news">Evento</span></div>
+          <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" style="color:rgba(56,106,34,0.25)"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__title">Convite Aceito: TF-81 no Mega Event Serra Verde 2026</div>
+          <div class="blog-card__excerpt">A Task Force 81 foi convidada para participar do maior evento de airsoft do estado. 60+ equipes confirmadas, terreno de 40 hectares.</div>
+        </div>
+        <div class="blog-card__footer">
+          <div class="blog-card__author"><div class="avatar avatar--xs avatar--green">A</div>Antônio</div>
+          <div class="blog-card__meta"><span>28 Mai</span><span>·</span><span>3 min</span></div>
+          <div class="blog-card__read-more">Ler →</div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card">
+        <div class="blog-card__img blog-card__img--placeholder" style="background:linear-gradient(135deg,#0A0E1A,#141828)">
+          <div class="blog-card__cat-overlay"><span class="blog-tag blog-tag--equip">Equipamento</span></div>
+          <svg width="32" height="32" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" style="color:rgba(100,80,160,0.25)"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__title">Review Completo: Tokyo Marui NGRS M4 após 8 meses de uso</div>
+          <div class="blog-card__excerpt">Confiabilidade, manutenção preventiva, upgrades realizados e o custo-benefício real na perspectiva de um operador de nível intermediário.</div>
+        </div>
+        <div class="blog-card__footer">
+          <div class="blog-card__author"><div class="avatar avatar--xs avatar--gold">A</div>Anderson</div>
+          <div class="blog-card__meta"><span>20 Mai</span><span>·</span><span>12 min</span></div>
+          <div class="blog-card__read-more">Ler →</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- ESTADO: LISTA (toggle ativo em "Lista") — mesmos posts em variante horizontal -->
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);margin-bottom:var(--space-5);flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap">
+        <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);letter-spacing:var(--tracking-wide)">24 posts</span>
+        <div style="display:flex;gap:var(--space-2);flex-wrap:wrap">
+          <button class="gallery-filter__btn active" style="border-radius:var(--radius-full)">Todos</button>
+          <button class="gallery-filter__btn" style="border-radius:var(--radius-full)">Operações</button>
+          <button class="gallery-filter__btn" style="border-radius:var(--radius-full)">Tutorial</button>
+          <button class="gallery-filter__btn" style="border-radius:var(--radius-full)">Eventos</button>
+        </div>
+      </div>
+      <div class="blog-view-toggle">
+        <button class="blog-view-toggle__btn" title="Cards">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Cards
+        </button>
+        <button class="blog-view-toggle__btn active" title="Lista">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          Lista
+        </button>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:var(--space-3);margin-bottom:var(--space-10)">
+
+      <a href="#" class="blog-card blog-card--h">
+        <div class="blog-card__img" style="background:linear-gradient(135deg,#1A1A0A,#2A2010)">
+          <div class="blog-card__cat-overlay"><span class="blog-tag blog-tag--tut">Tutorial</span></div>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__title">Como Montar e Ajustar seu Kit de Combate para Jogar com Eficiência</div>
+          <div class="blog-card__excerpt">Guia completo sobre seleção de equipamentos, ajuste de coletes e distribuição de peso para máxima mobilidade em campo.</div>
+        </div>
+        <div class="blog-card__footer">
+          <div class="blog-card__author"><div class="avatar avatar--xs">R</div>Raphael</div>
+          <div class="blog-card__meta"><span>05 Jun</span><span>·</span><span>6 min</span></div>
+          <div class="blog-card__read-more">Ler →</div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card blog-card--h">
+        <div class="blog-card__img" style="background:linear-gradient(135deg,#0A1A0D,#102010)">
+          <div class="blog-card__cat-overlay"><span class="blog-tag blog-tag--news">Evento</span></div>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__title">Convite Aceito: TF-81 no Mega Event Serra Verde 2026</div>
+          <div class="blog-card__excerpt">A Task Force 81 foi convidada para participar do maior evento de airsoft do estado. 60+ equipes confirmadas, terreno de 40 hectares.</div>
+        </div>
+        <div class="blog-card__footer">
+          <div class="blog-card__author"><div class="avatar avatar--xs avatar--green">A</div>Antônio</div>
+          <div class="blog-card__meta"><span>28 Mai</span><span>·</span><span>3 min</span></div>
+          <div class="blog-card__read-more">Ler →</div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card blog-card--h">
+        <div class="blog-card__img" style="background:linear-gradient(135deg,#0A0E1A,#141828)">
+          <div class="blog-card__cat-overlay"><span class="blog-tag blog-tag--equip">Equipamento</span></div>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__title">Review Completo: Tokyo Marui NGRS M4 após 8 meses de uso</div>
+          <div class="blog-card__excerpt">Confiabilidade, manutenção preventiva, upgrades realizados e o custo-benefício real na perspectiva de um operador de nível intermediário.</div>
+        </div>
+        <div class="blog-card__footer">
+          <div class="blog-card__author"><div class="avatar avatar--xs avatar--gold">A</div>Anderson</div>
+          <div class="blog-card__meta"><span>20 Mai</span><span>·</span><span>12 min</span></div>
+          <div class="blog-card__read-more">Ler →</div>
+        </div>
+      </a>
+
+      <a href="#" class="blog-card blog-card--h">
+        <div class="blog-card__img" style="background:linear-gradient(135deg,#14100A,#201808)">
+          <div class="blog-card__cat-overlay"><span class="blog-tag blog-tag--ops">Operações</span></div>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__title">Operação Bravo: Relato Tático do Exercício de CQB no Campo ALFA</div>
+          <div class="blog-card__excerpt">Doze operadores participaram do exercício noturno. Detalhamos as lições aprendidas e os pontos de melhoria identificados no campo.</div>
+        </div>
+        <div class="blog-card__footer">
+          <div class="blog-card__author"><div class="avatar avatar--xs avatar--gold">A</div>Anderson</div>
+          <div class="blog-card__meta"><span>12 Jun</span><span>·</span><span>8 min</span></div>
+          <div class="blog-card__read-more">Ler →</div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- Tags demo -->
+    <div class="ds-preview" style="margin-top:var(--space-4)">
+      <span class="ds-preview-label">TAGS DE CATEGORIA</span>
+      <div class="ds-row" style="padding:var(--space-2) 0">
+        <span class="blog-tag blog-tag--ops">Operações</span>
+        <span class="blog-tag blog-tag--tut">Tutorial</span>
+        <span class="blog-tag blog-tag--news">Notícias</span>
+        <span class="blog-tag blog-tag--ext">Eventos Externos</span>
+        <span class="blog-tag blog-tag--equip">Equipamentos</span>
+      </div>
+    </div>
+
+    <!-- POST READING — álbuns associados no rodapé -->
+    <div class="ds-preview" style="margin-top:var(--space-4);padding:var(--space-6) var(--space-6) var(--space-5)">
+      <span class="ds-preview-label">TELA DE LEITURA — ÁLBUNS NO RODAPÉ DO POST</span>
+
+      <!-- Simula o final de um post publicado -->
+      <div style="max-width:760px;margin-top:var(--space-5)">
+        <!-- Trecho final do post (simulado) -->
+        <div style="font-size:var(--text-base);color:var(--color-text-tertiary);line-height:var(--leading-relaxed);padding-bottom:var(--space-6);border-bottom:1px solid var(--color-border-subtle)">
+          <p>...O exercício encerrou com êxito. A equipe demonstrou alta capacidade de adaptação e execução tática em condições adversas. O próximo ciclo de treinamento está programado para julho de 2026.</p>
+          <div style="display:flex;align-items:center;gap:var(--space-4);margin-top:var(--space-5);flex-wrap:wrap">
+            <div style="display:flex;align-items:center;gap:var(--space-2)">
+              <div class="avatar avatar--sm avatar--gold">A</div>
+              <div>
+                <div style="font-weight:var(--weight-medium);font-size:var(--text-sm);color:var(--color-text-primary)">Anderson · Estado-Maior</div>
+                <div style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">12 Jun 2026 · 8 min leitura</div>
+              </div>
+            </div>
+            <div style="display:flex;gap:var(--space-2);flex-wrap:wrap">
+              <span class="blog-tag blog-tag--ops">Operações</span>
+              <span class="blog-tag blog-tag--ops">CQB</span>
+              <span class="blog-tag blog-tag--ops">Treino</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Álbuns de fotos associados ao post -->
+        <div class="post-albums-section">
+          <div class="post-albums-section__label">// Registro Fotográfico</div>
+          <div class="post-albums-section__title">Álbuns do Evento</div>
+          <div class="post-albums-grid">
+
+            <!-- Álbum 1 com slides rotativos na capa -->
+            <a href="#" class="post-album-card">
+              <div class="post-album-card__cover">
+                <div class="album-card__slides" style="position:absolute;inset:0">
+                  <div class="album-card__slide" style="background:linear-gradient(135deg,#1A1A0A,#2A2010)"></div>
+                  <div class="album-card__slide" style="background:linear-gradient(135deg,#0A1A0D,#102010)"></div>
+                  <div class="album-card__slide" style="background:linear-gradient(135deg,#14100A,#201808)"></div>
+                </div>
+              </div>
+              <div class="post-album-card__info">
+                <div class="post-album-card__name">Operação Bravo</div>
+                <div class="post-album-card__count">📷 24 fotos · Jun 2026</div>
+              </div>
+            </a>
+
+            <!-- Álbum 2 -->
+            <a href="#" class="post-album-card">
+              <div class="post-album-card__cover">
+                <div class="album-card__slides" style="position:absolute;inset:0">
+                  <div class="album-card__slide" style="background:linear-gradient(135deg,#0A0E1A,#10141E)"></div>
+                  <div class="album-card__slide" style="background:linear-gradient(135deg,#140A0A,#201414)"></div>
+                </div>
+              </div>
+              <div class="post-album-card__info">
+                <div class="post-album-card__name">Bastidores — Campo ALFA</div>
+                <div class="post-album-card__count">📷 12 fotos · Jun 2026</div>
+              </div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     BLOG — ADMIN PANEL
+     ══════════════════════════════════════════════════════════ -->
+<section id="ds-blog-admin" class="ds-section" data-section style="max-width:none;padding:0;border-bottom:none;border-top:1px solid var(--color-border-subtle)">
+
+  <div style="padding:var(--space-10) var(--space-10) 0;max-width:1200px">
+    <div class="ds-label">// 11 — BLOG ADMIN</div>
+    <h2 class="ds-title">Blog — Painel de Gerenciamento</h2>
+    <p class="ds-desc">Painel interno (data-area="app") para operadores designados como criativos. Cadastro, edição e gerenciamento de posts com controle de status.</p>
+  </div>
+
+  <div data-area="app" style="padding:var(--space-6) var(--space-10) var(--space-10)">
+
+    <!-- Blog stats -->
+    <div class="blog-stats" style="margin-bottom:var(--space-5)">
+      <div class="blog-stat blog-stat">
+        <div class="blog-stat__value" data-count="24">0</div>
+        <div class="blog-stat__label">Total de Posts</div>
+        <div class="blog-stat__delta blog-stat__delta--up">↑ +3 este mês</div>
+      </div>
+      <div class="blog-stat">
+        <div class="blog-stat__value" data-count="18">0</div>
+        <div class="blog-stat__label">Publicados</div>
+        <div class="blog-stat__delta blog-stat__delta--up">↑ ativos</div>
+      </div>
+      <div class="blog-stat">
+        <div class="blog-stat__value" data-count="4">0</div>
+        <div class="blog-stat__label">Rascunhos</div>
+        <div class="blog-stat__delta" style="color:var(--color-text-muted)">Em edição</div>
+      </div>
+      <div class="blog-stat">
+        <div class="blog-stat__value" data-count="2">0</div>
+        <div class="blog-stat__label">Agendados</div>
+        <div class="blog-stat__delta" style="color:var(--color-status-info)">→ Esta semana</div>
+      </div>
+      <div class="blog-stat">
+        <div class="blog-stat__value" data-count="3842">0</div>
+        <div class="blog-stat__label">Visualizações</div>
+        <div class="blog-stat__delta blog-stat__delta--up">↑ +12% 30d</div>
+      </div>
+    </div>
+
+    <!-- Status badges demo + posts table -->
+    <div class="data-table-wrap" style="margin-bottom:var(--space-5)">
+      <div class="data-table-header">
+        <div>
+          <div class="data-table-title">Gerenciar Posts</div>
+          <div class="data-table-count">24 posts</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap">
+          <span class="chip active">Todos</span>
+          <span class="chip">Publicados</span>
+          <span class="chip">Rascunhos</span>
+          <span class="chip">Agendados</span>
+          <!-- View toggle -->
+          <div class="blog-view-toggle">
+            <button class="blog-view-toggle__btn" title="Visualização em cards">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              Cards
+            </button>
+            <button class="blog-view-toggle__btn active" title="Visualização em lista">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              Lista
+            </button>
+          </div>
+          <button class="btn btn-primary btn-sm">+ Novo Post</button>
+        </div>
+      </div>
+      <div class="data-table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th class="col-check"><input type="checkbox"></th>
+              <th style="min-width:52px"></th>
+              <th class="sortable sort-asc" style="min-width:220px">Título</th>
+              <th>Autor</th>
+              <th>Categoria</th>
+              <th>Status</th>
+              <th class="sortable">Data</th>
+              <th style="text-align:right">Views</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-check"><input type="checkbox"></td>
+              <td><div class="post-thumb--placeholder"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color:var(--color-text-disabled)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></td>
+              <td>
+                <div class="blog-post-info">
+                  <div class="blog-post-info__title">Operação Bravo: Relato Tático do Exercício de CQB</div>
+                  <div class="blog-post-info__excerpt">Doze operadores participaram do exercício noturno...</div>
+                </div>
+              </td>
+              <td><div style="display:flex;align-items:center;gap:var(--space-2)"><div class="avatar avatar--xs avatar--gold">A</div><span style="font-size:var(--text-xs)">Anderson</span></div></td>
+              <td><span class="blog-tag blog-tag--ops" style="font-size:10px">Operações</span></td>
+              <td><span class="post-status post-status--published">Publicado</span></td>
+              <td><span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">12/06/26</span></td>
+              <td style="text-align:right;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-secondary)">842</td>
+              <td><button class="app-bar__icon-btn" style="width:28px;height:28px"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button></td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox"></td>
+              <td><div class="post-thumb--placeholder"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color:var(--color-text-disabled)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></td>
+              <td>
+                <div class="blog-post-info">
+                  <div class="blog-post-info__title">Como Montar seu Kit de Combate para Jogar com Eficiência</div>
+                  <div class="blog-post-info__excerpt">Guia completo sobre seleção de equipamentos...</div>
+                </div>
+              </td>
+              <td><div style="display:flex;align-items:center;gap:var(--space-2)"><div class="avatar avatar--xs" style="border-color:var(--color-text-copper)">R</div><span style="font-size:var(--text-xs)">Raphael</span></div></td>
+              <td><span class="blog-tag blog-tag--tut" style="font-size:10px">Tutorial</span></td>
+              <td><span class="post-status post-status--published">Publicado</span></td>
+              <td><span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">05/06/26</span></td>
+              <td style="text-align:right;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-secondary)">621</td>
+              <td><button class="app-bar__icon-btn" style="width:28px;height:28px"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button></td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox"></td>
+              <td><div class="post-thumb--placeholder"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color:var(--color-text-disabled)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></td>
+              <td>
+                <div class="blog-post-info">
+                  <div class="blog-post-info__title">Fotografia de Airsoft: Como Registrar a Ação em Campo</div>
+                  <div class="blog-post-info__excerpt">Rascunho em andamento — aguardando revisão...</div>
+                </div>
+              </td>
+              <td><div style="display:flex;align-items:center;gap:var(--space-2)"><div class="avatar avatar--xs avatar--green">A</div><span style="font-size:var(--text-xs)">Antônio</span></div></td>
+              <td><span class="blog-tag blog-tag--news" style="font-size:10px">Conteúdo</span></td>
+              <td><span class="post-status post-status--draft">Rascunho</span></td>
+              <td><span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">—</span></td>
+              <td style="text-align:right;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted)">—</td>
+              <td><button class="app-bar__icon-btn" style="width:28px;height:28px"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button></td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox"></td>
+              <td><div class="post-thumb--placeholder"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color:var(--color-text-disabled)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div></td>
+              <td>
+                <div class="blog-post-info">
+                  <div class="blog-post-info__title">TF-81 no Mega Event Serra Verde 2026 — Resultados</div>
+                  <div class="blog-post-info__excerpt">Agendado para publicação automática na sexta-feira...</div>
+                </div>
+              </td>
+              <td><div style="display:flex;align-items:center;gap:var(--space-2)"><div class="avatar avatar--xs avatar--gold">A</div><span style="font-size:var(--text-xs)">Anderson</span></div></td>
+              <td><span class="blog-tag blog-tag--news" style="font-size:10px">Evento</span></td>
+              <td><span class="post-status post-status--scheduled">Agendado</span></td>
+              <td><span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-muted)">20/06/26</span></td>
+              <td style="text-align:right;font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted)">—</td>
+              <td><button class="app-bar__icon-btn" style="width:28px;height:28px"><svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="data-table-footer">
+        <span>Mostrando 4 de 24 posts</span>
+        <div class="data-table-pager">
+          <button disabled>‹</button><button class="active">1</button><button>2</button><button>3</button><button>›</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARDS VIEW — modo alternativo de exibição dos posts -->
+    <div class="data-table-wrap" style="margin-bottom:var(--space-5)">
+      <div class="data-table-header">
+        <div>
+          <div class="data-table-title">Gerenciar Posts</div>
+          <div class="data-table-count">24 posts</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-2);flex-wrap:wrap">
+          <span class="chip active">Todos</span>
+          <span class="chip">Publicados</span>
+          <span class="chip">Rascunhos</span>
+          <div class="blog-view-toggle">
+            <button class="blog-view-toggle__btn active" title="Cards">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+              Cards
+            </button>
+            <button class="blog-view-toggle__btn" title="Lista">
+              <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              Lista
+            </button>
+          </div>
+          <button class="btn btn-primary btn-sm">+ Novo Post</button>
+        </div>
+      </div>
+      <div class="blog-posts-cards">
+
+        <!-- Card: publicado -->
+        <div class="blog-post-card">
+          <div class="blog-post-card__cover" style="background:linear-gradient(135deg,#1A1A0A,#2A2010)">
+            <div class="blog-post-card__status"><span class="post-status post-status--published">Publicado</span></div>
+          </div>
+          <div class="blog-post-card__body">
+            <div class="blog-post-card__title">Operação Bravo: Relato Tático do Exercício de CQB no Campo ALFA</div>
+            <div class="blog-post-card__meta">
+              <div style="display:flex;align-items:center;gap:var(--space-1-5)"><div class="avatar avatar--xs avatar--gold">A</div>Anderson</div>
+              <span>·</span><span>12/06/26</span><span>·</span><span>842 views</span>
+            </div>
+          </div>
+          <div class="blog-post-card__footer">
+            <span class="blog-tag blog-tag--ops" style="font-size:9px">Operações</span>
+            <button class="app-bar__icon-btn" style="width:26px;height:26px"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+          </div>
+        </div>
+
+        <!-- Card: publicado -->
+        <div class="blog-post-card">
+          <div class="blog-post-card__cover" style="background:linear-gradient(135deg,#0A1A0D,#102010)">
+            <div class="blog-post-card__status"><span class="post-status post-status--published">Publicado</span></div>
+          </div>
+          <div class="blog-post-card__body">
+            <div class="blog-post-card__title">Como Montar seu Kit de Combate para Jogar com Eficiência</div>
+            <div class="blog-post-card__meta">
+              <div style="display:flex;align-items:center;gap:var(--space-1-5)"><div class="avatar avatar--xs" style="border-color:var(--color-text-copper)">R</div>Raphael</div>
+              <span>·</span><span>05/06/26</span><span>·</span><span>621 views</span>
+            </div>
+          </div>
+          <div class="blog-post-card__footer">
+            <span class="blog-tag blog-tag--tut" style="font-size:9px">Tutorial</span>
+            <button class="app-bar__icon-btn" style="width:26px;height:26px"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+          </div>
+        </div>
+
+        <!-- Card: rascunho -->
+        <div class="blog-post-card">
+          <div class="blog-post-card__cover" style="background:linear-gradient(135deg,#0E0E12,#18181E)">
+            <div class="blog-post-card__status"><span class="post-status post-status--draft">Rascunho</span></div>
+          </div>
+          <div class="blog-post-card__body">
+            <div class="blog-post-card__title">Fotografia de Airsoft: Como Registrar a Ação em Campo</div>
+            <div class="blog-post-card__meta">
+              <div style="display:flex;align-items:center;gap:var(--space-1-5)"><div class="avatar avatar--xs avatar--green">A</div>Antônio</div>
+              <span>·</span><span>Em edição</span>
+            </div>
+          </div>
+          <div class="blog-post-card__footer">
+            <span class="blog-tag blog-tag--news" style="font-size:9px">Conteúdo</span>
+            <button class="app-bar__icon-btn" style="width:26px;height:26px"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+          </div>
+        </div>
+
+        <!-- Card: agendado -->
+        <div class="blog-post-card">
+          <div class="blog-post-card__cover" style="background:linear-gradient(135deg,#0A0E1A,#10141E)">
+            <div class="blog-post-card__status"><span class="post-status post-status--scheduled">Agendado</span></div>
+          </div>
+          <div class="blog-post-card__body">
+            <div class="blog-post-card__title">TF-81 no Mega Event Serra Verde 2026 — Resultados</div>
+            <div class="blog-post-card__meta">
+              <div style="display:flex;align-items:center;gap:var(--space-1-5)"><div class="avatar avatar--xs avatar--gold">A</div>Anderson</div>
+              <span>·</span><span>20/06/26</span>
+            </div>
+          </div>
+          <div class="blog-post-card__footer">
+            <span class="blog-tag blog-tag--news" style="font-size:9px">Evento</span>
+            <button class="app-bar__icon-btn" style="width:26px;height:26px"><svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="12" cy="19" r="1.5"/></svg></button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Editor layout -->
+    <div class="ds-preview" style="padding:var(--space-5)">
+      <span class="ds-preview-label">EDITOR DE POST</span>
+      <div class="blog-editor" style="margin-top:var(--space-4)">
+        <!-- Main -->
+        <div class="blog-editor__main">
+          <div>
+            <div class="editor-field-label">// Título do Post</div>
+            <textarea class="editor-title-input" rows="2" placeholder="TÍTULO DO POST EM MAIÚSCULAS AQUI">RELATO TÁTICO: OPERAÇÃO BRAVO NO CAMPO ALFA</textarea>
+          </div>
+          <div class="editor-slug">
+            <span>tf81.com/blog/</span>
+            <input type="text" value="relato-tatico-operacao-bravo-campo-alfa">
+          </div>
+          <div>
+            <div class="editor-toolbar">
+              <button class="editor-toolbar__btn active" title="Negrito"><strong>B</strong></button>
+              <button class="editor-toolbar__btn" title="Itálico"><em>I</em></button>
+              <button class="editor-toolbar__btn" title="Sublinhado"><u>U</u></button>
+              <div class="editor-toolbar__sep"></div>
+              <button class="editor-toolbar__btn" title="H1">H1</button>
+              <button class="editor-toolbar__btn" title="H2">H2</button>
+              <button class="editor-toolbar__btn" title="H3">H3</button>
+              <div class="editor-toolbar__sep"></div>
+              <button class="editor-toolbar__btn" title="Lista">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+              </button>
+              <button class="editor-toolbar__btn" title="Link">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+              </button>
+              <button class="editor-toolbar__btn" title="Imagem">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+              </button>
+              <div class="editor-toolbar__sep"></div>
+              <button class="editor-toolbar__btn" title="Código">
+                <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </button>
+            </div>
+            <textarea class="editor-content" rows="6" placeholder="Escreva o conteúdo do post aqui...">Doze operadores da Task Force 81 participaram do exercício noturno de CQB realizado no Campo ALFA no dia 10 de junho de 2026.
+
+O objetivo principal era treinar comunicação silenciosa e supressão de alvos múltiplos em ambiente de baixa visibilidade, simulando condições reais de infiltração noturna...</textarea>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="blog-editor__sidebar">
+          <!-- Cover -->
+          <div class="editor-panel">
+            <div class="editor-panel__header">Capa do Post</div>
+            <div class="editor-panel__body">
+              <div class="cover-dropzone">
+                <svg class="cover-dropzone__icon" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span class="cover-dropzone__label">Clique ou arraste a foto de capa</span>
+                <span class="cover-dropzone__sub">JPG · PNG · WEBP · 2MB</span>
+                <input type="file" accept="image/*" tabindex="-1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Publish -->
+          <div class="editor-panel">
+            <div class="editor-panel__header">Publicação</div>
+            <div class="editor-panel__body">
+              <div class="editor-publish">
+                <div class="editor-publish__row">
+                  <span>Status</span>
+                  <span class="post-status post-status--draft">Rascunho</span>
+                </div>
+                <div class="editor-publish__row">
+                  <span>Visibilidade</span>
+                  <strong>Pública</strong>
+                </div>
+                <div class="editor-publish__row">
+                  <span>Publicar</span>
+                  <strong>Imediatamente</strong>
+                </div>
+              </div>
+              <div style="display:flex;gap:var(--space-2);margin-top:var(--space-3)">
+                <button class="btn btn-ghost btn-sm" style="flex:1">Salvar</button>
+                <button class="btn btn-primary btn-sm" style="flex:1">Publicar</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category & Tags -->
+          <div class="editor-panel">
+            <div class="editor-panel__header">Categorias e Tags</div>
+            <div class="editor-panel__body">
+              <div class="form-group">
+                <label class="form-label">Categoria</label>
+                <select class="form-select"><option>Operações</option><option>Tutorial</option><option>Notícias</option><option>Eventos</option><option>Equipamentos</option></select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Tags</label>
+                <div class="tag-input-wrap">
+                  <span class="blog-tag blog-tag--ops">CQB</span>
+                  <span class="blog-tag blog-tag--ops">Treino</span>
+                  <input type="text" placeholder="Adicionar tag...">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Álbuns de Galeria (múltiplos) -->
+          <div class="editor-panel">
+            <div class="editor-panel__header">
+              Álbuns de Galeria
+              <button class="btn btn-ghost btn-xs" style="margin-left:auto;font-size:10px">+ Vincular</button>
+            </div>
+            <div class="editor-panel__body" style="padding:0">
+              <!-- Lista de álbuns vinculados -->
+              <div class="editor-albums-list">
+                <div class="editor-album-linked">
+                  <div class="editor-album-linked__thumb" style="background:linear-gradient(135deg,#1A1A0A,#2A2010)"></div>
+                  <div class="editor-album-linked__info">
+                    <div class="editor-album-linked__name">Operação Bravo</div>
+                    <div class="editor-album-linked__count">📷 24 fotos</div>
+                  </div>
+                  <button class="editor-album-linked__unlink" title="Desvincular">
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
+                </div>
+                <div class="editor-album-linked">
+                  <div class="editor-album-linked__thumb" style="background:linear-gradient(135deg,#0A1A0D,#102010)"></div>
+                  <div class="editor-album-linked__info">
+                    <div class="editor-album-linked__name">Serra Verde 2026</div>
+                    <div class="editor-album-linked__count">📷 67 fotos</div>
+                  </div>
+                  <button class="editor-album-linked__unlink" title="Desvincular">
+                    <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                  </button>
+                </div>
+              </div>
+              <!-- Ações de vínculo -->
+              <div style="padding:var(--space-3) var(--space-4);display:flex;flex-direction:column;gap:var(--space-2)">
+                <button class="btn btn-ghost btn-sm" style="justify-content:center">+ Vincular álbum existente</button>
+                <button class="btn btn-ghost btn-sm" style="justify-content:center">+ Criar novo álbum</button>
+              </div>
+              <!-- Estado vazio (referência) -->
+              <details style="border-top:1px solid var(--color-border-subtle)">
+                <summary style="font-family:var(--font-tactical);font-size:var(--text-2xs);letter-spacing:var(--tracking-wider);text-transform:uppercase;color:var(--color-text-muted);cursor:pointer;list-style:none;padding:var(--space-2-5) var(--space-4)">▸ Estado sem álbuns</summary>
+                <div class="editor-album-empty">
+                  <svg class="editor-album-empty__icon" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <div class="editor-album-empty__hint">Nenhum álbum vinculado. Use os botões acima para associar.</div>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     GALERIA — SEÇÃO PÚBLICA
+     ══════════════════════════════════════════════════════════ -->
+<section id="ds-gallery-public" class="ds-section" data-section style="max-width:none;padding:0;border-bottom:none;border-top:1px solid var(--color-border-subtle)">
+
+  <div style="padding:var(--space-10) var(--space-10) 0;max-width:1200px">
+    <div class="ds-label">// 12 — GALERIA PÚBLICA</div>
+    <h2 class="ds-title">Galeria — Site de Apresentação</h2>
+    <p class="ds-desc">Galeria organizada por álbuns. Cards com rotação automática das fotos de capa. Ao clicar, abre o visualizador carrossel com navegação e tira de miniaturas.</p>
+  </div>
+
+  <div style="padding:var(--space-6) var(--space-10) var(--space-10);max-width:1400px">
+
+    <!-- Gallery section header -->
+    <div class="gallery-section-hd">
+      <div>
+        <div class="gallery-section-hd__label">// Momentos em Campo</div>
+        <div class="gallery-section-hd__title">Galeria de Eventos</div>
+        <div class="gallery-section-hd__desc">Registros fotográficos de treinos, operações externas e eventos do time.</div>
+      </div>
+      <a href="#" class="gallery-section-hd__link">Ver todas as fotos →</a>
+    </div>
+
+    <!-- Filters -->
+    <div class="gallery-filter">
+      <button class="gallery-filter__btn active">Todos <span class="gallery-filter__count">48</span></button>
+      <button class="gallery-filter__btn">Treinos <span class="gallery-filter__count">22</span></button>
+      <button class="gallery-filter__btn">Operações <span class="gallery-filter__count">12</span></button>
+      <button class="gallery-filter__btn">Eventos Externos <span class="gallery-filter__count">10</span></button>
+      <button class="gallery-filter__btn">Bastidores <span class="gallery-filter__count">4</span></button>
+    </div>
+
+    <!-- Album grid — fotos da capa rotacionando automaticamente -->
+    <div class="album-grid" style="margin-bottom:var(--space-6)">
+
+      <!-- Álbum com 3 fotos: slides rotativos -->
+      <a href="#" class="album-card album-card--stack">
+        <div class="album-card__slides">
+          <div class="album-card__slide" style="background:linear-gradient(135deg,#1A1A0A,#2A2010)"></div>
+          <div class="album-card__slide" style="background:linear-gradient(135deg,#0A1A0D,#1A2010)"></div>
+          <div class="album-card__slide" style="background:linear-gradient(135deg,#0A0E1A,#1A1A0A)"></div>
+        </div>
+        <div class="album-card__overlay"></div>
+        <div class="album-card__body">
+          <div class="album-card__name">Operação Bravo</div>
+          <div class="album-card__meta">Jun 2026 <span class="album-card__count">📷 24</span></div>
+        </div>
+      </a>
+
+      <!-- Álbum com 3 fotos -->
+      <a href="#" class="album-card">
+        <div class="album-card__slides">
+          <div class="album-card__slide" style="background:linear-gradient(135deg,#0A1A0D,#102010)"></div>
+          <div class="album-card__slide" style="background:linear-gradient(135deg,#14100A,#201808)"></div>
+          <div class="album-card__slide" style="background:linear-gradient(135deg,#1A1A0A,#202008)"></div>
+        </div>
+        <div class="album-card__overlay"></div>
+        <div class="album-card__body">
+          <div class="album-card__name">Serra Verde 2026</div>
+          <div class="album-card__meta">Mai 2026 <span class="album-card__count">📷 67</span></div>
+        </div>
+      </a>
+
+      <!-- Álbum com 2 fotos -->
+      <a href="#" class="album-card album-card--stack album-card--two">
+        <div class="album-card__slides">
+          <div class="album-card__slide" style="background:linear-gradient(135deg,#14100A,#201808)"></div>
+          <div class="album-card__slide" style="background:linear-gradient(135deg,#1A1400,#24180A)"></div>
+        </div>
+        <div class="album-card__overlay"></div>
+        <div class="album-card__body">
+          <div class="album-card__name">Treino CQB Campo ALFA</div>
+          <div class="album-card__meta">Abr 2026 <span class="album-card__count">📷 18</span></div>
+        </div>
+      </a>
+
+      <!-- Álbum com 1 foto (sem animação) -->
+      <a href="#" class="album-card album-card--single">
+        <div class="album-card__slides">
+          <div class="album-card__slide" style="background:linear-gradient(135deg,#0A0E1A,#141828)"></div>
+        </div>
+        <div class="album-card__overlay"></div>
+        <div class="album-card__body">
+          <div class="album-card__name">Aniversário TF-81</div>
+          <div class="album-card__meta">Jan 2026 <span class="album-card__count">📷 31</span></div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Album viewer — modal carrossel (demo inline) -->
+    <div style="margin-bottom:var(--space-6)">
+      <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);letter-spacing:var(--tracking-military);text-transform:uppercase;margin-bottom:var(--space-3)">// Visualizador de álbum — abre ao clicar no álbum</div>
+      <div class="album-viewer album-viewer--inline">
+        <!-- Header -->
+        <div class="album-viewer__header">
+          <div class="album-viewer__title">Operação Bravo</div>
+          <div class="album-viewer__counter">5 / 24</div>
+          <button class="album-viewer__close" title="Fechar">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+
+        <!-- Stage -->
+        <div class="album-viewer__stage">
+          <!-- Prev nav -->
+          <button class="album-viewer__nav album-viewer__nav--prev">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+
+          <!-- Current photo placeholder -->
+          <div class="album-viewer__slide-bg" style="background:linear-gradient(135deg,#1A1A0A 0%,#2A2010 35%,#14100A 65%,#0A0E14 100%)"></div>
+
+          <!-- Caption -->
+          <div class="album-viewer__caption">Assalto ao Objetivo · Campo ALFA · 10 Jun 2026</div>
+
+          <!-- Next nav -->
+          <button class="album-viewer__nav album-viewer__nav--next">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+
+        <!-- Thumbnail strip -->
+        <div class="album-viewer__strip">
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#1A1A0A,#2A2010)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#0A1A0D,#102010)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#0A0E1A,#141820)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#14100A,#201808)"></div></div>
+          <div class="album-viewer__thumb active"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#1A1A0A,#2A2010)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#0D1A0D,#101E10)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#1A1408,#24180A)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#0A1414,#0E1A1A)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#140A0A,#201414)"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     GALERIA — ADMIN PANEL
+     ══════════════════════════════════════════════════════════ -->
+<section id="ds-gallery-admin" class="ds-section" data-section style="max-width:none;padding:0;border-top:1px solid var(--color-border-subtle)">
+
+  <div style="padding:var(--space-10) var(--space-10) 0;max-width:1200px">
+    <div class="ds-label">// 13 — GALERIA ADMIN</div>
+    <h2 class="ds-title">Galeria — Painel de Gerenciamento</h2>
+    <p class="ds-desc">Painel interno para upload, organização em álbuns, edição de metadados e publicação de fotos dos eventos.</p>
+  </div>
+
+  <div data-area="app" style="padding:var(--space-6) var(--space-10) var(--space-10)">
+
+    <!-- ① ÁLBUNS — lista com preview rotativo -->
+    <div class="ds-preview" style="padding:var(--space-5);margin-bottom:var(--space-5)">
+      <span class="ds-preview-label">ÁLBUNS DA GALERIA</span>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--space-4);margin-top:var(--space-3)">
+
+        <!-- Álbum com slides (3 fotos) -->
+        <div class="album-manager-card">
+          <div class="album-manager-card__cover" style="position:relative;overflow:hidden">
+            <div class="album-card__slides" style="position:absolute;inset:0">
+              <div class="album-card__slide" style="background:linear-gradient(135deg,#1A1A0A,#2A2010)"></div>
+              <div class="album-card__slide" style="background:linear-gradient(135deg,#0A1A0D,#102010)"></div>
+              <div class="album-card__slide" style="background:linear-gradient(135deg,#14100A,#201808)"></div>
+            </div>
+          </div>
+          <div class="album-manager-card__body">
+            <div class="album-manager-card__name">Operação Bravo</div>
+            <div class="album-manager-card__count">24 fotos · Jun 2026</div>
+          </div>
+          <div class="album-manager-card__footer">
+            <button class="btn btn-ghost btn-xs">Editar álbum</button>
+            <button class="btn btn-primary btn-xs">Abrir</button>
+          </div>
+        </div>
+
+        <!-- Álbum com slides (3 fotos) -->
+        <div class="album-manager-card">
+          <div class="album-manager-card__cover" style="position:relative;overflow:hidden">
+            <div class="album-card__slides" style="position:absolute;inset:0">
+              <div class="album-card__slide" style="background:linear-gradient(135deg,#0A1A0D,#0D1E10);animation-delay:0s;opacity:1"></div>
+              <div class="album-card__slide" style="background:linear-gradient(135deg,#14100A,#1E1808);animation-delay:5s"></div>
+              <div class="album-card__slide" style="background:linear-gradient(135deg,#0A0E1A,#14141E);animation-delay:10s"></div>
+            </div>
+          </div>
+          <div class="album-manager-card__body">
+            <div class="album-manager-card__name">Serra Verde 2026</div>
+            <div class="album-manager-card__count">67 fotos · Mai 2026</div>
+          </div>
+          <div class="album-manager-card__footer">
+            <button class="btn btn-ghost btn-xs">Editar álbum</button>
+            <button class="btn btn-primary btn-xs">Abrir</button>
+          </div>
+        </div>
+
+        <!-- Álbum com 2 fotos -->
+        <div class="album-manager-card">
+          <div class="album-manager-card__cover" style="position:relative;overflow:hidden">
+            <div class="album-card__slides" style="position:absolute;inset:0">
+              <div class="album-card__slide album-card--two" style="background:linear-gradient(135deg,#14100A,#201808);animation-delay:0s;opacity:1"></div>
+              <div class="album-card__slide album-card--two" style="background:linear-gradient(135deg,#1A1400,#241808);animation-delay:5s"></div>
+            </div>
+          </div>
+          <div class="album-manager-card__body">
+            <div class="album-manager-card__name">Treino CQB Campo ALFA</div>
+            <div class="album-manager-card__count">18 fotos · Abr 2026</div>
+          </div>
+          <div class="album-manager-card__footer">
+            <button class="btn btn-ghost btn-xs">Editar álbum</button>
+            <button class="btn btn-primary btn-xs">Abrir</button>
+          </div>
+        </div>
+
+        <!-- Novo álbum -->
+        <div class="album-manager-card album-manager-card--new">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" style="color:var(--color-text-disabled)"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span>Novo Álbum</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② EDITOR DE ÁLBUM — título + reordenação de fotos -->
+    <div class="ds-preview" style="padding:0;margin-bottom:var(--space-5);overflow:hidden">
+      <div style="padding:var(--space-3) var(--space-4) 0"><span class="ds-preview-label">EDITAR ÁLBUM</span></div>
+      <div class="album-editor" style="border:none;border-radius:0">
+
+        <!-- Topbar do editor -->
+        <div class="album-editor__topbar">
+          <button class="album-editor__back">
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+            Todos os álbuns
+          </button>
+          <div class="album-editor__title-wrap">
+            <input class="album-editor__title-input" value="Operação Bravo" type="text">
+            <button class="btn btn-primary btn-xs">Salvar título</button>
+          </div>
+          <div style="display:flex;gap:var(--space-2);flex-shrink:0">
+            <button class="btn btn-ghost btn-xs">Publicar álbum</button>
+            <button class="btn btn-ghost btn-xs" style="color:var(--color-status-danger);border-color:rgba(184,26,26,0.25)">Excluir</button>
+          </div>
+        </div>
+
+        <!-- Grade de fotos do álbum -->
+        <div class="album-editor__body">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-3)">
+            <div style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted)">24 fotos · Arraste para reordenar</div>
+            <div style="display:flex;gap:var(--space-2)">
+              <span class="chip active">Todas</span>
+              <span class="chip">Publicadas</span>
+              <span class="chip">Ocultas</span>
+            </div>
+          </div>
+          <div class="album-editor__grid">
+
+            <!-- Foto 1 — capa do álbum -->
+            <div class="album-editor__item">
+              <div class="album-editor__item-bg" style="background:linear-gradient(135deg,#1A1A0A,#2A2010)"></div>
+              <div class="album-editor__drag-handle"><svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg></div>
+              <div class="album-editor__item-overlay">
+                <button class="album-editor__item-btn album-editor__item-btn--remove" title="Remover do álbum"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+              </div>
+              <div class="album-editor__cover-badge">Capa</div>
+            </div>
+
+            <!-- Foto 2 -->
+            <div class="album-editor__item">
+              <div class="album-editor__item-bg" style="background:linear-gradient(135deg,#0A1A0D,#102010)"></div>
+              <div class="album-editor__drag-handle"><svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg></div>
+              <div class="album-editor__item-overlay">
+                <button class="album-editor__item-btn album-editor__item-btn--remove" title="Remover do álbum"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+              </div>
+            </div>
+
+            <!-- Foto 3 (dragging state) -->
+            <div class="album-editor__item dragging">
+              <div class="album-editor__item-bg" style="background:linear-gradient(135deg,#14100A,#201808)"></div>
+            </div>
+
+            <!-- Foto 4 (drag-over target) -->
+            <div class="album-editor__item drag-over">
+              <div class="album-editor__item-bg" style="background:linear-gradient(135deg,#0A0E1A,#10141E)"></div>
+              <div class="album-editor__drag-handle"><svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg></div>
+              <div class="album-editor__item-overlay">
+                <button class="album-editor__item-btn album-editor__item-btn--remove" title="Remover"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+              </div>
+            </div>
+
+            <!-- Fotos normais -->
+            <div class="album-editor__item"><div class="album-editor__item-bg" style="background:linear-gradient(135deg,#1A1408,#24180A)"></div><div class="album-editor__drag-handle"><svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg></div><div class="album-editor__item-overlay"><button class="album-editor__item-btn album-editor__item-btn--remove" title="Remover"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div></div>
+            <div class="album-editor__item"><div class="album-editor__item-bg" style="background:linear-gradient(135deg,#0D1A0D,#101E10)"></div><div class="album-editor__drag-handle"><svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg></div><div class="album-editor__item-overlay"><button class="album-editor__item-btn album-editor__item-btn--remove" title="Remover"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div></div>
+            <div class="album-editor__item"><div class="album-editor__item-bg" style="background:linear-gradient(135deg,#140A0A,#201414)"></div><div class="album-editor__drag-handle"><svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg></div><div class="album-editor__item-overlay"><button class="album-editor__item-btn album-editor__item-btn--remove" title="Remover"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div></div>
+            <div class="album-editor__item"><div class="album-editor__item-bg" style="background:linear-gradient(135deg,#0A1414,#0E1A1A)"></div><div class="album-editor__drag-handle"><svg width="10" height="10" fill="currentColor" viewBox="0 0 24 24"><circle cx="8" cy="6" r="2"/><circle cx="16" cy="6" r="2"/><circle cx="8" cy="12" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="8" cy="18" r="2"/><circle cx="16" cy="18" r="2"/></svg></div><div class="album-editor__item-overlay"><button class="album-editor__item-btn album-editor__item-btn--remove" title="Remover"><svg width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div></div>
+
+            <!-- Adicionar fotos -->
+            <div class="album-editor__add">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+              <span>Adicionar fotos</span>
+            </div>
+          </div>
+
+          <!-- Bulk actions (3 fotos selecionadas) -->
+          <div class="bulk-actions-bar visible" style="position:relative;transform:none;left:auto;bottom:auto;margin-top:var(--space-4);border-radius:var(--radius-full);width:auto;max-width:none">
+            <span class="bulk-actions-bar__count">3 fotos selecionadas</span>
+            <div class="bulk-actions-bar__sep"></div>
+            <button class="btn btn-ghost btn-sm">Definir como capa</button>
+            <button class="btn btn-ghost btn-sm">Mover para álbum</button>
+            <button class="btn btn-ghost btn-sm">Ocultar</button>
+            <div class="bulk-actions-bar__sep"></div>
+            <button class="btn btn-danger btn-sm">Remover do álbum</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ③ ALBUM VIEWER — visualizador carrossel (inline demo) -->
+    <div class="ds-preview" style="padding:0;margin-bottom:var(--space-5);overflow:hidden">
+      <div style="padding:var(--space-3) var(--space-4) 0"><span class="ds-preview-label">VISUALIZADOR DO ÁLBUM (MODAL CARROSSEL)</span></div>
+      <div class="album-viewer album-viewer--inline" style="border-radius:0;border-left:none;border-right:none">
+        <div class="album-viewer__header">
+          <div class="album-viewer__title">Operação Bravo</div>
+          <div class="album-viewer__counter">7 / 24</div>
+          <button class="album-viewer__close" title="Fechar">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div class="album-viewer__stage">
+          <button class="album-viewer__nav album-viewer__nav--prev">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <div class="album-viewer__slide-bg" style="background:linear-gradient(135deg,#0A1A0D 0%,#102010 40%,#0A1A08 100%)"></div>
+          <div class="album-viewer__caption">Posicionamento em cobertura · 10 Jun 2026</div>
+          <button class="album-viewer__nav album-viewer__nav--next">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="album-viewer__strip">
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#1A1A0A,#2A2010)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#14100A,#201808)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#0A0E1A,#10141E)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#1A1408,#24180A)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#140A0A,#201414)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#0A1414,#0E1A1A)"></div></div>
+          <div class="album-viewer__thumb active"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#0A1A0D,#102010)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#1A1A0A,#2A2010)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#14100A,#201808)"></div></div>
+          <div class="album-viewer__thumb"><div class="album-viewer__thumb-bg" style="background:linear-gradient(135deg,#0D1A0D,#101E10)"></div></div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
 
 </main><!-- /ds-main -->
 
