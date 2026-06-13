@@ -1205,3 +1205,38 @@
   letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   GALLERY LIGHTBOX — MODAL DE FOTO AMPLIADA (site público)
+   Reaproveita o .album-viewer dentro de um backdrop fixo.
+   ══════════════════════════════════════════════════════════════ */
+
+.gallery-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background: rgba(7, 7, 10, 0.88);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.gallery-lightbox.open {
+  display: flex;
+  animation: fadeIn 200ms ease-out both;
+}
+
+.gallery-lightbox .album-viewer {
+  width: 100%;
+  max-width: 960px;
+  max-height: calc(100svh - var(--space-8));
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .gallery-lightbox { padding: var(--space-2); }
+}

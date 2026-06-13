@@ -1,0 +1,363 @@
+/* ================================================================
+   TF-81 DESIGN SYSTEM — HERO / LANDING SECTION
+   ================================================================ */
+
+/* ══════════════════════════════════════════════════════════════
+   HERO — WRAPPER
+   ══════════════════════════════════════════════════════════════ */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BACKGROUND LAYERS
+   ══════════════════════════════════════════════════════════════ */
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(196,150,26,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(56,106,34,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 70% at 80% 20%, rgba(150,62,28,0.05) 0%, transparent 50%),
+    linear-gradient(180deg, var(--color-bg-canvas) 0%, var(--primitive-base-950) 100%);
+  z-index: -2;
+}
+
+.hero--with-image .hero__bg {
+  background-image:
+    linear-gradient(to bottom, rgba(7,7,10,0.72) 0%, rgba(7,7,10,0.60) 50%, rgba(7,7,10,0.88) 100%),
+    var(--hero-image, none);
+  background-size: cover;
+  background-position: center center;
+}
+
+/* Scanlines overlay */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero__overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0,0,0,0.03) 2px,
+    rgba(0,0,0,0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* Vignette */
+.hero__overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%);
+  pointer-events: none;
+}
+
+/* Watermark patch */
+.hero__watermark {
+  position: absolute;
+  right: -4%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(260px, 38vw, 580px);
+  height: clamp(260px, 38vw, 580px);
+  object-fit: contain;
+  opacity: 0.04;
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+  filter: grayscale(1);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   HERO — CONTENT
+   ══════════════════════════════════════════════════════════════ */
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-24) var(--space-8) var(--space-20);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-6);
+}
+
+@media (min-width: 1920px) {
+  .hero__content { max-width: 1480px; padding: var(--space-32) var(--space-16) var(--space-24); }
+}
+
+@media (max-width: 767px) {
+  .hero__content { padding: var(--space-16) var(--space-4) var(--space-16); gap: var(--space-5); }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   EYEBROW
+   ══════════════════════════════════════════════════════════════ */
+
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-military);
+  text-transform: uppercase;
+  color: var(--color-text-gold);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  animation: fadeIn var(--duration-500) var(--ease-out) 100ms both;
+}
+
+.hero__eyebrow::before,
+.hero__eyebrow::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--color-border-gold);
+  opacity: 0.5;
+}
+
+@media (max-width: 480px) {
+  .hero__eyebrow::before,
+  .hero__eyebrow::after { width: 20px; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   TITLE
+   ══════════════════════════════════════════════════════════════ */
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-none);
+  color: var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.hero__title-line {
+  display: block;
+  animation: slideInUp var(--duration-500) var(--ease-out) both;
+}
+
+.hero__title-line:nth-child(1) { animation-delay: 150ms; }
+.hero__title-line:nth-child(2) { animation-delay: 250ms; }
+.hero__title-line:nth-child(3) { animation-delay: 350ms; }
+
+.hero__title-highlight {
+  color: var(--color-text-gold);
+  text-shadow:
+    0 0 20px rgba(196,150,26,0.40),
+    0 0 60px rgba(196,150,26,0.20);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SUBTITLE
+   ══════════════════════════════════════════════════════════════ */
+
+.hero__subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(var(--text-base), 2vw, var(--text-md));
+  font-weight: var(--weight-regular);
+  color: var(--color-text-tertiary);
+  line-height: var(--leading-relaxed);
+  max-width: 560px;
+  animation: slideInUp var(--duration-500) var(--ease-out) 420ms both;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ACTIONS
+   ══════════════════════════════════════════════════════════════ */
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: slideInUp var(--duration-500) var(--ease-out) 520ms both;
+}
+
+@media (max-width: 480px) {
+  .hero__actions              { flex-direction: column; width: 100%; }
+  .hero__actions .btn         { width: 100%; justify-content: center; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   BADGE
+   ══════════════════════════════════════════════════════════════ */
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1-5) var(--space-4);
+  background: rgba(196,150,26,0.08);
+  border: 1px solid var(--color-border-gold);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-military);
+  text-transform: uppercase;
+  color: var(--color-text-gold);
+  animation: fadeIn var(--duration-500) var(--ease-out) 600ms both;
+}
+
+.hero__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-status-active);
+  flex-shrink: 0;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   STATS BAR
+   ══════════════════════════════════════════════════════════════ */
+
+.hero__stats {
+  display: flex;
+  align-items: stretch;
+  background: rgba(196,150,26,0.04);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  animation: slideInUp var(--duration-500) var(--ease-out) 620ms both;
+}
+
+@media (max-width: 480px) {
+  .hero__stats { width: 100%; }
+}
+
+.hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-5) var(--space-8);
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .hero__stat { flex: 1; padding: var(--space-4) var(--space-3); }
+}
+
+.hero__stat-value {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-xl), 3vw, var(--text-2xl));
+  font-weight: var(--weight-bold);
+  color: var(--color-text-gold);
+  line-height: var(--leading-none);
+  letter-spacing: var(--tracking-tight);
+}
+
+.hero__stat-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hero__stat-divider {
+  width: 1px;
+  background: var(--color-border-default);
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SCROLL HINT
+   ══════════════════════════════════════════════════════════════ */
+
+.hero__scroll-hint {
+  position: absolute;
+  bottom: var(--space-8);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-disabled);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  animation: fadeIn 1s ease-out 1.2s both;
+  white-space: nowrap;
+}
+
+.hero__scroll-arrow {
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   VARIANT — MINIMAL (páginas internas)
+   ══════════════════════════════════════════════════════════════ */
+
+.hero--minimal {
+  min-height: auto;
+}
+
+.hero--minimal .hero__content {
+  padding: var(--space-20) var(--space-8) var(--space-16);
+}
+
+.hero--minimal .hero__title {
+  font-size: clamp(2rem, 5vw, var(--text-3xl));
+}
+
+.hero--minimal .hero__scroll-hint {
+  display: none;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   LIGHT THEME
+   ══════════════════════════════════════════════════════════════ */
+
+[data-theme="light"] .hero__bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(154,112,0,0.06) 0%, transparent 60%),
+    linear-gradient(180deg, var(--color-bg-canvas) 0%, var(--color-bg-raised) 100%);
+}
+
+[data-theme="light"] .hero__title           { color: var(--color-text-primary); }
+[data-theme="light"] .hero__title-highlight { color: var(--color-text-gold); text-shadow: none; }
+[data-theme="light"] .hero__subtitle        { color: var(--color-text-tertiary); }
+[data-theme="light"] .hero__badge           { background: rgba(154,112,0,0.08); color: var(--color-text-gold); }
+[data-theme="light"] .hero__stat-value      { color: var(--color-text-gold); }
+[data-theme="light"] .hero__eyebrow         { color: var(--color-text-gold); }
+
+[data-theme="light"] .hero__overlay::before { display: none; }
+[data-theme="light"] .hero__overlay::after  { opacity: 0.3; }

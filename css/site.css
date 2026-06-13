@@ -1,0 +1,269 @@
+/* ================================================================
+   TF-81 SITE PÚBLICO — LAYOUT DE PÁGINA
+   Importa apenas tokens do design-system. Componentes vêm de
+   /design-system/css/. Aqui há somente layout e utilitários de página.
+   ================================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Compensação da navbar sticky (64px) para âncoras internas */
+[id] {
+  scroll-margin-top: 80px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ESTRUTURA DE PÁGINA
+   ══════════════════════════════════════════════════════════════ */
+
+.site-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  background: var(--color-bg-canvas);
+}
+
+.site-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.site-section {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-16) var(--space-6);
+}
+
+@media (max-width: 767px) {
+  .site-section { padding: var(--space-12) var(--space-4); }
+}
+
+.site-section--alt {
+  background: var(--color-bg-raised);
+}
+
+.site-section--dark {
+  background: var(--color-bg-canvas);
+}
+
+.site-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 1920px) {
+  .site-container { max-width: 1480px; }
+}
+
+.site-divider {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 1px;
+  border: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(196, 150, 26, 0.25) 50%,
+    transparent 100%
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════
+   CABEÇALHO GENÉRICO DE SEÇÃO DO SITE
+   ══════════════════════════════════════════════════════════════ */
+
+.site-section-hd {
+  margin-bottom: var(--space-8);
+}
+
+.site-section-hd__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  color: var(--color-text-gold);
+  letter-spacing: var(--tracking-military);
+  text-transform: uppercase;
+  margin-bottom: var(--space-2);
+}
+
+.site-section-hd__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, var(--text-3xl));
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-tight);
+  color: var(--color-text-primary);
+}
+
+.site-section-hd__sub {
+  font-size: var(--text-base);
+  color: var(--color-text-tertiary);
+  line-height: var(--leading-relaxed);
+  max-width: 640px;
+  margin-top: var(--space-3);
+}
+
+/* Rodapé de seção com CTA centralizado ("Ver mais") */
+.site-section-cta {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-10);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ANIMAÇÃO DE ENTRADA POR SCROLL
+   ══════════════════════════════════════════════════════════════ */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 400ms var(--ease-out), transform 400ms var(--ease-out);
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   ESTADOS DE CARREGAMENTO / ERRO DOS DADOS DINÂMICOS
+   ══════════════════════════════════════════════════════════════ */
+
+.site-data-loading,
+.site-data-error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-10);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  width: 100%;
+}
+
+.site-data-error { color: var(--color-status-danger); }
+
+.site-data-loading::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--color-border-default);
+  border-top-color: var(--color-text-gold);
+  border-radius: 50%;
+  animation: site-spin 800ms linear infinite;
+}
+
+@keyframes site-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PLAYLISTS DO YOUTUBE (componente específico do site)
+   ══════════════════════════════════════════════════════════════ */
+
+.yt-playlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-4);
+}
+
+.yt-playlist-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-raised);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.yt-playlist-card:hover {
+  border-color: var(--color-border-gold);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.yt-playlist-card__cover {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: var(--color-bg-base);
+}
+
+.yt-playlist-card__cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7, 7, 10, 0.65), transparent 60%);
+}
+
+.yt-playlist-card__count {
+  position: absolute;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1-5);
+  padding: 3px var(--space-2);
+  background: rgba(7, 7, 10, 0.80);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: #F0F0F8;
+  letter-spacing: var(--tracking-wide);
+}
+
+.yt-playlist-card__body {
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.yt-playlist-card__title {
+  font-family: var(--font-tactical);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+}
+
+.yt-playlist-card__desc {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  line-height: var(--leading-relaxed);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   PÁGINA 404
+   ══════════════════════════════════════════════════════════════ */
+
+.error-404__code {
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 22vw, 14rem);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-none);
+  color: var(--color-text-gold);
+  text-shadow:
+    0 0 30px rgba(196, 150, 26, 0.35),
+    0 0 90px rgba(196, 150, 26, 0.15);
+  letter-spacing: var(--tracking-tight);
+}

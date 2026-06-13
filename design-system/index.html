@@ -21,6 +21,11 @@
   <link rel="stylesheet" href="css/gallery.css">
   <link rel="stylesheet" href="css/crew.css">
   <link rel="stylesheet" href="css/media.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/about.css">
+  <link rel="stylesheet" href="css/recruit.css">
 
   <style>
     /* ── DS PAGE LAYOUT ──────────────────────────────────────── */
@@ -606,6 +611,13 @@
     <div class="ds-nav-section">Redes Sociais</div>
     <a href="#ds-social-admin"     class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Sociais — Admin</span></a>
     <a href="#ds-social-public"    class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Sociais — Público</span></a>
+
+    <div class="ds-nav-section">Site Público</div>
+    <a href="#ds-navbar"           class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Navbar</span></a>
+    <a href="#ds-hero-public"      class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Hero / Landing</span></a>
+    <a href="#ds-about"            class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Sobre a TF-81</span></a>
+    <a href="#ds-recruit"          class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Recrutamento</span></a>
+    <a href="#ds-footer"           class="ds-nav-link"><span class="ds-nav-dot"></span><span class="ds-nav-label">Footer</span></a>
   </nav>
 
   <div class="ds-sidebar-footer">TF-81 © 2026</div>
@@ -4428,6 +4440,557 @@ O objetivo principal era treinar comunicação silenciosa e supressão de alvos 
       </div>
     </div>
 
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════
+     TAREFA 7 — NAVBAR / HEADER DO SITE PÚBLICO
+     ══════════════════════════════════════════════════════════════ -->
+<section id="ds-navbar" class="ds-section" data-section style="max-width:none;padding:0;border-top:1px solid var(--color-border-subtle)">
+  <div style="padding:var(--space-8) var(--space-10) var(--space-6);max-width:1200px;">
+    <p class="ds-section-label">Site Público — T7</p>
+    <h2 class="ds-section-title">Navbar / Header</h2>
+    <p class="ds-section-desc">Header horizontal sticky do site público. Três estados: padrão, scrolled e mobile (drawer).</p>
+  </div>
+
+  <!-- Estado 1: Normal -->
+  <div style="border-top:1px solid var(--color-border-subtle);background:var(--color-bg-canvas);">
+    <div style="padding:var(--space-3) var(--space-10);background:var(--color-bg-raised);border-bottom:1px solid var(--color-border-subtle);">
+      <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);letter-spacing:.1em;text-transform:uppercase;">Estado: Normal (desktop)</span>
+    </div>
+    <nav class="site-nav" style="position:relative;top:auto;">
+      <div class="site-nav__inner">
+        <a href="#" class="site-nav__brand">
+          <img src="../assets/img/Patch de Apresentação TF81 - vFinal.png" alt="TF-81" class="site-nav__brand-logo">
+          <div class="site-nav__brand-text">
+            <span class="site-nav__brand-name">Task Force 81</span>
+            <span class="site-nav__brand-tagline">// Operações Táticas</span>
+          </div>
+        </a>
+        <div class="site-nav__links">
+          <a href="#" class="site-nav__link site-nav__link--active">Início</a>
+          <a href="#" class="site-nav__link">Efetivo</a>
+          <a href="#" class="site-nav__link">Blog</a>
+          <a href="#" class="site-nav__link">Galeria</a>
+          <a href="#" class="site-nav__link">Mídia</a>
+          <a href="#" class="site-nav__link">Redes Sociais</a>
+          <a href="#" class="site-nav__link">Recrutamento</a>
+        </div>
+        <div class="site-nav__actions">
+          <a href="#" class="btn btn-ghost btn-sm">Área do Operador</a>
+          <a href="#" class="btn btn-primary btn-sm">Quero me alistar</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Estado 2: Scrolled -->
+  <div style="border-top:1px solid var(--color-border-subtle);background:var(--color-bg-canvas);">
+    <div style="padding:var(--space-3) var(--space-10);background:var(--color-bg-raised);border-bottom:1px solid var(--color-border-subtle);">
+      <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);letter-spacing:.1em;text-transform:uppercase;">Estado: Scrolled (borda dourada ativa)</span>
+    </div>
+    <nav class="site-nav site-nav--scrolled" style="position:relative;top:auto;">
+      <div class="site-nav__inner">
+        <a href="#" class="site-nav__brand">
+          <img src="../assets/img/Patch de Apresentação TF81 - vFinal.png" alt="TF-81" class="site-nav__brand-logo">
+          <div class="site-nav__brand-text">
+            <span class="site-nav__brand-name">Task Force 81</span>
+            <span class="site-nav__brand-tagline">// Operações Táticas</span>
+          </div>
+        </a>
+        <div class="site-nav__links">
+          <a href="#" class="site-nav__link">Início</a>
+          <a href="#" class="site-nav__link site-nav__link--active">Efetivo</a>
+          <a href="#" class="site-nav__link">Blog</a>
+          <a href="#" class="site-nav__link">Galeria</a>
+          <a href="#" class="site-nav__link">Mídia</a>
+          <a href="#" class="site-nav__link">Redes Sociais</a>
+          <a href="#" class="site-nav__link">Recrutamento</a>
+        </div>
+        <div class="site-nav__actions">
+          <a href="#" class="btn btn-ghost btn-sm">Área do Operador</a>
+          <a href="#" class="btn btn-primary btn-sm">Quero me alistar</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Estado 3: Mobile simulation -->
+  <div style="border-top:1px solid var(--color-border-subtle);background:var(--color-bg-canvas);padding-bottom:var(--space-8);">
+    <div style="padding:var(--space-3) var(--space-10);background:var(--color-bg-raised);border-bottom:1px solid var(--color-border-subtle);margin-bottom:var(--space-6);">
+      <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);letter-spacing:.1em;text-transform:uppercase;">Estado: Mobile (320px — drawer fechado/aberto)</span>
+    </div>
+    <div style="display:flex;gap:var(--space-6);align-items:flex-start;flex-wrap:wrap;padding:0 var(--space-10);">
+
+      <!-- Mobile navbar apenas -->
+      <div style="border:1px solid var(--color-border-default);border-radius:var(--radius-lg);overflow:hidden;width:320px;flex-shrink:0;">
+        <nav class="site-nav" style="position:relative;top:auto;height:56px;">
+          <div class="site-nav__inner" style="padding:0 var(--space-4);">
+            <a href="#" class="site-nav__brand">
+              <img src="../assets/img/Patch de Apresentação TF81 - vFinal.png" alt="TF-81" class="site-nav__brand-logo" style="width:28px;height:28px;">
+              <div class="site-nav__brand-text">
+                <span class="site-nav__brand-name" style="font-size:var(--text-sm);">Task Force 81</span>
+              </div>
+            </a>
+            <button class="site-nav__hamburger" style="display:flex;" aria-label="Menu">
+              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+          </div>
+        </nav>
+      </div>
+
+      <!-- Drawer simulado -->
+      <div style="border:1px solid var(--color-border-default);border-radius:var(--radius-lg);overflow:hidden;width:280px;flex-shrink:0;">
+        <div class="site-nav__drawer" style="position:relative;transform:none;box-shadow:none;border:none;">
+          <div class="site-nav__drawer-header">
+            <a href="#" class="site-nav__brand">
+              <img src="../assets/img/Patch de Apresentação TF81 - vFinal.png" alt="TF-81" class="site-nav__brand-logo" style="width:28px;height:28px;">
+              <span class="site-nav__brand-name" style="font-size:var(--text-sm);">TF-81</span>
+            </a>
+            <button class="site-nav__drawer-close" aria-label="Fechar">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+          </div>
+          <div class="site-nav__drawer-links">
+            <a href="#" class="site-nav__drawer-link site-nav__drawer-link--active">Início</a>
+            <a href="#" class="site-nav__drawer-link">Efetivo</a>
+            <a href="#" class="site-nav__drawer-link">Blog</a>
+            <a href="#" class="site-nav__drawer-link">Galeria</a>
+            <a href="#" class="site-nav__drawer-link">Mídia</a>
+            <a href="#" class="site-nav__drawer-link">Redes Sociais</a>
+            <a href="#" class="site-nav__drawer-link">Recrutamento</a>
+          </div>
+          <div class="site-nav__drawer-footer">
+            <a href="#" class="btn btn-ghost btn-sm" style="width:100%;justify-content:center;">Área do Operador</a>
+            <a href="#" class="btn btn-primary btn-sm" style="width:100%;justify-content:center;">Quero me alistar</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     TAREFA 9 — HERO / LANDING SECTION
+     ══════════════════════════════════════════════════════════════ -->
+<section id="ds-hero-public" class="ds-section" data-section style="max-width:none;padding:0;border-top:1px solid var(--color-border-subtle)">
+  <div style="padding:var(--space-8) var(--space-10) var(--space-4);max-width:1200px;">
+    <p class="ds-section-label">Site Público — T9</p>
+    <h2 class="ds-section-title">Hero / Landing Section</h2>
+    <p class="ds-section-desc">Seção inicial do site com impacto visual máximo. Variante padrão (fullscreen) e minimal (páginas internas).</p>
+  </div>
+
+  <!-- Hero padrão -->
+  <div style="border-top:1px solid var(--color-border-subtle);">
+    <div style="padding:var(--space-3) var(--space-10);background:var(--color-bg-raised);border-bottom:1px solid var(--color-border-subtle);">
+      <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);letter-spacing:.1em;text-transform:uppercase;">Variante: hero (fullscreen)</span>
+    </div>
+    <div class="hero" style="min-height:85vh;">
+      <div class="hero__bg"></div>
+      <div class="hero__overlay"></div>
+      <img src="../assets/img/Patch de Apresentação TF81 - vFinal.png" alt="" class="hero__watermark" aria-hidden="true">
+      <div class="hero__content">
+        <div class="hero__eyebrow">// TASK FORCE 81 // OPERAÇÕES TÁTICAS //</div>
+        <h1 class="hero__title">
+          <span class="hero__title-line">FORÇA</span>
+          <span class="hero__title-line">DISCIPLINA</span>
+          <span class="hero__title-line hero__title-highlight">COMBATE</span>
+        </h1>
+        <p class="hero__subtitle">Equipe de airsoft profissional dedicada a táticas realistas, treinamento contínuo e operações de alto nível.</p>
+        <div class="hero__actions">
+          <a href="#" class="btn btn-primary btn-lg">Ver o Efetivo</a>
+          <a href="#" class="btn btn-outline btn-lg">Últimas Operações</a>
+        </div>
+        <div class="hero__badge">
+          <span class="hero__badge-dot"></span>
+          FUNDADO EM 2018 · ATIVO
+        </div>
+        <div class="hero__stats">
+          <div class="hero__stat">
+            <span class="hero__stat-value">84</span>
+            <span class="hero__stat-label">Operações</span>
+          </div>
+          <div class="hero__stat-divider"></div>
+          <div class="hero__stat">
+            <span class="hero__stat-value">13</span>
+            <span class="hero__stat-label">Membros</span>
+          </div>
+          <div class="hero__stat-divider"></div>
+          <div class="hero__stat">
+            <span class="hero__stat-value">8</span>
+            <span class="hero__stat-label">Anos</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__scroll-hint">
+        <span>Scroll</span>
+        <svg class="hero__scroll-arrow" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero minimal -->
+  <div style="border-top:1px solid var(--color-border-subtle);">
+    <div style="padding:var(--space-3) var(--space-10);background:var(--color-bg-raised);border-bottom:1px solid var(--color-border-subtle);">
+      <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);letter-spacing:.1em;text-transform:uppercase;">Variante: hero--minimal (páginas internas)</span>
+    </div>
+    <div class="hero hero--minimal">
+      <div class="hero__bg"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <div class="hero__eyebrow">// BLOG DA UNIDADE</div>
+        <h1 class="hero__title" style="font-size:clamp(2rem,5vw,var(--text-3xl));">
+          <span class="hero__title-line">OPERAÇÕES &</span>
+          <span class="hero__title-line hero__title-highlight">NOTÍCIAS</span>
+        </h1>
+        <p class="hero__subtitle" style="font-size:var(--text-base);">Relatórios de campo, análises táticas e atualizações da equipe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     TAREFA 10 — SOBRE A TF-81
+     ══════════════════════════════════════════════════════════════ -->
+<section id="ds-about" class="ds-section" data-section style="max-width:none;padding:0;border-top:1px solid var(--color-border-subtle)">
+  <div style="padding:var(--space-8) var(--space-10) var(--space-4);max-width:1200px;">
+    <p class="ds-section-label">Site Público — T10</p>
+    <h2 class="ds-section-title">Sobre a TF-81</h2>
+    <p class="ds-section-desc">Seção "Quem somos" — identidade, missão, valores e história da unidade.</p>
+  </div>
+
+  <div style="border-top:1px solid var(--color-border-subtle);display:flex;justify-content:center;background:var(--color-bg-canvas);">
+    <div class="about-section">
+
+      <div class="about-section-hd">
+        <span class="about-section-hd__label">// SOBRE A UNIDADE</span>
+        <h2 class="about-section-hd__title">A Task Force 81</h2>
+      </div>
+
+      <p class="about-lead">Somos uma equipe de airsoft profissional fundada em 2018, dedicada à simulação tática realista, ao desenvolvimento dos operadores e ao espírito de equipe. Operamos com hierarquia, disciplina e comprometimento.</p>
+
+      <!-- Grid 2 colunas -->
+      <div class="about-grid">
+        <div class="about-grid__text">
+          <p>A Task Force 81 nasceu da vontade de criar um ambiente de airsoft profissional, onde cada membro é tratado como parte de uma estrutura real de operações táticas. Não somos um grupo casual — somos uma equipe.</p>
+          <p>Nossos treinos são planejados, nossas operações são executadas com briefing, e nosso desenvolvimento é contínuo. Cada operador passa por um processo seletivo e integra a unidade com propósito.</p>
+          <p>Sob a liderança do Estado-Maior, a TF-81 opera com hierarquia definida, rotatividade de comando anual e foco permanente em evolução tática coletiva.</p>
+        </div>
+        <div class="about-grid__visual">
+          <div class="about-patch-wrap">
+            <div class="about-patch-ring about-patch-ring--1"></div>
+            <div class="about-patch-ring about-patch-ring--2"></div>
+            <img src="../assets/img/Patch de Apresentação TF81 - vFinal.png" alt="Patch TF-81" class="about-patch">
+          </div>
+        </div>
+      </div>
+
+      <!-- Valores -->
+      <div style="margin-bottom:var(--space-4);">
+        <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-gold);letter-spacing:var(--tracking-military);text-transform:uppercase;">// Nossos Valores</span>
+      </div>
+      <div class="about-values">
+        <div class="about-value-card">
+          <div class="about-value-card__icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="about-value-card__title">Disciplina</div>
+          <div class="about-value-card__desc">Regras, horários e hierarquia respeitados por todos os membros.</div>
+        </div>
+        <div class="about-value-card">
+          <div class="about-value-card__icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <div class="about-value-card__title">Lealdade</div>
+          <div class="about-value-card__desc">Comprometimento com a equipe acima dos interesses individuais.</div>
+        </div>
+        <div class="about-value-card">
+          <div class="about-value-card__icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          </div>
+          <div class="about-value-card__title">Tática</div>
+          <div class="about-value-card__desc">Planejamento, execução e análise pós-operação em cada missão.</div>
+        </div>
+        <div class="about-value-card">
+          <div class="about-value-card__icon">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+          </div>
+          <div class="about-value-card__title">Evolução</div>
+          <div class="about-value-card__desc">Treinamento constante e busca permanente de melhoria técnica.</div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div style="margin-bottom:var(--space-4);">
+        <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-gold);letter-spacing:var(--tracking-military);text-transform:uppercase;">// História</span>
+      </div>
+      <div class="about-timeline-mini">
+        <div class="about-timeline-mini__item">
+          <span class="about-timeline-mini__year">2018</span>
+          <div class="about-timeline-mini__connector">
+            <div class="about-timeline-mini__dot"></div>
+            <div class="about-timeline-mini__line"></div>
+          </div>
+          <span class="about-timeline-mini__event">Fundação da Task Force 81 pelos membros do Estado-Maior.</span>
+        </div>
+        <div class="about-timeline-mini__item">
+          <span class="about-timeline-mini__year">2020</span>
+          <div class="about-timeline-mini__connector">
+            <div class="about-timeline-mini__dot"></div>
+            <div class="about-timeline-mini__line"></div>
+          </div>
+          <span class="about-timeline-mini__event">Primeiras operações externas e parcerias com outras equipes regionais.</span>
+        </div>
+        <div class="about-timeline-mini__item">
+          <span class="about-timeline-mini__year">2022</span>
+          <div class="about-timeline-mini__connector">
+            <div class="about-timeline-mini__dot"></div>
+            <div class="about-timeline-mini__line"></div>
+          </div>
+          <span class="about-timeline-mini__event">Estruturação formal do Estado-Maior com rotatividade anual de comando.</span>
+        </div>
+        <div class="about-timeline-mini__item">
+          <span class="about-timeline-mini__year">2024</span>
+          <div class="about-timeline-mini__connector">
+            <div class="about-timeline-mini__dot"></div>
+            <div class="about-timeline-mini__line"></div>
+          </div>
+          <span class="about-timeline-mini__event">Expansão do efetivo e lançamento do programa de recrutamento estruturado.</span>
+        </div>
+      </div>
+
+      <!-- Quote -->
+      <blockquote class="about-quote">
+        <p class="about-quote__text">"Não somos apenas jogadores. Somos uma equipe."</p>
+        <cite class="about-quote__author">— Estado-Maior TF-81</cite>
+      </blockquote>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     TAREFA 11 — RECRUTAMENTO PÚBLICO
+     ══════════════════════════════════════════════════════════════ -->
+<section id="ds-recruit" class="ds-section" data-section style="max-width:none;padding:0;border-top:1px solid var(--color-border-subtle)">
+  <div style="padding:var(--space-8) var(--space-10) var(--space-4);max-width:1200px;">
+    <p class="ds-section-label">Site Público — T11</p>
+    <h2 class="ds-section-title">Recrutamento Público</h2>
+    <p class="ds-section-desc">Seção de CTA pública — convite, requisitos, processo seletivo e formulário de candidatura.</p>
+  </div>
+
+  <div style="border-top:1px solid var(--color-border-subtle);display:flex;justify-content:center;background:var(--color-bg-canvas);">
+    <div class="recruit-section">
+
+      <div class="recruit-section-hd">
+        <span class="recruit-section-hd__label">// RECRUTAMENTO</span>
+        <h2 class="recruit-section-hd__title">Quer Fazer Parte?</h2>
+      </div>
+
+      <!-- Hero bloco -->
+      <div class="recruit-hero">
+        <div class="recruit-hero__label">// ALISTE-SE</div>
+        <h3 class="recruit-hero__title">Faça parte da força.</h3>
+        <p class="recruit-hero__sub">Buscamos operadores comprometidos, disciplinados e com vontade de evoluir. A seleção é exigente, porque a equipe é séria.</p>
+      </div>
+
+      <!-- Layout 2 colunas -->
+      <div class="recruit-layout">
+
+        <!-- Requisitos -->
+        <div>
+          <div class="recruit-req-title">Requisitos Mínimos</div>
+          <div class="recruit-requirements">
+            <div class="recruit-req-item">
+              <svg class="recruit-req-item__icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="recruit-req-item__text">Maior de 18 anos</span>
+            </div>
+            <div class="recruit-req-item">
+              <svg class="recruit-req-item__icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="recruit-req-item__text">Disponibilidade para treinos regulares</span>
+            </div>
+            <div class="recruit-req-item">
+              <svg class="recruit-req-item__icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="recruit-req-item__text">Equipamento próprio (mínimo básico)</span>
+            </div>
+            <div class="recruit-req-item">
+              <svg class="recruit-req-item__icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="recruit-req-item__text">Comprometimento com a equipe e as regras</span>
+            </div>
+            <div class="recruit-req-item">
+              <svg class="recruit-req-item__icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              <span class="recruit-req-item__text">Sem histórico de comportamento antiético em campo</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulário -->
+        <div class="recruit-form">
+          <div class="recruit-form__title">Candidatura</div>
+          <div class="recruit-form__group">
+            <label class="form-label form-label--required">Nome completo</label>
+            <input type="text" class="form-input" placeholder="Ex: João da Silva">
+          </div>
+          <div class="recruit-form__row">
+            <div class="recruit-form__group">
+              <label class="form-label">Callsign desejado</label>
+              <input type="text" class="form-input" placeholder="Ex: Viper">
+            </div>
+            <div class="recruit-form__group">
+              <label class="form-label">Idade</label>
+              <input type="number" class="form-input" placeholder="Ex: 24" min="18">
+            </div>
+          </div>
+          <div class="recruit-form__group">
+            <label class="form-label form-label--required">Cidade / Estado</label>
+            <input type="text" class="form-input" placeholder="Ex: São Paulo, SP">
+          </div>
+          <div class="recruit-form__group">
+            <label class="form-label form-label--required">Instagram</label>
+            <input type="text" class="form-input" placeholder="@seuperfil">
+          </div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;">Enviar Candidatura</button>
+          <p class="recruit-disclaimer">O processo pode levar até 30 dias. Você será contatado via Instagram pelo Estado-Maior.</p>
+        </div>
+
+      </div>
+
+      <!-- Etapas do processo -->
+      <div class="recruit-steps-label">// Processo Seletivo</div>
+      <div class="recruit-steps">
+        <div class="recruit-step">
+          <span class="recruit-step__number">01</span>
+          <div class="recruit-step__title">Candidatura</div>
+          <div class="recruit-step__desc">Preencha o formulário com seus dados e aguarde o contato.</div>
+        </div>
+        <div class="recruit-step">
+          <span class="recruit-step__number">02</span>
+          <div class="recruit-step__title">Avaliação</div>
+          <div class="recruit-step__desc">O Estado-Maior analisa o perfil e histórico do candidato.</div>
+        </div>
+        <div class="recruit-step">
+          <span class="recruit-step__number">03</span>
+          <div class="recruit-step__title">Treino Obs.</div>
+          <div class="recruit-step__desc">Participação em treino de observação para avaliação em campo.</div>
+        </div>
+        <div class="recruit-step">
+          <span class="recruit-step__number">04</span>
+          <div class="recruit-step__title">Incorporação</div>
+          <div class="recruit-step__desc">Incorporação como Recruta e início do período de adaptação.</div>
+        </div>
+      </div>
+
+      <!-- CTA Bar -->
+      <div class="recruit-cta-bar">
+        <div class="recruit-cta-bar__text">
+          <div class="recruit-cta-bar__title">Pronto para o desafio?</div>
+          <div class="recruit-cta-bar__sub">Candidate-se agora e faça parte de algo maior.</div>
+        </div>
+        <a href="#" class="btn btn-primary btn-lg">Quero me alistar</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     TAREFA 8 — FOOTER DO SITE PÚBLICO
+     ══════════════════════════════════════════════════════════════ -->
+<section id="ds-footer" class="ds-section" data-section style="max-width:none;padding:0;border-top:1px solid var(--color-border-subtle)">
+  <div style="padding:var(--space-8) var(--space-10) var(--space-4);max-width:1200px;">
+    <p class="ds-section-label">Site Público — T8</p>
+    <h2 class="ds-section-title">Footer</h2>
+    <p class="ds-section-desc">Rodapé do site público com colunas de brand, navegação, contato e redes sociais.</p>
+  </div>
+
+  <div style="border-top:1px solid var(--color-border-subtle);">
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__top">
+
+          <!-- Brand -->
+          <div class="site-footer__col">
+            <div class="site-footer__brand">
+              <div class="site-footer__brand-identity">
+                <img src="../assets/img/Patch de Apresentação TF81 - vFinal.png" alt="TF-81" class="site-footer__brand-logo">
+                <div>
+                  <div class="site-footer__brand-name">Task Force 81</div>
+                  <div class="site-footer__brand-sub">// Operações Táticas</div>
+                </div>
+              </div>
+              <p class="site-footer__brand-desc">Task Force 81 é uma equipe de airsoft profissional sediada no Brasil, com foco em táticas realistas, treinamento contínuo e espírito de equipe.</p>
+              <div class="site-footer__socials">
+                <a href="#" class="site-footer__social-btn" title="YouTube">
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 00-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 00.5 6.5C0 8.4 0 12 0 12s0 3.6.5 5.5a3 3 0 002.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 002.1-2.1C24 15.6 24 12 24 12s0-3.6-.5-5.5zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                </a>
+                <a href="#" class="site-footer__social-btn" title="Instagram">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="#" class="site-footer__social-btn" title="Facebook">
+                  <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navegação -->
+          <div class="site-footer__col">
+            <div class="site-footer__heading">Navegação</div>
+            <div class="site-footer__links">
+              <a href="#" class="site-footer__link">Início</a>
+              <a href="#" class="site-footer__link">Efetivo</a>
+              <a href="#" class="site-footer__link">Blog</a>
+              <a href="#" class="site-footer__link">Galeria</a>
+              <a href="#" class="site-footer__link">Mídia</a>
+              <a href="#" class="site-footer__link">Recrutamento</a>
+            </div>
+          </div>
+
+          <!-- Contato -->
+          <div class="site-footer__col">
+            <div class="site-footer__heading">Contato</div>
+            <p class="site-footer__info-text">Dúvidas, parcerias e solicitações de contato são respondidas exclusivamente via redes sociais.</p>
+            <div class="site-footer__links" style="margin-top:var(--space-2);">
+              <a href="#" class="site-footer__link">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 2H3v20l4-4h14V2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="13" y2="14"/></svg>
+                Instagram DM
+              </a>
+              <a href="#" class="site-footer__link">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Resposta em até 48h
+              </a>
+            </div>
+          </div>
+
+          <!-- Siga-nos -->
+          <div class="site-footer__col">
+            <div class="site-footer__heading">Siga-nos</div>
+            <div class="site-footer__links">
+              <a href="#" class="site-footer__social-row">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M23.5 6.5a3 3 0 00-2.1-2.1C19.5 4 12 4 12 4s-7.5 0-9.4.4A3 3 0 00.5 6.5C0 8.4 0 12 0 12s0 3.6.5 5.5a3 3 0 002.1 2.1C4.5 20 12 20 12 20s7.5 0 9.4-.4a3 3 0 002.1-2.1C24 15.6 24 12 24 12s0-3.6-.5-5.5zM9.75 15.5v-7l6.5 3.5-6.5 3.5z"/></svg>
+                YouTube
+              </a>
+              <a href="#" class="site-footer__social-row">
+                <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                Instagram
+              </a>
+              <a href="#" class="site-footer__social-row">
+                <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                Facebook
+              </a>
+            </div>
+          </div>
+
+        </div>
+        <hr class="site-footer__divider">
+        <div class="site-footer__bottom">
+          <span class="site-footer__copyright">© 2026 Task Force 81 — Todos os direitos reservados</span>
+          <span class="site-footer__disclaimer">Site fictício para fins recreativos de airsoft</span>
+        </div>
+      </div>
+    </footer>
   </div>
 </section>
 

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>Post — Task Force 81</title>
+
+  <meta name="description" content="Post do blog da Task Force 81: relatórios de campo, análises táticas e atualizações da equipe.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Post — Task Force 81">
+  <meta property="og:description" content="Relatórios de campo, análises táticas e atualizações da equipe.">
+  <meta property="og:image" content="../assets/img/Patch de Apresentação TF81 - vFinal.png">
+  <meta property="og:type" content="article">
+  <meta name="theme-color" content="#C4961A">
+  <link rel="icon" type="image/png" href="../assets/img/Patch de Apresentação TF81 - vFinal.png">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="../design-system/css/tokens.css">
+  <link rel="stylesheet" href="../design-system/css/base.css">
+  <link rel="stylesheet" href="../design-system/css/typography.css">
+  <link rel="stylesheet" href="../design-system/css/components.css">
+  <link rel="stylesheet" href="../design-system/css/utilities.css">
+  <link rel="stylesheet" href="../design-system/css/animations.css">
+  <link rel="stylesheet" href="../design-system/css/navbar.css">
+  <link rel="stylesheet" href="../design-system/css/footer.css">
+  <link rel="stylesheet" href="../design-system/css/hero.css">
+
+  <!-- Módulos desta página -->
+  <link rel="stylesheet" href="../design-system/css/blog.css">
+
+  <!-- CSS do site -->
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body class="site-page" data-page="blog-post">
+
+  <div data-component="navbar"></div>
+
+  <main class="site-main">
+
+    <!-- ══ HERO MINIMAL ══════════════════════════════════════ -->
+    <section class="hero hero--minimal">
+      <div class="hero__bg"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <div class="hero__eyebrow" data-slot="post-categoria">// BLOG</div>
+        <h1 class="hero__title" style="font-size:clamp(1.6rem,4vw,var(--text-2xl));max-width:880px;">
+          <span class="hero__title-line" data-slot="post-titulo">Carregando…</span>
+        </h1>
+        <p class="hero__subtitle" style="font-family:var(--font-mono);font-size:var(--text-xs);letter-spacing:var(--tracking-widest);text-transform:uppercase;" data-slot="post-sub">—</p>
+      </div>
+    </section>
+
+    <!-- ══ CORPO DO POST ═════════════════════════════════════ -->
+    <section class="site-section">
+      <div class="site-container" data-slot="post-corpo">
+        <div class="site-data-loading">Carregando post</div>
+      </div>
+    </section>
+
+    <!-- ══ POSTS RELACIONADOS ════════════════════════════════ -->
+    <section class="site-section site-section--alt">
+      <div class="site-container">
+        <div class="site-section-hd animate-on-scroll">
+          <span class="site-section-hd__label">// LEIA TAMBÉM</span>
+          <h2 class="site-section-hd__title">Posts Relacionados</h2>
+        </div>
+        <div class="blog-grid" data-slot="post-relacionados">
+          <div class="site-data-loading">Carregando posts</div>
+        </div>
+        <div class="site-section-cta">
+          <a href="./blog.html" class="btn btn-secondary btn-md">Ver todos os posts</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div data-component="footer"></div>
+
+  <script src="../js/site.js"></script>
+</body>
+</html>

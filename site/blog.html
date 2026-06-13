@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>Blog — Task Force 81</title>
+
+  <meta name="description" content="Blog da Task Force 81: relatórios de campo, análises táticas e atualizações da equipe.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Blog — Task Force 81">
+  <meta property="og:description" content="Relatórios de campo, análises táticas e atualizações da equipe.">
+  <meta property="og:image" content="../assets/img/Patch de Apresentação TF81 - vFinal.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#C4961A">
+  <link rel="icon" type="image/png" href="../assets/img/Patch de Apresentação TF81 - vFinal.png">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="../design-system/css/tokens.css">
+  <link rel="stylesheet" href="../design-system/css/base.css">
+  <link rel="stylesheet" href="../design-system/css/typography.css">
+  <link rel="stylesheet" href="../design-system/css/components.css">
+  <link rel="stylesheet" href="../design-system/css/utilities.css">
+  <link rel="stylesheet" href="../design-system/css/animations.css">
+  <link rel="stylesheet" href="../design-system/css/navbar.css">
+  <link rel="stylesheet" href="../design-system/css/footer.css">
+  <link rel="stylesheet" href="../design-system/css/hero.css">
+
+  <!-- Módulos desta página -->
+  <link rel="stylesheet" href="../design-system/css/blog.css">
+  <link rel="stylesheet" href="../design-system/css/gallery.css">
+
+  <!-- CSS do site -->
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body class="site-page" data-page="blog">
+
+  <div data-component="navbar"></div>
+
+  <main class="site-main">
+
+    <!-- ══ HERO MINIMAL ══════════════════════════════════════ -->
+    <section class="hero hero--minimal">
+      <div class="hero__bg"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <div class="hero__eyebrow">// BLOG DA UNIDADE</div>
+        <h1 class="hero__title">
+          <span class="hero__title-line">OPERAÇÕES &</span>
+          <span class="hero__title-line hero__title-highlight">NOTÍCIAS</span>
+        </h1>
+        <p class="hero__subtitle">Relatórios de campo, análises táticas e atualizações da equipe.</p>
+      </div>
+    </section>
+
+    <!-- ══ POST EM DESTAQUE ══════════════════════════════════ -->
+    <section class="site-section" style="padding-bottom:var(--space-6);">
+      <div class="site-container" data-slot="blog-destaque">
+        <div class="site-data-loading">Carregando destaque</div>
+      </div>
+    </section>
+
+    <!-- ══ FILTROS + GRID DE POSTS ═══════════════════════════ -->
+    <section class="site-section" style="padding-top:var(--space-6);">
+      <div class="site-container">
+
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);margin-bottom:var(--space-5);flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:var(--space-3);flex-wrap:wrap">
+            <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);letter-spacing:var(--tracking-wide)" data-slot="blog-contador">—</span>
+            <div style="display:flex;gap:var(--space-2);flex-wrap:wrap" data-slot="blog-filtros"></div>
+          </div>
+        </div>
+
+        <div class="blog-grid" data-slot="blog-grid">
+          <div class="site-data-loading">Carregando posts</div>
+        </div>
+
+        <!-- Paginação -->
+        <div style="display:flex;align-items:center;justify-content:center;gap:var(--space-4);margin-top:var(--space-10);">
+          <button class="btn btn-ghost btn-sm" data-slot="blog-anterior">← Anterior</button>
+          <span style="font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted);letter-spacing:var(--tracking-wide)" data-slot="blog-pagina">—</span>
+          <button class="btn btn-ghost btn-sm" data-slot="blog-proximo">Próximo →</button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div data-component="footer"></div>
+
+  <script src="../js/site.js"></script>
+</body>
+</html>

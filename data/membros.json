@@ -1,0 +1,260 @@
+{
+  "stats": {
+    "operacoes": 84,
+    "membros": 13,
+    "anos": 8
+  },
+  "membros": [
+    {
+      "id": "raphael-thomaz",
+      "nome": "Raphael Thomaz",
+      "callsign": "OP-01",
+      "codigo": "OP-01",
+      "posto": "Comandante|01",
+      "nivel": "EM",
+      "iniciais": "RT",
+      "gradiente": "linear-gradient(135deg,#0A1A0D,#183018)",
+      "especialidades": ["CQB", "Comando", "Instrução"],
+      "operacoes": 84,
+      "desde": 2018,
+      "bio": "Fundador e atual Comandante da Task Force 81. Responsável pelo planejamento estratégico da unidade, instrução de novos operadores e condução dos briefings operacionais. Especialista em combate em ambientes confinados (CQB).",
+      "sociais": [
+        { "tipo": "youtube", "url": "https://youtube.com/@tf81airsoft" },
+        { "tipo": "instagram", "url": "https://instagram.com/tf81airsoft" }
+      ],
+      "historico": [
+        { "data": "12 Jun 2026", "titulo": "Operação Névoa de Outubro", "tipo": "Operação", "liderou": true, "descricao": "Comando geral do exercício noturno com 12 operadores no Campo ALFA." },
+        { "data": "28 Mai 2026", "titulo": "Treino CQB — Série 2026", "tipo": "Treino", "liderou": true, "descricao": "Instrução de técnicas de entrada em espaços confinados." },
+        { "data": "10 Mai 2026", "titulo": "Operação Fronteira 2026", "tipo": "Externo", "liderou": false, "descricao": "Representação da TF-81 no evento interequipes regional." },
+        { "data": "19 Abr 2026", "titulo": "Treino de Comunicação e Sinais", "tipo": "Treino", "liderou": true, "descricao": "Padronização de sinais táticos e protocolo de rádio." }
+      ]
+    },
+    {
+      "id": "antonio-vieira",
+      "nome": "Antônio Vieira",
+      "callsign": "OP-02",
+      "codigo": "OP-02",
+      "posto": "Sub-Comandante|02",
+      "nivel": "EM",
+      "iniciais": "AV",
+      "gradiente": "linear-gradient(135deg,#1A1A0A,#2A2810)",
+      "especialidades": ["Reconhecimento", "Sniper"],
+      "operacoes": 76,
+      "desde": 2018,
+      "bio": "Co-fundador e Sub-Comandante da unidade. Lidera as frentes de reconhecimento e atua como atirador designado em operações de longo alcance. Responsável pela doutrina de observação avançada da equipe.",
+      "sociais": [
+        { "tipo": "instagram", "url": "https://instagram.com/tf81airsoft" }
+      ],
+      "historico": [
+        { "data": "12 Jun 2026", "titulo": "Operação Névoa de Outubro", "tipo": "Operação", "liderou": false, "descricao": "Elemento de overwatch e reconhecimento avançado." },
+        { "data": "10 Mai 2026", "titulo": "Operação Fronteira 2026", "tipo": "Externo", "liderou": true, "descricao": "Liderança do destacamento TF-81 no evento." },
+        { "data": "26 Abr 2026", "titulo": "Treino de Tiro de Precisão", "tipo": "Treino", "liderou": true, "descricao": "Calibração de réplicas e doutrina de atirador designado." }
+      ]
+    },
+    {
+      "id": "anderson-diego",
+      "nome": "Anderson Diego",
+      "callsign": "OP-03",
+      "codigo": "OP-03",
+      "posto": "Sub-Comandante|03",
+      "nivel": "EM",
+      "iniciais": "AD",
+      "gradiente": "linear-gradient(135deg,#0A0E1A,#121828)",
+      "especialidades": ["Comunicações", "Logística"],
+      "operacoes": 71,
+      "desde": 2019,
+      "bio": "Sargento-Mor da unidade, responsável por toda a malha de comunicações e pela logística de campo: transporte, hidratação, BBs e infraestrutura das operações. Garante que a equipe opere sem fricção.",
+      "sociais": [
+        { "tipo": "youtube", "url": "https://youtube.com/@tf81airsoft" }
+      ],
+      "historico": [
+        { "data": "12 Jun 2026", "titulo": "Operação Névoa de Outubro", "tipo": "Operação", "liderou": false, "descricao": "Coordenação da rede de rádio e logística avançada." },
+        { "data": "19 Abr 2026", "titulo": "Treino de Comunicação e Sinais", "tipo": "Treino", "liderou": false, "descricao": "Suporte de instrução em protocolo de rádio." },
+        { "data": "08 Mar 2026", "titulo": "Treino Noturno — Identificação", "tipo": "Treino", "liderou": true, "descricao": "Exercício de identificação e comunicação em baixa luz." }
+      ]
+    },
+    {
+      "id": "nivaldo",
+      "nome": "Nivaldo",
+      "callsign": "-",
+      "codigo": "OP-04",
+      "posto": "Operador",
+      "nivel": "OP",
+      "iniciais": "N",
+      "gradiente": "linear-gradient(135deg,#1A0A0A,#280E0E)",
+      "especialidades": ["Assalto", "CQB"],
+      "operacoes": 38,
+      "desde": 2021,
+      "bio": "Operador da linha de assalto, primeiro homem de entrada nas ações de CQB. Reconhecido pela agressividade controlada e leitura rápida de ambientes.",
+      "sociais": [],
+      "historico": [
+        { "data": "12 Jun 2026", "titulo": "Operação Névoa de Outubro", "tipo": "Operação", "liderou": false, "descricao": "Ponta de lança da equipe de assalto." },
+        { "data": "28 Mai 2026", "titulo": "Treino CQB — Série 2026", "tipo": "Treino", "liderou": false, "descricao": "Exercícios de entrada dinâmica em dupla." }
+      ]
+    },
+    {
+      "id": "marcelo",
+      "nome": "Marcelo",
+      "callsign": "-",
+      "codigo": "OP-05",
+      "posto": "Operador",
+      "nivel": "OP",
+      "iniciais": "M",
+      "gradiente": "linear-gradient(135deg,#0A1214,#101C1F)",
+      "especialidades": ["Reconhecimento", "Sniper"],
+      "operacoes": 29,
+      "desde": 2022,
+      "bio": "Operador de reconhecimento e segundo atirador da unidade. Especialista em infiltração silenciosa e observação prolongada.",
+      "sociais": [],
+      "historico": [
+        { "data": "12 Jun 2026", "titulo": "Operação Névoa de Outubro", "tipo": "Operação", "liderou": false, "descricao": "Par de overwatch com ALPHA-01." },
+        { "data": "26 Abr 2026", "titulo": "Treino de Tiro de Precisão", "tipo": "Treino", "liderou": false, "descricao": "Qualificação de precisão a média distância." }
+      ]
+    },
+    {
+      "id": "fernando-matheus",
+      "nome": "Fernando Matheus",
+      "callsign": "-",
+      "codigo": "OP-06",
+      "posto": "Operador",
+      "nivel": "OP",
+      "iniciais": "FM",
+      "gradiente": "linear-gradient(135deg,#140A1A,#1E1028)",
+      "especialidades": ["Comunicações", "Suporte"],
+      "operacoes": 24,
+      "desde": 2022,
+      "bio": "Operador de comunicações e suporte de fogo. Mantém o elo de rádio entre os elementos da equipe durante as operações.",
+      "sociais": [],
+      "historico": [
+        { "data": "12 Jun 2026", "titulo": "Operação Névoa de Outubro", "tipo": "Operação", "liderou": false, "descricao": "Operador de rádio do elemento de assalto." },
+        { "data": "19 Abr 2026", "titulo": "Treino de Comunicação e Sinais", "tipo": "Treino", "liderou": false, "descricao": "Exercício de retransmissão de mensagens." }
+      ]
+    },
+    {
+      "id": "lucca",
+      "nome": "Lucca",
+      "callsign": "-",
+      "codigo": "OP-07",
+      "posto": "Operador",
+      "nivel": "OP",
+      "iniciais": "L",
+      "gradiente": "linear-gradient(135deg,#0A1A0A,#102010)",
+      "especialidades": ["Assalto", "Demolições"],
+      "operacoes": 18,
+      "desde": 2023,
+      "bio": "Operador de assalto com especialização em brechas e granadas de simulação. Responsável pelas aberturas de acesso em estruturas fechadas.",
+      "sociais": [],
+      "historico": [
+        { "data": "28 Mai 2026", "titulo": "Treino CQB — Série 2026", "tipo": "Treino", "liderou": false, "descricao": "Treinamento de brechas e entradas explosivas simuladas." }
+      ]
+    },
+    {
+      "id": "carlos-wolp",
+      "nome": "Carlops Wolp",
+      "callsign": "Wolp",
+      "codigo": "OP-08",
+      "posto": "Operador",
+      "nivel": "OP",
+      "iniciais": "CW",
+      "gradiente": "linear-gradient(135deg,#1A1408,#241C0A)",
+      "especialidades": ["Médico", "CQB"],
+      "operacoes": 15,
+      "desde": 2023,
+      "bio": "Operador médico da equipe. Atua na linha de frente do CQB e conduz os protocolos de atendimento simulado em campo.",
+      "sociais": [],
+      "historico": [
+        { "data": "12 Jun 2026", "titulo": "Operação Névoa de Outubro", "tipo": "Operação", "liderou": false, "descricao": "Médico de combate do elemento principal." }
+      ]
+    },
+    {
+      "id": "jonnathan",
+      "nome": "Jonnathan",
+      "callsign": "-",
+      "codigo": "OP-09",
+      "posto": "Operador",
+      "nivel": "OP",
+      "iniciais": "J",
+      "gradiente": "linear-gradient(135deg,#1A0A14,#28101E)",
+      "especialidades": ["Infiltração", "Reconhecimento"],
+      "operacoes": 12,
+      "desde": 2024,
+      "bio": "Operador de infiltração. Especialista em movimentação furtiva e marcação de alvos para os elementos de assalto.",
+      "sociais": [],
+      "historico": [
+        { "data": "10 Mai 2026", "titulo": "Operação Fronteira 2026", "tipo": "Externo", "liderou": false, "descricao": "Infiltração avançada no setor norte do evento." }
+      ]
+    },
+    {
+      "id": "lynniker",
+      "nome": "Lynniker",
+      "callsign": "-",
+      "codigo": "OP-10",
+      "posto": "OPerador",
+      "nivel": "OP",
+      "iniciais": "LN",
+      "gradiente": "linear-gradient(135deg,#111318,#181C22)",
+      "especialidades": [],
+      "operacoes": 4,
+      "desde": 2025,
+      "bio": "Recruta em período de adaptação, em treinamento básico de movimentação tática e comunicação.",
+      "sociais": [],
+      "historico": [
+        { "data": "28 Mai 2026", "titulo": "Treino CQB — Série 2026", "tipo": "Treino", "liderou": false, "descricao": "Acompanhamento como observador da linha de assalto." }
+      ]
+    },
+    {
+      "id": "bruno-lima",
+      "nome": "Bruno Lima",
+      "callsign": "Newt",
+      "codigo": "REC-02",
+      "posto": "Recruta",
+      "nivel": "REC",
+      "iniciais": "BL",
+      "gradiente": "linear-gradient(135deg,#131110,#1C1814)",
+      "especialidades": [],
+      "operacoes": 3,
+      "desde": 2025,
+      "bio": "Recruta em formação, com foco inicial em disciplina de fogo e segurança de equipamento.",
+      "sociais": [],
+      "historico": [
+        { "data": "19 Abr 2026", "titulo": "Treino de Comunicação e Sinais", "tipo": "Treino", "liderou": false, "descricao": "Primeira participação em exercício de rádio." }
+      ]
+    },
+    {
+      "id": "rodrigo-gomes",
+      "nome": "Rodrigo Gomes",
+      "callsign": "Zero",
+      "codigo": "REC-03",
+      "posto": "Recruta",
+      "nivel": "REC",
+      "iniciais": "RG",
+      "gradiente": "linear-gradient(135deg,#101318,#141820)",
+      "especialidades": [],
+      "operacoes": 2,
+      "desde": 2026,
+      "bio": "Recruta incorporado em 2026, em fase de avaliação de campo e integração com a equipe.",
+      "sociais": [],
+      "historico": [
+        { "data": "08 Mar 2026", "titulo": "Treino Noturno — Identificação", "tipo": "Treino", "liderou": false, "descricao": "Exercício de identificação amigo/inimigo em baixa luz." }
+      ]
+    },
+    {
+      "id": "diego-neves",
+      "nome": "Diego Neves",
+      "callsign": "Echo",
+      "codigo": "REC-04",
+      "posto": "Recruta",
+      "nivel": "REC",
+      "iniciais": "DN",
+      "gradiente": "linear-gradient(135deg,#0E1018,#14161E)",
+      "especialidades": [],
+      "operacoes": 1,
+      "desde": 2026,
+      "bio": "Recruta mais recente da unidade, aprovado no processo seletivo de 2026 e em período de adaptação.",
+      "sociais": [],
+      "historico": [
+        { "data": "12 Jun 2026", "titulo": "Operação Névoa de Outubro", "tipo": "Operação", "liderou": false, "descricao": "Primeira operação como observador integrado." }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>Perfil do Operador — Task Force 81</title>
+
+  <meta name="description" content="Perfil público de operador da Task Force 81: posto, callsign, especialidades e histórico de operações.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Perfil do Operador — Task Force 81">
+  <meta property="og:description" content="Perfil público de operador da Task Force 81: posto, callsign, especialidades e histórico de operações.">
+  <meta property="og:image" content="../assets/img/Patch de Apresentação TF81 - vFinal.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#C4961A">
+  <link rel="icon" type="image/png" href="../assets/img/Patch de Apresentação TF81 - vFinal.png">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="../design-system/css/tokens.css">
+  <link rel="stylesheet" href="../design-system/css/base.css">
+  <link rel="stylesheet" href="../design-system/css/typography.css">
+  <link rel="stylesheet" href="../design-system/css/components.css">
+  <link rel="stylesheet" href="../design-system/css/utilities.css">
+  <link rel="stylesheet" href="../design-system/css/animations.css">
+  <link rel="stylesheet" href="../design-system/css/navbar.css">
+  <link rel="stylesheet" href="../design-system/css/footer.css">
+  <link rel="stylesheet" href="../design-system/css/hero.css">
+
+  <!-- Módulos desta página -->
+  <link rel="stylesheet" href="../design-system/css/crew.css">
+
+  <!-- CSS do site -->
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body class="site-page" data-page="operador">
+
+  <div data-component="navbar"></div>
+
+  <main class="site-main">
+
+    <!-- ══ HERO MINIMAL DO PERFIL ════════════════════════════ -->
+    <section class="hero hero--minimal">
+      <div class="hero__bg"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <div class="hero__eyebrow">// PERFIL DO OPERADOR</div>
+        <h1 class="hero__title">
+          <span class="hero__title-line" data-slot="operador-nome">Operador</span>
+        </h1>
+        <p class="hero__subtitle" style="font-family:var(--font-mono);letter-spacing:var(--tracking-widest);text-transform:uppercase;" data-slot="operador-sub">// —</p>
+      </div>
+    </section>
+
+    <!-- ══ PERFIL EXPANDIDO ══════════════════════════════════ -->
+    <section class="site-section">
+      <div class="site-container" data-slot="operador-perfil">
+        <div class="site-data-loading">Carregando perfil</div>
+      </div>
+    </section>
+
+    <!-- ══ HISTÓRICO DE OPERAÇÕES ════════════════════════════ -->
+    <section class="site-section site-section--alt">
+      <div class="site-container" style="max-width:760px;">
+        <div class="site-section-hd animate-on-scroll">
+          <span class="site-section-hd__label">// HISTÓRICO</span>
+          <h2 class="site-section-hd__title">Últimas Operações</h2>
+        </div>
+        <div class="timeline" data-slot="operador-historico">
+          <div class="site-data-loading">Carregando histórico</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ VOLTAR ════════════════════════════════════════════ -->
+    <section class="site-section" style="padding-top:var(--space-8);padding-bottom:var(--space-12);">
+      <div class="site-container" style="display:flex;justify-content:center;">
+        <a href="./efetivo.html" class="btn btn-ghost btn-md">← Voltar ao Efetivo</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div data-component="footer"></div>
+
+  <script src="../js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>Efetivo — Task Force 81</title>
+
+  <meta name="description" content="Conheça os operadores que compõem a Task Force 81: Estado-Maior, Operadores e Recrutas.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Efetivo — Task Force 81">
+  <meta property="og:description" content="Conheça os operadores que compõem a Task Force 81: Estado-Maior, Operadores e Recrutas.">
+  <meta property="og:image" content="../assets/img/Patch de Apresentação TF81 - vFinal.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#C4961A">
+  <link rel="icon" type="image/png" href="../assets/img/Patch de Apresentação TF81 - vFinal.png">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="../design-system/css/tokens.css">
+  <link rel="stylesheet" href="../design-system/css/base.css">
+  <link rel="stylesheet" href="../design-system/css/typography.css">
+  <link rel="stylesheet" href="../design-system/css/components.css">
+  <link rel="stylesheet" href="../design-system/css/utilities.css">
+  <link rel="stylesheet" href="../design-system/css/animations.css">
+  <link rel="stylesheet" href="../design-system/css/navbar.css">
+  <link rel="stylesheet" href="../design-system/css/footer.css">
+  <link rel="stylesheet" href="../design-system/css/hero.css">
+
+  <!-- Módulos desta página -->
+  <link rel="stylesheet" href="../design-system/css/crew.css">
+  <link rel="stylesheet" href="../design-system/css/recruit.css">
+
+  <!-- CSS do site -->
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body class="site-page" data-page="efetivo">
+
+  <div data-component="navbar"></div>
+
+  <main class="site-main">
+
+    <!-- ══ HERO MINIMAL ══════════════════════════════════════ -->
+    <section class="hero hero--minimal">
+      <div class="hero__bg"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <div class="hero__eyebrow">// EFETIVO OPERACIONAL</div>
+        <h1 class="hero__title">
+          <span class="hero__title-line">NOSSA</span>
+          <span class="hero__title-line">EQUIPE</span>
+        </h1>
+        <p class="hero__subtitle">Conheça os operadores que compõem a Task Force 81.</p>
+      </div>
+    </section>
+
+    <!-- ══ EFETIVO COMPLETO ══════════════════════════════════ -->
+    <section class="site-section">
+      <div class="site-container">
+        <div class="crew-section">
+          <div class="crew-section-hd animate-on-scroll">
+            <div class="crew-section-hd__left">
+              <div class="crew-section-hd__label">// ESTADO-MAIOR</div>
+              <h2 class="crew-section-hd__title">Comando da Unidade</h2>
+            </div>
+            <div class="crew-section-hd__right">
+              <span style="font-family:var(--font-mono);font-size:10px;color:var(--color-text-disabled);letter-spacing:var(--tracking-wide)" data-slot="total-membros">—</span>
+            </div>
+          </div>
+          <p class="site-section-hd__sub animate-on-scroll" style="margin-bottom:var(--space-8);">O Estado-Maior é o núcleo de comando da TF-81. É responsável pelo planejamento das operações, pela doutrina de treinamento e pelas decisões administrativas da unidade.</p>
+
+          <div data-slot="efetivo-completo">
+            <div class="site-data-loading">Carregando efetivo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CTA DE RECRUTAMENTO ═══════════════════════════════ -->
+    <section class="site-section site-section--alt" style="padding-top:var(--space-10);padding-bottom:var(--space-10);">
+      <div class="site-container">
+        <div class="recruit-cta-bar animate-on-scroll">
+          <div class="recruit-cta-bar__text">
+            <div class="recruit-cta-bar__title">Quer fazer parte?</div>
+            <div class="recruit-cta-bar__sub">Estamos recrutando operadores comprometidos e disciplinados.</div>
+          </div>
+          <a href="./recrutamento.html" class="btn btn-primary btn-lg">Quero me alistar</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div data-component="footer"></div>
+
+  <script src="../js/site.js"></script>
+</body>
+</html>

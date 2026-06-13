@@ -1,0 +1,31 @@
+{
+  "redes": [
+    {
+      "id": "youtube",
+      "nome": "YouTube",
+      "handle": "@tf81airsoft",
+      "url": "https://youtube.com/@tf81airsoft",
+      "seguidores": "2.400 inscritos",
+      "cta": "Inscrever-se",
+      "ativo": true
+    },
+    {
+      "id": "instagram",
+      "nome": "Instagram",
+      "handle": "@tf81airsoft",
+      "url": "https://instagram.com/tf81airsoft",
+      "seguidores": "1.850 seguidores",
+      "cta": "Seguir",
+      "ativo": true
+    },
+    {
+      "id": "facebook",
+      "nome": "Facebook",
+      "handle": "TF-81 Airsoft",
+      "url": "https://facebook.com/tf81airsoft",
+      "seguidores": "620 curtidas",
+      "cta": "Curtir página",
+      "ativo": true
+    }
+  ]
+}

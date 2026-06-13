@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark light">
+  <title>Mídia — Task Force 81</title>
+
+  <meta name="description" content="Conteúdo em vídeo da Task Force 81: operações, análises táticas e bastidores da equipe no YouTube.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Mídia — Task Force 81">
+  <meta property="og:description" content="Vídeos de operações, análises táticas e bastidores da equipe.">
+  <meta property="og:image" content="../assets/img/Patch de Apresentação TF81 - vFinal.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#C4961A">
+  <link rel="icon" type="image/png" href="../assets/img/Patch de Apresentação TF81 - vFinal.png">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="../design-system/css/tokens.css">
+  <link rel="stylesheet" href="../design-system/css/base.css">
+  <link rel="stylesheet" href="../design-system/css/typography.css">
+  <link rel="stylesheet" href="../design-system/css/components.css">
+  <link rel="stylesheet" href="../design-system/css/utilities.css">
+  <link rel="stylesheet" href="../design-system/css/animations.css">
+  <link rel="stylesheet" href="../design-system/css/navbar.css">
+  <link rel="stylesheet" href="../design-system/css/footer.css">
+  <link rel="stylesheet" href="../design-system/css/hero.css">
+
+  <!-- Módulos desta página -->
+  <link rel="stylesheet" href="../design-system/css/media.css">
+  <link rel="stylesheet" href="../design-system/css/recruit.css">
+
+  <!-- CSS do site -->
+  <link rel="stylesheet" href="../css/site.css">
+</head>
+<body class="site-page" data-page="midia">
+
+  <div data-component="navbar"></div>
+
+  <main class="site-main">
+
+    <!-- ══ HERO MINIMAL ══════════════════════════════════════ -->
+    <section class="hero hero--minimal">
+      <div class="hero__bg"></div>
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <div class="hero__eyebrow">// CANAL YOUTUBE</div>
+        <h1 class="hero__title">
+          <span class="hero__title-line">CONTEÚDO</span>
+          <span class="hero__title-line hero__title-highlight">TF-81</span>
+        </h1>
+        <p class="hero__subtitle">Vídeos de operações, análises táticas e bastidores da equipe.</p>
+      </div>
+    </section>
+
+    <!-- ══ VÍDEO EM DESTAQUE ═════════════════════════════════ -->
+    <section class="site-section" style="padding-bottom:var(--space-6);">
+      <div class="site-container" data-slot="midia-destaque">
+        <div class="site-data-loading">Carregando destaque</div>
+      </div>
+    </section>
+
+    <!-- ══ ÚLTIMOS VÍDEOS ════════════════════════════════════ -->
+    <section class="site-section" style="padding-top:var(--space-6);">
+      <div class="site-container">
+        <div class="site-section-hd animate-on-scroll">
+          <span class="site-section-hd__label">// ÚLTIMOS VÍDEOS</span>
+          <h2 class="site-section-hd__title">Direto do Campo</h2>
+        </div>
+        <div class="yt-grid" data-slot="midia-videos">
+          <div class="site-data-loading">Carregando vídeos</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PLAYLISTS ═════════════════════════════════════════ -->
+    <section class="site-section site-section--alt">
+      <div class="site-container">
+        <div class="site-section-hd animate-on-scroll">
+          <span class="site-section-hd__label">// PLAYLISTS</span>
+          <h2 class="site-section-hd__title">Coleções do Canal</h2>
+        </div>
+        <div class="yt-playlist-grid" data-slot="midia-playlists">
+          <div class="site-data-loading">Carregando playlists</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CTA DO CANAL ══════════════════════════════════════ -->
+    <section class="site-section" style="padding-top:var(--space-10);padding-bottom:var(--space-12);">
+      <div class="site-container">
+        <div class="recruit-cta-bar animate-on-scroll">
+          <div class="recruit-cta-bar__text">
+            <div class="recruit-cta-bar__title">Inscreva-se no canal</div>
+            <div class="recruit-cta-bar__sub" data-slot="canal-inscritos">@tf81airsoft</div>
+          </div>
+          <a href="https://youtube.com/@tf81airsoft" class="btn btn-primary btn-lg" data-slot="canal-url" target="_blank" rel="noopener noreferrer">Acessar o canal</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div data-component="footer"></div>
+
+  <script src="../js/site.js"></script>
+</body>
+</html>

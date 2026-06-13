@@ -1,0 +1,64 @@
+{
+  "categorias": [
+    { "id": "todos", "label": "Todos" },
+    { "id": "operacoes", "label": "Operações" },
+    { "id": "treinos", "label": "Treinos" },
+    { "id": "eventos", "label": "Eventos Externos" },
+    { "id": "bastidores", "label": "Bastidores" }
+  ],
+  "albuns": [
+    {
+      "id": "operacao-nevoa-2025",
+      "nome": "Operação Névoa 2025",
+      "categoria": "operacoes",
+      "data": "Out 2025",
+      "fotos": [
+        { "titulo": "Briefing pré-operação", "legenda": "Briefing do Comandante antes do horário-H · Campo ALFA", "gradiente": "linear-gradient(135deg,#1A1A0A,#2A2010)" },
+        { "titulo": "Infiltração noturna", "legenda": "Elemento de assalto em progressão na linha de árvores", "gradiente": "linear-gradient(135deg,#0A1A0D,#102010)" },
+        { "titulo": "Entrada principal", "legenda": "Brecha simultânea nas duas portas do objetivo", "gradiente": "linear-gradient(135deg,#0A0E1A,#141828)" },
+        { "titulo": "Overwatch", "legenda": "Posição de observação do Sub-Comandante", "gradiente": "linear-gradient(135deg,#14100A,#201808)" },
+        { "titulo": "Limpeza do 2º pavimento", "legenda": "Dupla de assalto na tomada da escada", "gradiente": "linear-gradient(135deg,#0D1A0D,#101E10)" },
+        { "titulo": "Debriefing", "legenda": "Análise pós-operação com toda a equipe", "gradiente": "linear-gradient(135deg,#1A1408,#24180A)" }
+      ]
+    },
+    {
+      "id": "treinos-cqb-2025",
+      "nome": "Treinos CQB — Série 2025",
+      "categoria": "treinos",
+      "data": "Ago 2025",
+      "fotos": [
+        { "titulo": "Fatiamento de ângulo", "legenda": "Exercício de slicing the pie em porta dupla", "gradiente": "linear-gradient(135deg,#1A0A0A,#280E0E)" },
+        { "titulo": "Entrada em dupla", "legenda": "Sincronia de entrada — primeiro e segundo homem", "gradiente": "linear-gradient(135deg,#0A1214,#101C1F)" },
+        { "titulo": "Corredor central", "legenda": "Progressão coordenada em corredor estreito", "gradiente": "linear-gradient(135deg,#140A1A,#1E1028)" },
+        { "titulo": "Instrução do Comandante", "legenda": "Correção de postura e empunhadura", "gradiente": "linear-gradient(135deg,#0A1A0A,#183018)" },
+        { "titulo": "Treino de recarga", "legenda": "Recarga tática em cobertura", "gradiente": "linear-gradient(135deg,#1A1408,#241C0A)" }
+      ]
+    },
+    {
+      "id": "evento-fronteira-2025",
+      "nome": "Evento Fronteira 2025",
+      "categoria": "eventos",
+      "data": "Mai 2025",
+      "fotos": [
+        { "titulo": "Formatura do destacamento", "legenda": "TF-81 em forma na abertura do evento", "gradiente": "linear-gradient(135deg,#0A0E1A,#121828)" },
+        { "titulo": "Escolta de comboio", "legenda": "Missão de escolta no setor logístico", "gradiente": "linear-gradient(135deg,#14100A,#201808)" },
+        { "titulo": "Reconhecimento norte", "legenda": "Elemento de reconhecimento no setor norte", "gradiente": "linear-gradient(135deg,#0A1A0D,#143014)" },
+        { "titulo": "Objetivo central", "legenda": "Tomada do objetivo central na janela noturna", "gradiente": "linear-gradient(135deg,#1A1A0A,#282810)" },
+        { "titulo": "Posto de comando", "legenda": "Coordenação com o comando do evento", "gradiente": "linear-gradient(135deg,#111318,#181C22)" },
+        { "titulo": "Encerramento", "legenda": "Confraternização das equipes participantes", "gradiente": "linear-gradient(135deg,#1A0A14,#28101E)" }
+      ]
+    },
+    {
+      "id": "equipamentos-efetivo",
+      "nome": "Equipamentos do Efetivo",
+      "categoria": "bastidores",
+      "data": "Mar 2025",
+      "fotos": [
+        { "titulo": "Loadout do Comandante", "legenda": "Setup CQB completo — BRAVO-01", "gradiente": "linear-gradient(135deg,#0A1A0D,#183018)" },
+        { "titulo": "Kit de comunicações", "legenda": "Rádios e fones da malha tática", "gradiente": "linear-gradient(135deg,#0A0E1A,#10141E)" },
+        { "titulo": "Bancada de manutenção", "legenda": "Manutenção preventiva das AEGs da unidade", "gradiente": "linear-gradient(135deg,#131110,#1C1814)" },
+        { "titulo": "Réplicas de precisão", "legenda": "Plataformas dos atiradores designados", "gradiente": "linear-gradient(135deg,#101318,#141820)" }
+      ]
+    }
+  ]
+}
